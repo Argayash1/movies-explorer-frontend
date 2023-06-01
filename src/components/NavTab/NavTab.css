@@ -1,0 +1,20 @@
+.nav-tab {
+  font-family: 'Inter';
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.nav-tab__button {
+  background: transparent;
+  padding: 8px 20px;
+  border: none;
+  color: #fff;
+  margin: 3px 0 0;
+}
+
+.nav-tab__button_type_login {
+  color: #000000;
+  background: #2be080;
+  border-radius: 3px;
+}
