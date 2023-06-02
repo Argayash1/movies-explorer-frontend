@@ -1,0 +1,41 @@
+import '../Portfolio/Portfolio.css';
+
+function Portfolio() {
+  return (
+    <section className='portfolio'>
+      <h4 className='portfolio__works-title'>Портфолио</h4>
+      <ul className='portfolio__works'>
+        <li className='portfolio__work'>
+          <a href='https://argayash1.github.io/how-to-learn/' className='portfolio__work-link'>
+            Статичный сайт
+            <span className='portfolio__arrow'>&rarr;</span>
+          </a>
+        </li>
+        <li className='portfolio__work'>
+          <a
+            href='https://argayash1.github.io/russian-travel/'
+            className='portfolio__work-link'
+            target='_blank'
+            rel='noreferrer'
+          >
+            Адаптивный сайт
+            <span className='portfolio__arrow'>&rarr;</span>
+          </a>
+        </li>
+        <li className='portfolio__work'>
+          <a
+            href='https://argayash1.github.io/react-mesto-auth/'
+            className='portfolio__work-link'
+            target='_blank'
+            rel='noreferrer'
+          >
+            Одностраничное приложение
+            <span className='portfolio__arrow'>&rarr;</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  );
+}
+
+export default Portfolio;

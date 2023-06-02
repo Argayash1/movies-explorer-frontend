@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #465dff;
+  margin: 0;
+  padding: 18px 70px;
+}
+
+.header__logo {
+  max-width: 38px;
+  max-height: 38px;
+  margin: 0;
+  padding: 0;
+}

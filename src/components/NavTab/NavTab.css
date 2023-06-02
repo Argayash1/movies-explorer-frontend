@@ -5,12 +5,17 @@
   line-height: 16px;
 }
 
+.nav-tab__nav-list {
+  list-style: none;
+  display: flex;
+  margin: 3px 0 0;
+}
+
 .nav-tab__button {
   background: transparent;
   padding: 8px 20px;
   border: none;
   color: #fff;
-  margin: 3px 0 0;
 }
 
 .nav-tab__button_type_login {

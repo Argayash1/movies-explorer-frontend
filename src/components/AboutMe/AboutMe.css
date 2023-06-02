@@ -1,0 +1,42 @@
+.about-me {
+  font-family: 'Inter';
+  padding: 110px 70px 0;
+}
+
+.about-me__info {
+  display: grid;
+  margin-bottom: 100px;
+}
+
+.about-me__title {
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+  margin: 66px 0 18px;
+  padding: 0;
+}
+
+.about-me__subtitle {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.about-me__bio {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  mix-blend-mode: normal;
+  max-width: 590px;
+}
+
+.about-me__github-link {
+  text-decoration: none;
+  color: #000;
+}
+
+.about-me__photo {
+  width: 270px;
+  height: 327px;
+}

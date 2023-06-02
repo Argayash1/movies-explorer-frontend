@@ -6,20 +6,6 @@
   flex-direction: column;
 }
 
-.promo__header {
-  display: flex;
-  justify-content: space-between;
-  margin: 0;
-  padding: 18px 0;
-}
-
-.promo__logo {
-  max-width: 38px;
-  max-height: 38px;
-  margin: 0;
-  padding: 0;
-}
-
 .promo__title {
   font-style: normal;
   font-weight: 400;
