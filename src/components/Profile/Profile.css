@@ -7,6 +7,33 @@
   font-size: 24px;
   line-height: 29px;
   text-align: center;
+  margin: 236px auto 0;
+}
+
+.profile__data {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 205px);
+  margin: 96px auto 0;
+  width: 410px;
+  padding: 0;
+}
+
+.profile__data-item {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+  padding-top: 17px;
+}
+
+.profile__data-item:nth-child(even) {
+  justify-self: end;
+}
+
+.profile__data-item_type_upper {
+  padding-top: 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e8e8e8;
 }
 
 .profile__links {

@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'; // импортируем Routes
+import { Routes, Route, Outlet } from 'react-router-dom'; // импортируем Routes
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import Profile from '../Profile/Profile';
@@ -22,6 +22,7 @@ function App() {
         <Route path='/signup' element={<Register />}></Route>
         <Route path='*' element={<PageNotFound />}></Route>
       </Routes>
+      <Outlet />
     </div>
   );
 }

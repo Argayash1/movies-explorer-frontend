@@ -12,3 +12,11 @@
   margin: 0;
   padding: 0;
 }
+
+.header__link {
+  display: none;
+}
+
+.header__link_active {
+  display: block;
+}
