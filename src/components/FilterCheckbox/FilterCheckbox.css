@@ -1,0 +1,21 @@
+.filter-checkbox {
+  display: flex;
+  margin-top: 26px;
+}
+
+.filter-checkbox__button {
+  margin-right: 14px;
+  background-color: transparent;
+  background-image: url('../../images/filter-checkbox_smalltumb.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 36px;
+  height: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.filter-checkbox__text {
+  margin: 0;
+  padding: 0;
+}

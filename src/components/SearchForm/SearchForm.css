@@ -1,0 +1,37 @@
+.search-form {
+  font-family: 'Inter';
+  padding: 70px 70px 54px;
+  border-bottom: 1px solid rgba(170, 170, 170);
+}
+
+.search-form__form {
+  border: 1px solid red;
+}
+
+.search-form__input {
+  border: 1.5px solid #aaaaaa;
+  border-radius: 8px;
+  padding: 25px 0 25px 25px;
+}
+
+.search-form__input::placeholder {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  color: #a0a0a0;
+}
+
+.search-form__submit-button {
+  padding: 17px 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  color: #ffffff;
+  background: #ff6838;
+  border-radius: 5px;
+  border: none;
+  position: relative;
+  right: 92px;
+  cursor: pointer;
+}

@@ -1,0 +1,30 @@
+.profile {
+  font-family: 'Inter';
+}
+
+.profile__title {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+}
+
+.profile__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 252px;
+}
+
+.profile__link {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+
+.profile__link_type_logout {
+  color: #ee3465;
+}

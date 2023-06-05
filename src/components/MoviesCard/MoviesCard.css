@@ -1,0 +1,41 @@
+.moviescard {
+  margin: 0;
+  padding: 14px 0;
+  background: #fdfdfd;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+}
+
+.moviescard__image {
+  width: 364px;
+  height: 203px;
+  margin: 0;
+  padding: 0;
+}
+
+.moviescard__title {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+.moviescard__duration {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #a0a0a0;
+  margin: 9px 0 0;
+  padding: 0;
+}
+
+.moviescard__like-button {
+  margin: 0;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  background-image: url('../../images/moviescard-saved-button.svg');
+  border: none;
+}

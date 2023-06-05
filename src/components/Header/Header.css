@@ -1,9 +1,9 @@
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: #465dff;
   margin: 0;
   padding: 18px 70px;
+  background-color: transparent;
 }
 
 .header__logo {

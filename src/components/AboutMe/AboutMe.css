@@ -1,11 +1,16 @@
 .about-me {
   font-family: 'Inter';
-  padding: 110px 70px 0;
+  padding: 110px 70px 100px;
+  background: #fff;
 }
 
 .about-me__info {
   display: grid;
-  margin-bottom: 100px;
+  grid-template-columns: 600px 270px;
+  grid-template-rows: 76px 46px 187px 17px;
+  column-gap: 270px;
+  margin-top: 66px;
+  max-width: 1140px;
 }
 
 .about-me__title {
@@ -13,7 +18,7 @@
   font-size: 50px;
   line-height: 58px;
   letter-spacing: -0.04em;
-  margin: 66px 0 18px;
+  margin: 0 0 18px;
   padding: 0;
 }
 
@@ -21,6 +26,7 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 20px;
+  margin: 0 0 26px;
 }
 
 .about-me__bio {
@@ -29,9 +35,14 @@
   line-height: 22px;
   mix-blend-mode: normal;
   max-width: 590px;
+  margin: 0 0 99px;
 }
 
 .about-me__github-link {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
   text-decoration: none;
   color: #000;
 }
@@ -39,4 +50,7 @@
 .about-me__photo {
   width: 270px;
   height: 327px;
+  border-radius: 10px;
+  grid-column: 2/3; /* это сокращённая запись grid-column-start: 2; grid-column-end: 3; */
+  grid-row: 1/4; /* это сокращённая запись grid-row-start: 1; grid-row-end: 4; */
 }

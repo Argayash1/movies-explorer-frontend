@@ -1,0 +1,35 @@
+.not-found {
+  font-family: 'Inter';
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 246px 0 60px;
+}
+
+.not-found__title {
+  font-weight: 400;
+  font-size: 140px;
+  line-height: 169px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.not-found__text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  margin: 0 0 184px;
+  padding: 0;
+}
+
+.not-found__button {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #ff6838;
+  text-decoration: none;
+}

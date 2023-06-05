@@ -14,7 +14,7 @@ function AboutMe() {
           музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того,
           как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.
         </p>
-        <a className='about-me__github-link' href='https://github.com/Argayash1'>
+        <a className='about-me__github-link' href='https://github.com/Argayash1' target='_blank' rel='noreferrer'>
           Github
         </a>
         <img className='about-me__photo' src={photo} alt='Фото автора сайта' />

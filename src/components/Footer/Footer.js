@@ -14,7 +14,7 @@ function Footer() {
               </a>
             </li>
             <li>
-              <a className='footer__nav-link' href='https://github.com/' target='_blank' rel='noreferrer'>
+              <a className='footer__nav-link' href='https://github.com/Argayash1' target='_blank' rel='noreferrer'>
                 Github
               </a>
             </li>

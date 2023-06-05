@@ -1,6 +1,7 @@
 .portfolio {
   font-family: 'Inter';
-  padding: 0 70px;
+  padding: 0 70px 125px;
+  background: #fff;
 }
 
 .portfolio__works-title {
@@ -22,6 +23,10 @@
 .portfolio__work {
   padding: 20px 0 19px;
   border-bottom: 1px solid #e8e8e8;
+}
+
+.portfolio__work:last-child {
+  border: none;
 }
 
 .portfolio__work-link {
