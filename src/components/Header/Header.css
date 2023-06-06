@@ -1,22 +1,16 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 0;
   padding: 18px 70px;
   background-color: transparent;
+  max-width: 1140px;
 }
 
 .header__logo {
-  max-width: 38px;
-  max-height: 38px;
+  width: 38px;
+  height: 38px;
   margin: 0;
   padding: 0;
-}
-
-.header__link {
-  display: none;
-}
-
-.header__link_active {
-  display: block;
 }

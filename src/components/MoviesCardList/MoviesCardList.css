@@ -5,8 +5,8 @@
 .movies-card-list__cards {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 360px);
-  gap: 30px 24px;
+  grid-template-columns: repeat(auto-fit, 364px);
+  gap: 30px 14px;
   margin: 0;
   padding: 0;
 }

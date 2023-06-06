@@ -39,13 +39,14 @@
   line-height: 17px;
   text-align: center;
   padding: 9px 14px;
+  margin: 0;
   width: 200px;
   background-color: #2be080;
 }
 
 .about-project__schedule-title_type_long {
   background-color: #f2f2f2;
-  width: 912px;
+  padding: 9px 356px;
 }
 
 .about-project__schedule-text {

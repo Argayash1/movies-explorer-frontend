@@ -5,13 +5,14 @@
 }
 
 .search-form__form {
-  border: 1px solid red;
+  position: relative;
 }
 
 .search-form__input {
   border: 1.5px solid #aaaaaa;
   border-radius: 8px;
-  padding: 25px 0 25px 25px;
+  padding: 25px 0;
+  width: 100%;
 }
 
 .search-form__input::placeholder {
@@ -19,6 +20,7 @@
   font-size: 18px;
   line-height: 20px;
   color: #a0a0a0;
+  padding-left: 25px;
 }
 
 .search-form__submit-button {
@@ -31,7 +33,8 @@
   background: #ff6838;
   border-radius: 5px;
   border: none;
-  position: relative;
-  right: 92px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
   cursor: pointer;
 }

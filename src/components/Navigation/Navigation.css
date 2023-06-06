@@ -1,24 +1,60 @@
-.nav-tab {
+.navigation {
   font-family: 'Inter';
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
+  padding-left: 24px;
+  box-sizing: border-box;
 }
 
-.nav-tab__nav-list {
+.navigation__links {
   list-style: none;
   display: flex;
   margin: 3px 0 0;
 }
 
-.nav-tab__button {
+.navigation__links_type_movies {
+  width: 1058px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation__links_type_profile {
+  width: 1058px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0 17px 0 0;
+}
+
+.navigation__link {
+  font-size: 13px;
+  line-height: 18px;
+  color: #000;
+  text-decoration: none;
+}
+
+.navigation__link_type_saved-movies {
+  margin-left: 16px;
+}
+
+.navigation__link_type_account {
+  padding: 8px 20px;
+  background: #f9f9f9;
+  border-radius: 20px;
+}
+
+.navigation__button {
   background: transparent;
   padding: 8px 20px;
   border: none;
   color: #fff;
+  cursor: pointer;
 }
 
-.nav-tab__button_type_login {
+.navigation__button_type_login {
   color: #000000;
   background: #2be080;
   border-radius: 3px;
