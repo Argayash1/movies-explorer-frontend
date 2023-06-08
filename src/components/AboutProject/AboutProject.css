@@ -1,6 +1,6 @@
 .about-project {
-  padding: 110px 70px;
-  font-family: 'Inter';
+  padding: 110px 0;
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
   background: #fff;
 }
 
@@ -47,6 +47,7 @@
 .about-project__schedule-title_type_long {
   background-color: #f2f2f2;
   padding: 9px 356px;
+  max-width: 912px;
 }
 
 .about-project__schedule-text {

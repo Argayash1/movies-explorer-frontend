@@ -1,6 +1,12 @@
-.App {
-  /* max-width: 1280px;
-  min-width: 320px; */
+.app {
+  min-width: 320px;
   min-height: 100vh;
   margin: auto;
+  background: #fff;
+  color: #000;
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  display: flex;
+  flex-direction: column;
 }

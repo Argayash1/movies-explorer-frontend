@@ -22,6 +22,8 @@ const Login = () => {
           id='email'
           placeholder='E-mail'
           autoComplete='off'
+          minLength='2'
+          maxLength='30'
           required
         />
         <span className='login__error'></span>

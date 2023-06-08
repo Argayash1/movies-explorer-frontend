@@ -1,0 +1,9 @@
+.section-content {
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 70px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}

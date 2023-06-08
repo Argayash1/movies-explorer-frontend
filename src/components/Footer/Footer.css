@@ -1,6 +1,7 @@
 .footer {
-  font-family: 'Inter';
-  padding: 79px 70px 20px;
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+  padding: 79px 0 20px;
+  box-sizing: border-box;
   background-color: #fafafa;
 }
 

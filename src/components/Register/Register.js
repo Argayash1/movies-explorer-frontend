@@ -22,6 +22,8 @@ const Register = () => {
           id='name'
           placeholder='Имя'
           autoComplete='off'
+          minLength='2'
+          maxLength='30'
           required
         />
         <span className='register__error'></span>

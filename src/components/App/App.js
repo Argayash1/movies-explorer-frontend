@@ -12,7 +12,7 @@ import moviesCards from '../../utils/moviesCards';
 
 function App() {
   return (
-    <div className='App'>
+    <div className='app'>
       <Routes>
         <Route path='/' element={<Main />}></Route>
         <Route path='/movies' element={<Movies moviesCards={moviesCards.slice(0, 12)} />}></Route>

@@ -1,9 +1,7 @@
 .promo {
   background-color: #465dff;
-  padding: 0 70px 50px;
-  font-family: 'Inter';
-  display: flex;
-  flex-direction: column;
+  padding: 0 0 50px;
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
 }
 
 .promo__title {

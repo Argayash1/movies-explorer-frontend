@@ -10,12 +10,12 @@ function Navigation() {
         <ul className='navigation__links'>
           <li>
             <Link to='/signup' className='navigation__link'>
-              <button className='navigation__button'>Регистрация</button>
+              Регистрация
             </Link>
           </li>
           <li>
-            <Link to='/signin' className='navigation__link'>
-              <button className='navigation__button navigation__button_type_login'>Войти</button>
+            <Link to='/signin' className='navigation__link navigation__link_type_login'>
+              Войти
             </Link>
           </li>
         </ul>
@@ -23,7 +23,7 @@ function Navigation() {
       {location.pathname === '/movies' && (
         <ul className='navigation__links navigation__links_type_movies'>
           <li>
-            <Link to='/movies' className='navigation__link'>
+            <Link to='/movies' className='navigation__link navigation__link_type_movies'>
               Фильмы
             </Link>
             <Link to='/saved-movies' className='navigation__link navigation__link_type_saved-movies'>
@@ -40,7 +40,7 @@ function Navigation() {
       {location.pathname === '/saved-movies' && (
         <ul className='navigation__links navigation__links_type_movies'>
           <li>
-            <Link to='/movies' className='navigation__link'>
+            <Link to='/movies' className='navigation__link navigation__link_type_movies'>
               Фильмы
             </Link>
             <Link to='/saved-movies' className='navigation__link navigation__link_type_saved-movies'>
@@ -57,7 +57,7 @@ function Navigation() {
       {location.pathname === '/profile' && (
         <ul className='navigation__links navigation__links_type_profile'>
           <li>
-            <Link to='/movies' className='navigation__link'>
+            <Link to='/movies' className='navigation__link navigation__link_type_movies'>
               Фильмы
             </Link>
             <Link to='/saved-movies' className='navigation__link navigation__link_type_saved-movies'>

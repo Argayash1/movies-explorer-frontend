@@ -1,6 +1,9 @@
 .filter-checkbox {
   display: flex;
   margin-top: 26px;
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+  padding-bottom: 44px;
+  border-bottom: 1px solid rgba(170, 170, 170);
 }
 
 .filter-checkbox__button {

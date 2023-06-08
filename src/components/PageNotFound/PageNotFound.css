@@ -1,5 +1,5 @@
 .not-found {
-  font-family: 'Inter';
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;

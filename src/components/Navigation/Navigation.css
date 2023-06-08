@@ -1,5 +1,5 @@
 .navigation {
-  font-family: 'Inter';
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
@@ -30,32 +30,36 @@
 }
 
 .navigation__link {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 20px;
+}
+
+.navigation__link_type_login {
+  color: #000000;
+  background: #2be080;
+  border-radius: 3px;
+}
+
+.navigation__link_type_movies {
   font-size: 13px;
   line-height: 18px;
-  color: #000;
-  text-decoration: none;
+  color: #000000;
+  padding: 0;
 }
 
 .navigation__link_type_saved-movies {
+  font-size: 13px;
+  line-height: 18px;
+  color: #000000;
+  padding: 0;
   margin-left: 16px;
 }
 
 .navigation__link_type_account {
-  padding: 8px 20px;
+  font-size: 13px;
+  line-height: 18px;
+  color: #000000;
   background: #f9f9f9;
   border-radius: 20px;
-}
-
-.navigation__button {
-  background: transparent;
-  padding: 8px 20px;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-}
-
-.navigation__button_type_login {
-  color: #000000;
-  background: #2be080;
-  border-radius: 3px;
 }

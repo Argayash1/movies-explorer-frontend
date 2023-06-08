@@ -1,6 +1,7 @@
 .portfolio {
-  font-family: 'Inter';
-  padding: 0 70px 125px;
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+  margin-top: 100px;
+  padding: 0 0 125px;
   background: #fff;
 }
 
