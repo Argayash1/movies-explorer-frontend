@@ -25,7 +25,12 @@
   width: 36px;
   height: 20px;
   cursor: pointer;
+  transition: opacity 0.5s linear;
 } /* так для чекбокса выглядит первый сосед с классом filter-checkbox__visible-checkbox*/
+
+.filter-checkbox__invisible-checkbox + .filter-checkbox__visible-checkbox:hover {
+  opacity: 0.8;
+}
 
 .filter-checkbox__invisible-checkbox:checked + .filter-checkbox__visible-checkbox_type_checked {
   background-image: url('../../images/filter-checkbox_smalltumb_checked.svg');

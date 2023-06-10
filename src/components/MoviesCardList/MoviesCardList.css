@@ -28,4 +28,10 @@
   border: none;
   padding: 11px 60px 9px;
   cursor: pointer;
+  min-width: 200px;
+  transition: opacity 0.5s linear;
+}
+
+.movies-card-list__more-button:hover {
+  opacity: 0.8;
 }

@@ -37,4 +37,9 @@
   right: 10px;
   top: 10px;
   cursor: pointer;
+  transition: opacity 0.5s linear;
+}
+
+.search-form__submit-button:hover {
+  opacity: 0.8;
 }

@@ -43,6 +43,11 @@
   text-align: center;
   color: #ffffff;
   margin: 0 0 16px;
+  transition: opacity 0.5s linear;
+}
+
+.authpage__submit-button:hover {
+  opacity: 0.8;
 }
 
 .authpage__signin {

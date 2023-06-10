@@ -45,6 +45,11 @@
   grid-column: 2/3;
   grid-row: 1/3;
   cursor: pointer;
+  transition: opacity 0.5s linear;
+}
+
+.moviescard__button:hover {
+  opacity: 0.8;
 }
 
 .moviescard__button_type_save {

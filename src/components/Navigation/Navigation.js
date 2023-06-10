@@ -10,12 +10,12 @@ function Navigation() {
         <ul className='navigation__links'>
           <li>
             <Link to='/signup' className='navigation__link'>
-              Регистрация
+              <button className='navigation__button'>Регистрация</button>
             </Link>
           </li>
           <li>
             <Link to='/signin' className='navigation__link navigation__link_type_login'>
-              Войти
+              <button className='navigation__button navigation__button_type_login'>Войти</button>
             </Link>
           </li>
         </ul>
@@ -43,7 +43,7 @@ function Navigation() {
           </li>
           <li>
             <NavLink to='/profile' className='navigation__link navigation__link_type_account'>
-              Аккаунт
+              <button className='navigation__button navigation__button_type_account'>Аккаунт</button>
             </NavLink>
           </li>
         </ul>
@@ -65,7 +65,7 @@ function Navigation() {
           </li>
           <li>
             <Link to='/profile' className='navigation__link navigation__link_type_account'>
-              Аккаунт
+              <button className='navigation__button navigation__button_type_account'>Аккаунт</button>
             </Link>
           </li>
         </ul>
@@ -82,7 +82,7 @@ function Navigation() {
           </li>
           <li>
             <Link to='/profile' className='navigation__link navigation__link_type_account'>
-              Аккаунт
+              <button className='navigation__button navigation__button_type_account'>Аккаунт</button>
             </Link>
           </li>
         </ul>
