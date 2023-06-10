@@ -45,6 +45,11 @@
   line-height: 17px;
   text-decoration: none;
   color: #000;
+  transition: opacity 0.5s linear;
+}
+
+.about-me__github-link:hover {
+  opacity: 0.7;
 }
 
 .about-me__photo {

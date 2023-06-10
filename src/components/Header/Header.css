@@ -1,14 +1,24 @@
 .header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0;
-  padding: 18px 70px;
-  box-sizing: border-box;
+  justify-content: center;
   margin: 0 auto;
-  background-color: transparent;
+  padding: 18px 0;
+  box-sizing: border-box;
   max-width: 1280px;
   font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+  /* border: 1px solid red; */
+}
+
+.header__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1140px;
+  /* border: 1px solid green; */
+}
+
+.header__content_type_profile {
+  margin-right: 17px;
 }
 
 .header__logo {
@@ -16,4 +26,9 @@
   height: 38px;
   margin: 0;
   padding: 0;
+  transition: opacity 0.5s linear;
+}
+
+.header__logo:hover {
+  opacity: 0.7;
 }

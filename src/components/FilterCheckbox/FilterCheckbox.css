@@ -4,9 +4,19 @@
   font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
   padding-bottom: 44px;
   border-bottom: 1px solid rgba(170, 170, 170);
+  width: 1140px;
 }
 
-.filter-checkbox__button {
+.filter-checkbox__invisible-checkbox {
+  position: absolute;
+  width: 1px; /* если у элемента не будет размеров, некоторые браузеры посчитают, что его вообще нет */
+  height: 1px;
+  overflow: hidden; /* без этого свойства тоже сработает, но так наверняка. Мы его ещё изучим, оно скрывает элементы, выходящие за границы родителя */
+  clip-path: inset(0 0 0 0);
+}
+
+.filter-checkbox__invisible-checkbox + .filter-checkbox__visible-checkbox {
+  display: inline-block; /* элемент span теперь сможет принимать определённую ширину и высоту */
   margin-right: 14px;
   background-color: transparent;
   background-image: url('../../images/filter-checkbox_smalltumb.svg');
@@ -14,8 +24,11 @@
   background-size: cover;
   width: 36px;
   height: 20px;
-  border: none;
   cursor: pointer;
+} /* так для чекбокса выглядит первый сосед с классом filter-checkbox__visible-checkbox*/
+
+.filter-checkbox__invisible-checkbox:checked + .filter-checkbox__visible-checkbox_type_checked {
+  background-image: url('../../images/filter-checkbox_smalltumb_checked.svg');
 }
 
 .filter-checkbox__text {

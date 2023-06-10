@@ -1,16 +1,18 @@
 .search-form {
   font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
-  padding: 70px 70px 54px;
+  padding: 70px 0 10px;
 }
 
 .search-form__form {
   position: relative;
+  width: 1140px;
 }
 
 .search-form__input {
   border: 1.5px solid #aaaaaa;
   border-radius: 8px;
-  padding: 25px 0;
+  box-sizing: border-box;
+  padding: 25px 0 25px 25px;
   width: 100%;
 }
 
@@ -19,7 +21,6 @@
   font-size: 18px;
   line-height: 20px;
   color: #a0a0a0;
-  padding-left: 25px;
 }
 
 .search-form__submit-button {

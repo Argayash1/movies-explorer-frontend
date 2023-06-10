@@ -47,4 +47,9 @@
   line-height: 16px;
   text-align: right;
   color: #000000;
+  transition: opacity 0.5s linear;
+}
+
+.footer__nav-link:hover {
+  opacity: 0.7;
 }

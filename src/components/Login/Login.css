@@ -1,37 +1,4 @@
-.login {
-  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
-  padding: 70px 0;
-  background-color: #fff;
-}
-
-.login__conyainer {
-  width: 396px;
-  margin: 0 auto;
-}
-
-.login__logo {
-  width: 38px;
-  height: 38px;
-  margin: 0 auto;
-}
-
-.login__title {
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 29px;
-  margin: 40px 0;
-  padding: 0;
-}
-
-.login__form {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  width: 396px;
-}
-
 .login__input-label {
-  font-weight: 400;
   font-size: 10px;
   line-height: 12px;
   color: #a0a0a0;
@@ -39,7 +6,6 @@
 }
 
 .login__input {
-  font-weight: 400;
   font-size: 13px;
   line-height: 16px;
   background: #f9f9f9;
@@ -50,7 +16,6 @@
 }
 
 .login__error {
-  font-weight: 400;
   font-size: 10px;
   line-height: 12px;
   color: #ee3465;
@@ -58,42 +23,6 @@
   height: 12px;
 }
 
-.login__submit-button {
-  padding: 13px 126px 15px 124px;
-  background-color: #ff6838;
-  border: none;
-  cursor: pointer;
-  border-radius: 3px;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  text-align: center;
-  color: #ffffff;
-  margin: 179px 0 16px;
-}
-
-.login__signin {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.login__signin-text {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-  text-align: center;
-  color: #a0a0a0;
-  margin: 0 6px 0 0;
-  padding: 0;
-}
-
-.login__signin-link {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-  text-align: center;
-  color: #ff6838;
-  text-decoration: none;
-  cursor: pointer;
+.login__error:last-of-type {
+  margin-bottom: 172px;
 }

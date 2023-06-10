@@ -1,15 +1,15 @@
 .movies-card-list {
   font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
-  padding: 0 70px;
 }
 
 .movies-card-list__cards {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(auto-fit, 364px);
-  gap: 30px 14px;
+  gap: 30px 24px;
   margin: 0;
-  padding: 0;
+  padding: 70px 0 30px;
+  width: 1140px;
 }
 
 .movies-card-list__button {
@@ -27,4 +27,5 @@
   text-align: center;
   border: none;
   padding: 11px 60px 9px;
+  cursor: pointer;
 }

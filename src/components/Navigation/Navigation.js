@@ -1,5 +1,5 @@
 import './Navigation.css';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 function Navigation() {
   const location = useLocation();
@@ -23,17 +23,28 @@ function Navigation() {
       {location.pathname === '/movies' && (
         <ul className='navigation__links navigation__links_type_movies'>
           <li>
-            <Link to='/movies' className='navigation__link navigation__link_type_movies'>
+            <NavLink
+              to='/movies'
+              className={({ isActive }) =>
+                `navigation__link navigation__link_type_movies ${isActive ? 'navigation__link_active' : ''}`
+              }
+            >
               Фильмы
-            </Link>
-            <Link to='/saved-movies' className='navigation__link navigation__link_type_saved-movies'>
+            </NavLink>
+            <NavLink
+              to='/saved-movies'
+              className={({ isActive }) =>
+                `navigation__link navigation__link_type_saved-movies ${isActive ? 'navigation__link_active' : ''}`
+              }
+              // className='navigation__link navigation__link_type_saved-movies'
+            >
               Сохранённые фильмы
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to='/profile' className='navigation__link navigation__link_type_account'>
+            <NavLink to='/profile' className='navigation__link navigation__link_type_account'>
               Аккаунт
-            </Link>
+            </NavLink>
           </li>
         </ul>
       )}
@@ -43,9 +54,14 @@ function Navigation() {
             <Link to='/movies' className='navigation__link navigation__link_type_movies'>
               Фильмы
             </Link>
-            <Link to='/saved-movies' className='navigation__link navigation__link_type_saved-movies'>
+            <NavLink
+              to='/saved-movies'
+              className={({ isActive }) =>
+                `navigation__link navigation__link_type_saved-movies ${isActive ? 'navigation__link_active' : ''}`
+              }
+            >
               Сохранённые фильмы
-            </Link>
+            </NavLink>
           </li>
           <li>
             <Link to='/profile' className='navigation__link navigation__link_type_account'>

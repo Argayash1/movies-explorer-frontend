@@ -6,12 +6,12 @@ import './SavedMovies.css';
 
 function SavedMovies({ moviesCards }) {
   return (
-    <section className='saved-movies'>
+    <main className='saved-movies'>
       <Header />
       <SearchForm />
-      <MoviesCardList moviesCards={moviesCards} />
+      <MoviesCardList moviesCards={moviesCards} buttonType='delete' />
       <Footer />
-    </section>
+    </main>
   );
 }
 

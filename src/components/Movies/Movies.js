@@ -4,14 +4,19 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import './Movies.css';
 
-function Movies({ moviesCards }) {
+function Movies({ moviesCards, onSaveMovie, isMovieSaved }) {
   return (
-    <section className='movies'>
+    <main className='movies'>
       <Header />
       <SearchForm />
-      <MoviesCardList moviesCards={moviesCards} />
+      <MoviesCardList
+        moviesCards={moviesCards}
+        buttonType='save'
+        onSaveMovie={onSaveMovie}
+        isMovieSaved={isMovieSaved}
+      />
       <Footer />
-    </section>
+    </main>
   );
 }
 

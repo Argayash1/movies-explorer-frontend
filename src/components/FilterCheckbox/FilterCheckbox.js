@@ -3,7 +3,10 @@ import './FilterCheckbox.css';
 function FilterCheckbox() {
   return (
     <div className='filter-checkbox'>
-      <button className='filter-checkbox__button'></button>
+      <label>
+        <input type='checkbox' className='filter-checkbox__invisible-checkbox' />
+        <span className='filter-checkbox__visible-checkbox filter-checkbox__visible-checkbox_type_checked'></span>
+      </label>
       <p className='filter-checkbox__text'>Короткометражки</p>
     </div>
   );

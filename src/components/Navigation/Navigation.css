@@ -1,6 +1,6 @@
 .navigation {
   font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 12px;
   line-height: 16px;
   padding-left: 24px;
@@ -26,13 +26,18 @@
   display: flex;
   justify-content: space-between;
   margin: 0;
-  padding: 0 17px 0 0;
+  padding: 0;
 }
 
 .navigation__link {
   color: #fff;
   text-decoration: none;
   padding: 8px 20px;
+  transition: opacity 0.5s linear;
+}
+
+.navigation__link:hover {
+  opacity: 0.7;
 }
 
 .navigation__link_type_login {
@@ -62,4 +67,15 @@
   color: #000000;
   background: #f9f9f9;
   border-radius: 20px;
+}
+
+.navigation__link_active {
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .navigation__link_active {
+    font-weight: 400;
+    text-decoration: underline;
+  }
 }
