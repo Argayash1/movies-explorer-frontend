@@ -3,7 +3,7 @@ import header_logo from '../../images/header_logo.svg';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 
-function Header() {
+function Header({ isBurgerMenuOpen, onBurgerMenuOpen }) {
   const location = useLocation();
   return (
     <header className='header'>
@@ -12,7 +12,7 @@ function Header() {
           <Link to='/'>
             <img className='header__logo' src={header_logo} alt='Логотип' />
           </Link>
-          <Navigation />
+          <Navigation isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={onBurgerMenuOpen} />
         </div>
       )}
       {location.pathname === '/movies' && (
@@ -20,7 +20,7 @@ function Header() {
           <Link to='/'>
             <img className='header__logo' src={header_logo} alt='Логотип' />
           </Link>
-          <Navigation />
+          <Navigation isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={onBurgerMenuOpen} />
         </div>
       )}
       {location.pathname === '/saved-movies' && (
@@ -28,7 +28,7 @@ function Header() {
           <Link to='/'>
             <img className='header__logo' src={header_logo} alt='Логотип' />
           </Link>
-          <Navigation />
+          <Navigation isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={onBurgerMenuOpen} />
         </div>
       )}
       {location.pathname === '/profile' && (
@@ -36,7 +36,7 @@ function Header() {
           <Link to='/'>
             <img className='header__logo' src={header_logo} alt='Логотип' />
           </Link>
-          <Navigation />
+          <Navigation isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={onBurgerMenuOpen} />
         </div>
       )}
     </header>

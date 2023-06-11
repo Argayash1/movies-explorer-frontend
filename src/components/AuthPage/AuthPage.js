@@ -4,7 +4,7 @@ import './AuthPage.css';
 
 function AuthPage({ headerText, buttonText, paragraphText, url, linkText, children }) {
   return (
-    <div className='authpage'>
+    <main className='authpage'>
       <div className='authpage__container'>
         <Link to='/'>
           <img className='authpage__logo' src={authpage_logo} alt='Логотип' />
@@ -23,7 +23,7 @@ function AuthPage({ headerText, buttonText, paragraphText, url, linkText, childr
           {linkText}
         </Link>
       </div>
-    </div>
+    </main>
   );
 }
 

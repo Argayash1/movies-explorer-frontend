@@ -14,6 +14,7 @@
   justify-content: space-between;
   align-items: center;
   width: 1140px;
+  position: relative;
   /* border: 1px solid green; */
 }
 

@@ -1,7 +1,7 @@
 import './Navigation.css';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 
-function Navigation() {
+function Navigation({ isBurgerMenuOpen, onBurgerMenuOpen }) {
   const location = useLocation();
 
   return (
@@ -17,6 +17,12 @@ function Navigation() {
             <Link to='/signin' className='navigation__link navigation__link_type_login'>
               <button className='navigation__button navigation__button_type_login'>Войти</button>
             </Link>
+          </li>
+          <li>
+            <button
+              className='navigation__button navigation__button_type_burger-menu'
+              onClick={onBurgerMenuOpen}
+            ></button>
           </li>
         </ul>
       )}
@@ -36,15 +42,18 @@ function Navigation() {
               className={({ isActive }) =>
                 `navigation__link navigation__link_type_saved-movies ${isActive ? 'navigation__link_active' : ''}`
               }
-              // className='navigation__link navigation__link_type_saved-movies'
             >
               Сохранённые фильмы
             </NavLink>
           </li>
-          <li>
+          <li className='navigation__links-item'>
             <NavLink to='/profile' className='navigation__link navigation__link_type_account'>
               <button className='navigation__button navigation__button_type_account'>Аккаунт</button>
             </NavLink>
+            <button
+              className='navigation__button navigation__button_type_burger-menu'
+              onClick={onBurgerMenuOpen}
+            ></button>
           </li>
         </ul>
       )}
@@ -67,6 +76,10 @@ function Navigation() {
             <Link to='/profile' className='navigation__link navigation__link_type_account'>
               <button className='navigation__button navigation__button_type_account'>Аккаунт</button>
             </Link>
+            <button
+              className='navigation__button navigation__button_type_burger-menu'
+              onClick={onBurgerMenuOpen}
+            ></button>
           </li>
         </ul>
       )}
@@ -84,6 +97,10 @@ function Navigation() {
             <Link to='/profile' className='navigation__link navigation__link_type_account'>
               <button className='navigation__button navigation__button_type_account'>Аккаунт</button>
             </Link>
+            <button
+              className='navigation__button navigation__button_type_burger-menu'
+              onClick={onBurgerMenuOpen}
+            ></button>
           </li>
         </ul>
       )}

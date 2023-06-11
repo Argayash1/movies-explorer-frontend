@@ -4,10 +4,10 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import './SavedMovies.css';
 
-function SavedMovies({ moviesCards }) {
+function SavedMovies({ moviesCards, isBurgerMenuOpen, onBurgerMenuOpen }) {
   return (
     <main className='saved-movies'>
-      <Header />
+      <Header isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={onBurgerMenuOpen} />
       <SearchForm />
       <MoviesCardList moviesCards={moviesCards} buttonType='delete' />
       <Footer />

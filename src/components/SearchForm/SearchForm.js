@@ -6,7 +6,7 @@ function SearchForm() {
   return (
     <section className='search-form'>
       <SectionContent>
-        <form className='search-form__form' noValidate>
+        <form className='search-form__form'>
           <input
             className='search-form__input'
             type='text'
