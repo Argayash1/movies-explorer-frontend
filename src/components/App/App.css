@@ -1,11 +1,15 @@
-.app {
-  min-width: 320px;
-  min-height: 100vh;
-  margin: auto;
+.page {
   background: #fff;
   color: #000;
-  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
   font-weight: 400;
+}
+
+.page__content {
+  min-width: 320px;
+  max-width: 1280px;
+  min-height: 100vh;
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+  margin: 0 auto;
   text-rendering: optimizeLegibility;
   display: flex;
   flex-direction: column;

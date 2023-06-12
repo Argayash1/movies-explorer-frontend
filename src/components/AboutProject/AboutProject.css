@@ -4,6 +4,10 @@
   background: #fff;
 }
 
+.about-project__content {
+  padding: 0 70px;
+}
+
 .about-project__descriptions {
   display: flex;
   list-style: none;
@@ -19,10 +23,20 @@
 }
 
 .about-project__descriptions-title {
-  margin-bottom: 26px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+  margin: 0 0 26px;
+  padding: 0;
 }
 
 .about-project__descriptions-text {
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+  font-weight: 400;
   font-size: 14px;
   line-height: 20px;
 }
@@ -34,26 +48,118 @@
   padding: 0;
 }
 
+.about-project__schedule-item {
+  width: 25%;
+}
+
+.about-project__schedule-item_type_long {
+  width: 75%;
+}
+
 .about-project__schedule-title {
+  font-style: normal;
+  font-weight: 400;
   font-size: 14px;
   line-height: 17px;
   text-align: center;
-  padding: 9px 14px;
+  padding: 9px 0;
   margin: 0;
-  width: 200px;
   background-color: #2be080;
 }
 
 .about-project__schedule-title_type_long {
   background-color: #f2f2f2;
-  padding: 9px 356px;
-  max-width: 912px;
+  padding: 9px 0;
 }
 
 .about-project__schedule-text {
+  font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
   text-align: center;
   color: #a0a0a0;
+}
+
+@media screen and (max-width: 973px) {
+  .about-project__descriptions {
+    gap: 30px;
+  }
+
+  .about-project__descriptions-item {
+    max-width: 370px;
+  }
+
+  .about-project__descriptions-text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .about-project__descriptions-title {
+    margin: 0 0 22px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .about-project {
+    padding: 90px 0;
+  }
+  .about-project__descriptions-item {
+    max-width: 319px;
+  }
+}
+
+@media screen and (max-width: 825px) {
+  .about-project__content {
+    padding: 0 50px;
+  }
+
+  .about-project__descriptions {
+    margin-bottom: 93px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .about-project__descriptions-title {
+    font-size: 18px;
+    line-height: 22px;
+  }
+  .about-project__descriptions-text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+
+@media screen and (max-width: 697px) {
+  .about-project {
+    padding: 70px 0;
+  }
+
+  .about-project__content {
+    padding: 0 18px;
+  }
+
+  .about-project__descriptions {
+    margin: 60px 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 56px;
+  }
+
+  .about-project__descriptions-item {
+    max-width: 284px;
+  }
+
+  .about-project__descriptions-title {
+    margin: 0 0 16px;
+  }
+
+  .about-project__schedule-title {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .about-project__schedule-text {
+    font-size: 11px;
+    line-height: 13px;
+  }
 }

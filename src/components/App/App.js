@@ -36,47 +36,49 @@ function App() {
   }
 
   return (
-    <div className='app'>
-      <Routes>
-        <Route
-          path='/'
-          element={<Main isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={handleOpenBurgerMenu} />}
-        ></Route>
-        <Route
-          path='/movies'
-          element={
-            <Movies
-              moviesCards={initialMovies.slice(0, 12)}
-              isMovieSaved={isMovieSaved}
-              onSaveMovie={handleSaveMovie}
-              isBurgerMenuOpen={isBurgerMenuOpen}
-              onBurgerMenuOpen={handleOpenBurgerMenu}
-            />
-          }
-        ></Route>
-        <Route
-          path='/saved-movies'
-          element={
-            <SavedMovies
-              moviesCards={initialMovies.slice(0, 3)}
-              isBurgerMenuOpen={isBurgerMenuOpen}
-              onBurgerMenuOpen={handleOpenBurgerMenu}
-            />
-          }
-        ></Route>
-        <Route
-          path='/profile'
-          element={<Profile isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={handleOpenBurgerMenu} />}
-        ></Route>
-        <Route path='/signin' element={<Login />}></Route>
-        <Route path='/signup' element={<Register />}></Route>
-        <Route path='*' element={<PageNotFound />}></Route>
-      </Routes>
-      <BurgerMenu
-        isOpen={isBurgerMenuOpen}
-        onBurgerMenuOpen={handleOpenBurgerMenu}
-        onBurgerMenuClose={handleClosrBurgerMenu}
-      />
+    <div className='page'>
+      <div className='page__content'>
+        <Routes>
+          <Route
+            path='/'
+            element={<Main isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={handleOpenBurgerMenu} />}
+          ></Route>
+          <Route
+            path='/movies'
+            element={
+              <Movies
+                moviesCards={initialMovies.slice(0, 12)}
+                isMovieSaved={isMovieSaved}
+                onSaveMovie={handleSaveMovie}
+                isBurgerMenuOpen={isBurgerMenuOpen}
+                onBurgerMenuOpen={handleOpenBurgerMenu}
+              />
+            }
+          ></Route>
+          <Route
+            path='/saved-movies'
+            element={
+              <SavedMovies
+                moviesCards={initialMovies.slice(0, 3)}
+                isBurgerMenuOpen={isBurgerMenuOpen}
+                onBurgerMenuOpen={handleOpenBurgerMenu}
+              />
+            }
+          ></Route>
+          <Route
+            path='/profile'
+            element={<Profile isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={handleOpenBurgerMenu} />}
+          ></Route>
+          <Route path='/signin' element={<Login />}></Route>
+          <Route path='/signup' element={<Register />}></Route>
+          <Route path='*' element={<PageNotFound />}></Route>
+        </Routes>
+        <BurgerMenu
+          isOpen={isBurgerMenuOpen}
+          onBurgerMenuOpen={handleOpenBurgerMenu}
+          onBurgerMenuClose={handleClosrBurgerMenu}
+        />
+      </div>
     </div>
   );
 }

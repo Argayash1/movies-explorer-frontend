@@ -9,12 +9,12 @@ import './Main.css';
 function Main({ isBurgerMenuOpen, onBurgerMenuOpen }) {
   return (
     <main className='main'>
-      <Header isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={onBurgerMenuOpen} />
-      <Promo />
-      <AboutProject />
-      <Techs />
+      {/* <Header isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={onBurgerMenuOpen} /> */}
+      {/* <Promo /> */}
+      {/* <AboutProject /> */}
+      {/* <Techs /> */}
       <AboutMe />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }

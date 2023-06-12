@@ -1,11 +1,10 @@
-import SectionContent from '../SectionContent/SectionContent';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import './Techs.css';
 
 function Techs() {
   return (
     <section className='techs'>
-      <SectionContent>
+      <div className='techs__content'>
         <SectionTitle text='Технологии' />
         <h3 className='techs__title'>7 Технологий</h3>
         <p className='techs__subtitle'>
@@ -20,7 +19,7 @@ function Techs() {
           <li className='techs__list-item'>Express.js</li>
           <li className='techs__list-item'>momgoDB</li>
         </ul>
-      </SectionContent>
+      </div>
     </section>
   );
 }
