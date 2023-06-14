@@ -4,8 +4,8 @@ import '../Footer/Footer.css';
 function Footer() {
   return (
     <footer className='footer'>
-      <SectionContent>
-        <h4 className='footer__title'>Учебный проект Яндекс.Практикум х BeatFilm.</h4>
+      <div className='footer__content'>
+        <h4 className='footer__title'>Учебный проект Яндекс.Практикум х&nbsp;BeatFilm.</h4>
         <div className='footer__container'>
           <p className='footer__date'>&copy; {new Date().getFullYear()}</p>
           <nav className='footer__nav-bar'>
@@ -23,7 +23,7 @@ function Footer() {
             </ul>
           </nav>
         </div>
-      </SectionContent>
+      </div>
     </footer>
   );
 }

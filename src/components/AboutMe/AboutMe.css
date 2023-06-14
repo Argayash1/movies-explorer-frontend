@@ -1,6 +1,6 @@
 .about-me {
   font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
-  padding: 110px 0 0;
+  padding: 110px 0 125px;
   background: #fff;
 }
 
@@ -14,7 +14,6 @@
   grid-template-rows: 76px 46px 187px 17px;
   margin-top: 66px;
   max-width: 100%;
-  border: 1px solid red;
 }
 
 .about-me__title {
@@ -65,22 +64,85 @@
   grid-column: 2/3; /* это сокращённая запись grid-column-start: 2; grid-column-end: 3; */
   grid-row: 1/4; /* это сокращённая запись grid-row-start: 1; grid-row-end: 4; */
   object-fit: cover;
-  border: 1px solid red;
   justify-self: flex-end;
 }
 
 @media screen and (max-width: 1024px) {
+  .about-me {
+    padding: 90px 0;
+  }
+
   .about-me__content {
     padding: 0 50px;
+  }
+
+  .about-me__info {
+    grid-template-rows: 56px 38px 195px 17px;
+    column-gap: 49px;
+  }
+
+  .about-me__title {
+    font-size: 40px;
+    line-height: 40px;
+    margin: 0 0 16px;
+  }
+
+  .about-me__subtitle {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 0 0 20px;
   }
 
   .about-me__bio {
     font-size: 12px;
     line-height: 18px;
+    margin: 0 0 87px;
   }
 
   .about-me__photo {
     width: 255px;
     height: 307px;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .about-me {
+    padding: 70px 0;
+  }
+
+  .about-me__content {
+    padding: 0 14px;
+  }
+
+  .about-me__info {
+    margin-top: 60px;
+    grid-template-columns: 292px;
+    grid-template-rows: 392px 56px 36px 152px 17px;
+    margin: 60px auto 0;
+    max-width: 292px;
+  }
+
+  .about-me__title {
+    font-size: 30px;
+    line-height: 36px;
+    margin: 0 0 20px;
+  }
+
+  .about-me__subtitle {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-me__bio {
+    font-size: 11px;
+    line-height: 16px;
+    margin: 0 0 40px;
+  }
+
+  .about-me__photo {
+    width: 100%;
+    height: 352px;
+    grid-row: 1/2;
+    grid-column: 1/2;
   }
 }

@@ -10,11 +10,11 @@ function Main({ isBurgerMenuOpen, onBurgerMenuOpen }) {
   return (
     <main className='main'>
       {/* <Header isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={onBurgerMenuOpen} /> */}
-      {/* <Promo /> */}
-      {/* <AboutProject /> */}
-      {/* <Techs /> */}
+      <Promo />
+      <AboutProject />
+      <Techs />
       <AboutMe />
-      {/* <Footer /> */}
+      <Footer />
     </main>
   );
 }

@@ -1,17 +1,18 @@
 .portfolio {
   font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
   margin-top: 100px;
-  padding: 0 0 125px;
+  padding: 0;
   background: #fff;
 }
 
 .portfolio__works-title {
+  font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 20px;
   color: #a0a0a0;
   mix-blend-mode: normal;
-  margin: 0;
+  margin: 0 0 50px;
   padding: 0;
 }
 
@@ -26,7 +27,12 @@
   border-bottom: 1px solid #e8e8e8;
 }
 
+.portfolio__work:nth-child(1) {
+  padding-top: 0;
+}
+
 .portfolio__work:last-child {
+  padding-bottom: 0;
   border: none;
 }
 
@@ -48,4 +54,29 @@
 
 .portfolio__arrow {
   rotate: -45deg;
+}
+
+@media screen and (max-width: 1024px) {
+  .portfolio {
+    margin-top: 91px;
+  }
+
+  .portfolio__work-link {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .portfolio {
+    margin-top: 70px;
+  }
+
+  .portfolio__works-title {
+    margin-bottom: 40px;
+  }
+
+  .portfolio__work-link {
+    font-size: 18px;
+    line-height: 28px;
+  }
 }

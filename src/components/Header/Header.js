@@ -10,7 +10,7 @@ function Header({ isBurgerMenuOpen, onBurgerMenuOpen }) {
       {location.pathname === '/' && (
         <div className='header__content'>
           <Link to='/'>
-            <img className='header__logo' src={header_logo} alt='Логотип' />
+            <img className='header__logo' src={header_logo} alt='Логотип проекта' />
           </Link>
           <Navigation isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={onBurgerMenuOpen} />
         </div>
@@ -18,7 +18,7 @@ function Header({ isBurgerMenuOpen, onBurgerMenuOpen }) {
       {location.pathname === '/movies' && (
         <div className='header__content'>
           <Link to='/'>
-            <img className='header__logo' src={header_logo} alt='Логотип' />
+            <img className='header__logo' src={header_logo} alt='Логотип проекта' />
           </Link>
           <Navigation isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={onBurgerMenuOpen} />
         </div>
@@ -26,7 +26,7 @@ function Header({ isBurgerMenuOpen, onBurgerMenuOpen }) {
       {location.pathname === '/saved-movies' && (
         <div className='header__content'>
           <Link to='/'>
-            <img className='header__logo' src={header_logo} alt='Логотип' />
+            <img className='header__logo' src={header_logo} alt='Логотип проекта' />
           </Link>
           <Navigation isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={onBurgerMenuOpen} />
         </div>
@@ -34,7 +34,7 @@ function Header({ isBurgerMenuOpen, onBurgerMenuOpen }) {
       {location.pathname === '/profile' && (
         <div className='header__content header__content_type_profile'>
           <Link to='/'>
-            <img className='header__logo' src={header_logo} alt='Логотип' />
+            <img className='header__logo' src={header_logo} alt='Логотип проекта' />
           </Link>
           <Navigation isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={onBurgerMenuOpen} />
         </div>
