@@ -4,7 +4,7 @@
   font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
   padding-bottom: 44px;
   border-bottom: 1px solid rgba(170, 170, 170);
-  width: 1140px;
+  width: 100%;
 }
 
 .filter-checkbox__invisible-checkbox {
@@ -37,6 +37,30 @@
 }
 
 .filter-checkbox__text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
   margin: 0;
   padding: 0;
+}
+
+@media screen and (max-width: 1160px) {
+  .filter-checkbox {
+    padding-bottom: 52px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .filter-checkbox {
+    padding-bottom: 63px;
+  }
+
+  .filter-checkbox__invisible-checkbox + .filter-checkbox__visible-checkbox {
+    margin-right: 13px;
+  }
+
+  .filter-checkbox__text {
+    font-size: 11px;
+  }
 }

@@ -9,7 +9,7 @@ import './Main.css';
 function Main({ isBurgerMenuOpen, onBurgerMenuOpen }) {
   return (
     <main className='main'>
-      {/* <Header isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={onBurgerMenuOpen} /> */}
+      <Header isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={onBurgerMenuOpen} />
       <Promo />
       <AboutProject />
       <Techs />

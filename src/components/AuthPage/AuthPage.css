@@ -3,11 +3,15 @@
   font-style: normal;
   padding: 70px 0;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
 }
 
 .authpage__container {
   width: 396px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .authpage__logo {
@@ -17,6 +21,7 @@
 }
 
 .authpage__title {
+  font-style: normal;
   font-weight: 500;
   font-size: 24px;
   line-height: 29px;
@@ -37,6 +42,7 @@
   border: none;
   cursor: pointer;
   border-radius: 3px;
+  font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
@@ -57,6 +63,7 @@
 }
 
 .authpage__signin-text {
+  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
@@ -67,6 +74,7 @@
 }
 
 .authpage__signin-link {
+  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
@@ -79,4 +87,48 @@
 
 .authpage__signin-link:hover {
   opacity: 0.7;
+}
+
+@media screen and (max-width: 1024px) {
+  .authpage {
+    padding: 212px 0 232px;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .authpage {
+    padding: 56px 0 30px;
+  }
+
+  .authpage__container {
+    width: 100%;
+    align-items: center;
+  }
+
+  .authpage__title {
+    margin: 50px 0 80px;
+  }
+
+  .authpage__form {
+    width: 260px;
+  }
+
+  .authpage__submit-button {
+    padding: 15px 68px 15px 67px;
+    margin-bottom: 14px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .authpage__signin-text {
+    font-size: 12px;
+    line-height: 15px;
+    margin-right: 7px;
+  }
+
+  .authpage__signin-link {
+    font-size: 12px;
+    line-height: 15px;
+  }
 }

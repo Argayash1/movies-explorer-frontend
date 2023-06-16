@@ -1,11 +1,10 @@
-import SectionContent from '../SectionContent/SectionContent';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
 function SearchForm() {
   return (
     <section className='search-form'>
-      <SectionContent>
+      <div className='search-form__content'>
         <form className='search-form__form'>
           <input
             className='search-form__input'
@@ -21,7 +20,7 @@ function SearchForm() {
           </button>
         </form>
         <FilterCheckbox />
-      </SectionContent>
+      </div>
     </section>
   );
 }

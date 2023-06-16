@@ -1,4 +1,5 @@
 .register__input-label {
+  font-style: normal;
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
@@ -7,17 +8,28 @@
 }
 
 .register__input {
+  font-style: normal;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
   background: #f9f9f9;
+  color: #000000;
   border-radius: 8px;
   border: none;
   padding: 15px;
   margin: 0;
 }
 
+.register__input::placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #a0a0a0;
+}
+
 .register__error {
+  font-style: normal;
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
@@ -27,5 +39,12 @@
 }
 
 .register__error:last-of-type {
+  margin-top: 10px;
   margin-bottom: 69px;
+}
+
+@media screen and (max-width: 544px) {
+  .register__error:last-of-type {
+    margin-bottom: 157px;
+  }
 }

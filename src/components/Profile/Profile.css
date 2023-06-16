@@ -1,25 +1,28 @@
 .profile {
   font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+  padding: 74px 0 70px;
 }
 
 .profile__title {
+  font-style: normal;
   font-weight: 500;
   font-size: 24px;
   line-height: 29px;
   text-align: center;
-  margin: 236px auto 0;
+  margin: 0 auto;
 }
 
 .profile__data {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(2, 205px);
-  margin: 96px auto 0;
+  margin: 123px auto 220px;
   width: 410px;
   padding: 0;
 }
 
 .profile__data-item {
+  font-style: normal;
   font-weight: 500;
   font-size: 11px;
   line-height: 13px;
@@ -40,16 +43,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 252px;
+  gap: 16px;
 }
 
 .profile__link {
+  font-style: normal;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
   text-align: center;
   text-decoration: none;
-  margin-bottom: 16px;
   transition: opacity 0.5s linear;
 }
 
@@ -59,4 +62,31 @@
 
 .profile__link_type_logout {
   color: #ee3465;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile {
+    padding: 236px 0 269px;
+  }
+
+  .profile__data {
+    margin: 96px auto 210px;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .profile {
+    padding: 70px 0 40px;
+  }
+
+  .profile__data {
+    grid-template-columns: repeat(2, 130px);
+    width: 260px;
+    margin: 80px auto 379px;
+  }
+
+  .profile__link {
+    font-size: 12px;
+    line-height: 15px;
+  }
 }

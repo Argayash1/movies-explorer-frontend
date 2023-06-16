@@ -11,6 +11,7 @@ import './App.css';
 
 import moviesApi from '../../utils/MoviesApi';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import SectionContent from '../SectionContent/SectionContent';
 
 function App() {
   const [initialMovies, setInitialMovies] = useState([]);
@@ -38,6 +39,7 @@ function App() {
   return (
     <div className='page'>
       <div className='page__content'>
+        <SectionContent></SectionContent>
         <Routes>
           <Route
             path='/'
