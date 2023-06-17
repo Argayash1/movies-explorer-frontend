@@ -1,0 +1,22 @@
+.burger-menu-button {
+  width: 44px;
+  height: 44px;
+  background-image: url('../../images/navigation-open-burger-button.svg');
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.burger-menu-button_place_main {
+  display: none;
+}
+
+.burger-menu-button_place_movies {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .burger-menu-button_place_movies {
+    display: block;
+  }
+}

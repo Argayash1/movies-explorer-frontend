@@ -1,11 +1,9 @@
 import './Profile.css';
-import Header from '../Header/Header';
 import { Link } from 'react-router-dom';
 
 function Profile({ isBurgerMenuOpen, onBurgerMenuOpen }) {
   return (
     <section className='profile'>
-      <Header isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={onBurgerMenuOpen} />
       <h2 className='profile__title'>Привет, Виталий!</h2>
       <ul className='profile__data'>
         <li className='profile__data-item profile__data-item_type_upper'>Имя</li>

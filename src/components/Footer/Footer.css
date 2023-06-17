@@ -1,12 +1,10 @@
 .footer {
   font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
-  padding: 79px 0 20px;
-  box-sizing: border-box;
-  background-color: #fafafa;
 }
 
 .footer__content {
-  padding: 0 70px;
+  background-color: #fafafa;
+  padding: 79px 70px 20px;
 }
 
 .footer__title {
@@ -58,12 +56,9 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .footer {
-    background-color: #fff;
-  }
-
   .footer__content {
     padding: 0 30px;
+    background-color: #fff;
   }
 }
 

@@ -1,0 +1,36 @@
+.main-menu {
+  list-style: none;
+  display: flex;
+}
+
+.main-menu__link {
+  text-decoration: none;
+  padding: 8px 0;
+  transition: opacity 0.5s linear;
+}
+
+.main-menu__link:hover {
+  opacity: 0.7;
+}
+
+.main-menu__button {
+  color: #fff;
+  background: transparent;
+  border: none;
+  padding: 8px 20px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  cursor: pointer;
+  transition: opacity 0.5s linear;
+}
+
+.main-menu__button:hover {
+  opacity: 0.8;
+}
+
+.main-menu__button_type_login {
+  color: #000;
+  background: #2be080;
+  border-radius: 3px;
+}

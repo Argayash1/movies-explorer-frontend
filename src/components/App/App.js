@@ -6,6 +6,7 @@ import Profile from '../Profile/Profile';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
+import Footer from '../Footer/Footer';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import './App.css';
 
@@ -16,6 +17,7 @@ import SectionContent from '../SectionContent/SectionContent';
 function App() {
   const [initialMovies, setInitialMovies] = useState([]);
   const [isMovieSaved, setIsMovieSaved] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -39,7 +41,11 @@ function App() {
   return (
     <div className='page'>
       <div className='page__content'>
-        <SectionContent></SectionContent>
+        <SectionContent
+          isLoggedIn={isLoggedIn}
+          isBurgerMenuOpen={isBurgerMenuOpen}
+          onBurgerMenuOpen={handleOpenBurgerMenu}
+        ></SectionContent>
         <Routes>
           <Route
             path='/'
@@ -75,6 +81,7 @@ function App() {
           <Route path='/signup' element={<Register />}></Route>
           <Route path='*' element={<PageNotFound />}></Route>
         </Routes>
+        <Footer />
         <BurgerMenu
           isOpen={isBurgerMenuOpen}
           onBurgerMenuOpen={handleOpenBurgerMenu}

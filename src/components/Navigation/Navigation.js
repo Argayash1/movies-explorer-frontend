@@ -1,109 +1,22 @@
+import LoggedInMenu from '../LoggedInMenu/LoggedInMenu';
+import MainMenu from '../MainMenu/MainMenu';
 import './Navigation.css';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
-function Navigation({ isBurgerMenuOpen, onBurgerMenuOpen }) {
-  const location = useLocation();
+function Navigation({ isLoggedIn, isBurgerMenuOpen, onBurgerMenuOpen }) {
+  const { pathname } = useLocation();
+  const otherPaths = pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile';
+  const mainPath = pathname === '/';
 
   return (
-    <nav className='navigation'>
-      {location.pathname === '/' && (
+    <nav className={`navigation ${otherPaths && 'navigation_place_movies'}`}>
+      {mainPath && (
         <ul className='navigation__links'>
-          <li>
-            <Link to='/signup' className='navigation__link'>
-              <button className='navigation__button'>Регистрация</button>
-            </Link>
-          </li>
-          <li>
-            <Link to='/signin' className='navigation__link navigation__link_type_login'>
-              <button className='navigation__button navigation__button_type_login'>Войти</button>
-            </Link>
-          </li>
-          <li>
-            <button
-              className='navigation__button navigation__button_type_burger-menu'
-              onClick={onBurgerMenuOpen}
-            ></button>
-          </li>
+          <li>{isLoggedIn && <LoggedInMenu type='main' />}</li>
+          <li>{!isLoggedIn && <MainMenu />}</li>
         </ul>
       )}
-      {location.pathname === '/movies' && (
-        <ul className='navigation__links navigation__links_type_movies'>
-          <li>
-            <NavLink
-              to='/movies'
-              className={({ isActive }) =>
-                `navigation__link navigation__link_type_movies ${isActive ? 'navigation__link_active' : ''}`
-              }
-            >
-              Фильмы
-            </NavLink>
-            <NavLink
-              to='/saved-movies'
-              className={({ isActive }) =>
-                `navigation__link navigation__link_type_saved-movies ${isActive ? 'navigation__link_active' : ''}`
-              }
-            >
-              Сохранённые фильмы
-            </NavLink>
-          </li>
-          <li className='navigation__links-item'>
-            <NavLink to='/profile' className='navigation__link navigation__link_type_account'>
-              <button className='navigation__button navigation__button_type_account'>Аккаунт</button>
-            </NavLink>
-            <button
-              className='navigation__button navigation__button_type_burger-menu'
-              onClick={onBurgerMenuOpen}
-            ></button>
-          </li>
-        </ul>
-      )}
-      {location.pathname === '/saved-movies' && (
-        <ul className='navigation__links navigation__links_type_movies'>
-          <li>
-            <Link to='/movies' className='navigation__link navigation__link_type_movies'>
-              Фильмы
-            </Link>
-            <NavLink
-              to='/saved-movies'
-              className={({ isActive }) =>
-                `navigation__link navigation__link_type_saved-movies ${isActive ? 'navigation__link_active' : ''}`
-              }
-            >
-              Сохранённые фильмы
-            </NavLink>
-          </li>
-          <li>
-            <Link to='/profile' className='navigation__link navigation__link_type_account'>
-              <button className='navigation__button navigation__button_type_account'>Аккаунт</button>
-            </Link>
-            <button
-              className='navigation__button navigation__button_type_burger-menu'
-              onClick={onBurgerMenuOpen}
-            ></button>
-          </li>
-        </ul>
-      )}
-      {location.pathname === '/profile' && (
-        <ul className='navigation__links navigation__links_type_profile'>
-          <li>
-            <Link to='/movies' className='navigation__link navigation__link_type_movies'>
-              Фильмы
-            </Link>
-            <Link to='/saved-movies' className='navigation__link navigation__link_type_saved-movies'>
-              Сохранённые фильмы
-            </Link>
-          </li>
-          <li>
-            <Link to='/profile' className='navigation__link navigation__link_type_account'>
-              <button className='navigation__button navigation__button_type_account'>Аккаунт</button>
-            </Link>
-            <button
-              className='navigation__button navigation__button_type_burger-menu'
-              onClick={onBurgerMenuOpen}
-            ></button>
-          </li>
-        </ul>
-      )}
+      {otherPaths && <LoggedInMenu type='movies' />}
     </nav>
   );
 }

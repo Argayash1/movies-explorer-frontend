@@ -13,7 +13,7 @@
 }
 
 .search-form__input {
-  border: 1.5px solid rgba(170, 170, 170, 1);
+  border: 1.5px solid #aaaaaa;
   border-radius: 8px;
   box-sizing: border-box;
   padding: 25px 0 25px 25px;
@@ -29,8 +29,11 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 20px;
+  background: #fff;
   color: #a0a0a0;
+
   padding: 0;
+  opacity: 1;
 }
 
 .search-form__submit-button {
@@ -76,6 +79,7 @@
   .search-form__input::placeholder {
     font-size: 16px;
     line-height: 16px;
+    opacity: 1;
   }
 
   .search-form__submit-button {
