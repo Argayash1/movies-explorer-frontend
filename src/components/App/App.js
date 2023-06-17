@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom'; // импортируем Routes
+import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import Profile from '../Profile/Profile';
@@ -12,7 +13,6 @@ import './App.css';
 
 import moviesApi from '../../utils/MoviesApi';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
-import SectionContent from '../SectionContent/SectionContent';
 
 function App() {
   const [initialMovies, setInitialMovies] = useState([]);
@@ -41,11 +41,11 @@ function App() {
   return (
     <div className='page'>
       <div className='page__content'>
-        <SectionContent
+        <Header
           isLoggedIn={isLoggedIn}
           isBurgerMenuOpen={isBurgerMenuOpen}
           onBurgerMenuOpen={handleOpenBurgerMenu}
-        ></SectionContent>
+        ></Header>
         <Routes>
           <Route
             path='/'

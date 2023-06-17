@@ -1,45 +1,35 @@
-import Navigation from '../Navigation/Navigation';
-import header_logo from '../../images/header_logo.svg';
-import { Link, useLocation } from 'react-router-dom';
+import Logo from '../Logo/Logo';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import './Header.css';
+import Navigation from '../Navigation/Navigation';
+import BurgerMenuButton from '../BurgerMenuButton/BurgerMenuButton';
 
-function Header({ isBurgerMenuOpen, onBurgerMenuOpen }) {
-  const location = useLocation();
+function SectionContent({ isLoggedIn, isBurgerMenuOpen, onBurgerMenuOpen }) {
+  const { pathname } = useLocation();
+  const mainPath = pathname === '/';
+
   return (
     <header className='header'>
-      {location.pathname === '/' && (
-        <div className='header__content'>
-          <Link to='/'>
-            <img className='header__logo' src={header_logo} alt='Логотип проекта' />
-          </Link>
-          <Navigation isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={onBurgerMenuOpen} />
-        </div>
-      )}
-      {location.pathname === '/movies' && (
-        <div className='header__content'>
-          <Link to='/'>
-            <img className='header__logo' src={header_logo} alt='Логотип проекта' />
-          </Link>
-          <Navigation isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={onBurgerMenuOpen} />
-        </div>
-      )}
-      {location.pathname === '/saved-movies' && (
-        <div className='header__content'>
-          <Link to='/'>
-            <img className='header__logo' src={header_logo} alt='Логотип проекта' />
-          </Link>
-          <Navigation isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={onBurgerMenuOpen} />
-        </div>
-      )}
-      {location.pathname === '/profile' && (
-        <div className='header__content header__content_type_profile'>
-          <Link to='/'>
-            <img className='header__logo' src={header_logo} alt='Логотип проекта' />
-          </Link>
-          <Navigation isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={onBurgerMenuOpen} />
-        </div>
-      )}
+      <Routes>
+        {['/', '/movies', 'saved-movies', '/profile'].map((path) => (
+          <Route
+            path={path}
+            element={
+              <div
+                className={`header__content ${mainPath && 'header__content_place_main'} ${
+                  pathname === '/movies' && 'header__content_place_movies'
+                }`}
+              >
+                <Logo />
+                <Navigation isLoggedIn={isLoggedIn} />
+                <BurgerMenuButton isLoggedIn={isLoggedIn} onBurgerMenuOpen={onBurgerMenuOpen} />
+              </div>
+            }
+          />
+        ))}
+      </Routes>
     </header>
   );
 }
-export default Header;
+
+export default SectionContent;
