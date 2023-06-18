@@ -12,12 +12,11 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 import './App.css';
 
 import moviesApi from '../../utils/MoviesApi';
-import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 function App() {
   const [initialMovies, setInitialMovies] = useState([]);
   const [isMovieSaved, setIsMovieSaved] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -45,6 +44,7 @@ function App() {
           isLoggedIn={isLoggedIn}
           isBurgerMenuOpen={isBurgerMenuOpen}
           onBurgerMenuOpen={handleOpenBurgerMenu}
+          onBurgerMenuClose={handleClosrBurgerMenu}
         ></Header>
         <Routes>
           <Route
@@ -82,11 +82,6 @@ function App() {
           <Route path='*' element={<PageNotFound />}></Route>
         </Routes>
         <Footer />
-        <BurgerMenu
-          isOpen={isBurgerMenuOpen}
-          onBurgerMenuOpen={handleOpenBurgerMenu}
-          onBurgerMenuClose={handleClosrBurgerMenu}
-        />
       </div>
     </div>
   );

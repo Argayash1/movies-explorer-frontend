@@ -1,6 +1,7 @@
 .search-form {
   font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
   padding: 70px 0 10px;
+  z-index: -1;
 }
 
 .search-form__content {

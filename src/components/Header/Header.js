@@ -2,9 +2,10 @@ import Logo from '../Logo/Logo';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import './Header.css';
 import Navigation from '../Navigation/Navigation';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import BurgerMenuButton from '../BurgerMenuButton/BurgerMenuButton';
 
-function SectionContent({ isLoggedIn, isBurgerMenuOpen, onBurgerMenuOpen }) {
+function Header({ isLoggedIn, isBurgerMenuOpen, onBurgerMenuOpen, onBurgerMenuClose }) {
   const { pathname } = useLocation();
   const mainPath = pathname === '/';
 
@@ -23,6 +24,11 @@ function SectionContent({ isLoggedIn, isBurgerMenuOpen, onBurgerMenuOpen }) {
                 <Logo />
                 <Navigation isLoggedIn={isLoggedIn} />
                 <BurgerMenuButton isLoggedIn={isLoggedIn} onBurgerMenuOpen={onBurgerMenuOpen} />
+                <BurgerMenu
+                  isOpen={isBurgerMenuOpen}
+                  onBurgerMenuOpen={onBurgerMenuOpen}
+                  onBurgerMenuClose={onBurgerMenuClose}
+                />
               </div>
             }
           />
@@ -32,4 +38,4 @@ function SectionContent({ isLoggedIn, isBurgerMenuOpen, onBurgerMenuOpen }) {
   );
 }
 
-export default SectionContent;
+export default Header;

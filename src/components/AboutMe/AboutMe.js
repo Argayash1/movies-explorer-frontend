@@ -1,4 +1,3 @@
-import SectionContent from '../Header/Header';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import Portfolio from '../Portfolio/Portfolio';
 import photo from '../../images/about-me-photo.jpg';
