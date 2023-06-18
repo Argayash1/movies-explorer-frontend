@@ -14,12 +14,6 @@
   flex-direction: column;
 }
 
-.authpage__logo {
-  width: 38px;
-  height: 38px;
-  margin: 0 auto;
-}
-
 .authpage__title {
   font-style: normal;
   font-weight: 500;

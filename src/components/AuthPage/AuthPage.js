@@ -1,14 +1,12 @@
 import { Link } from 'react-router-dom';
-import authpage_logo from '../../images/header_logo.svg';
 import './AuthPage.css';
+import Logo from '../Logo/Logo';
 
 function AuthPage({ headerText, buttonText, paragraphText, url, linkText, children }) {
   return (
     <main className='authpage'>
       <div className='authpage__container'>
-        <Link to='/'>
-          <img className='authpage__logo' src={authpage_logo} alt='Логотип' />
-        </Link>
+        <Logo />
         <h2 className='authpage__title'>{headerText}</h2>
       </div>
       <form className='authpage__form'>
