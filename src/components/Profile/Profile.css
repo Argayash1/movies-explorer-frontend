@@ -12,56 +12,99 @@
   margin: 0 auto;
 }
 
-.profile__data {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(2, 205px);
-  margin: 123px auto 220px;
-  width: 410px;
-  padding: 0;
-}
-
-.profile__data-item {
+.profile__input-label {
   font-style: normal;
   font-weight: 500;
   font-size: 11px;
   line-height: 13px;
-  padding-top: 17px;
+  color: #000000;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  margin-bottom: 34px;
 }
 
-.profile__data-item:nth-child(even) {
-  justify-self: end;
+.profile__input-label:last-of-type {
+  margin-bottom: 0;
 }
 
-.profile__data-item_type_upper {
-  padding-top: 0;
+.profile__input {
   padding-bottom: 16px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+  color: #000000;
+  text-align: right;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  border: none;
+  background: #fff;
+  /* border: 1px solid black; */
   border-bottom: 1px solid #e8e8e8;
 }
 
-.profile__links {
+.profile__input:focus {
+  outline: 1px solid #465dff;
+}
+
+.profile__error {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #ee3465;
+  height: 12px;
+  position: absolute;
+  top: 14px;
+  left: 0;
+}
+
+.profile__input_type_e-mail {
+  /* border: 1px solid red; */
+  border: none;
+  padding-bottom: 0;
+  line-height: 12px;
+  padding-top: 15px;
+  top: -15px;
+}
+
+.profile__input_type_e-mail:focus {
+  outline: 1px solid #465dff;
+  padding-top: 17px;
+  top: -17px;
+}
+
+.profile__buttons {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
 }
 
-.profile__link {
+.profile__button {
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
   text-align: center;
-  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
   transition: opacity 0.5s linear;
+  margin-top: 220px;
 }
 
-.profile__link:hover {
+.profile__button:hover {
   opacity: 0.7;
 }
 
-.profile__link_type_logout {
+.profile__button_type_logout {
   color: #ee3465;
+  margin: 0;
 }
 
 @media screen and (max-width: 1024px) {
@@ -71,6 +114,14 @@
 
   .profile__data {
     margin: 96px auto 210px;
+  }
+
+  .profile__button {
+    margin-top: 210px;
+  }
+
+  .profile__button_type_logout {
+    margin: 0;
   }
 }
 
@@ -85,8 +136,13 @@
     margin: 80px auto 379px;
   }
 
-  .profile__link {
+  .profile__button {
+    margin-top: 379px;
     font-size: 12px;
     line-height: 15px;
+  }
+
+  .profile__button_type_logout {
+    margin: 0;
   }
 }

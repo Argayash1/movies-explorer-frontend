@@ -10,7 +10,7 @@ const Register = () => {
       url='/signin'
       linkText='Войти'
     >
-      <label for='name' className='register__input-label'>
+      <label htmlFor='name' className='register__input-label'>
         Имя
       </label>
       <input
@@ -25,7 +25,7 @@ const Register = () => {
         required
       />
       <span className='register__error'></span>
-      <label for='email' className='register__input-label'>
+      <label htmlFor='email' className='register__input-label'>
         E-mail
       </label>
       <input
@@ -38,7 +38,7 @@ const Register = () => {
         required
       />
       <span className='register__error'></span>
-      <label for='password' className='register__input-label'>
+      <label htmlFor='password' className='register__input-label'>
         Пароль
       </label>
       <input

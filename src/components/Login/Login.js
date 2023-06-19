@@ -10,7 +10,7 @@ const Login = () => {
       url='/signup'
       linkText='Зарегистрироваться'
     >
-      <label for='email' className='login__input-label'>
+      <label htmlFor='email' className='login__input-label'>
         E-mail
       </label>
       <input
@@ -26,7 +26,7 @@ const Login = () => {
       />
       <span className='login__error'></span>
 
-      <label for='password' className='login__input-label'>
+      <label htmlFor='password' className='login__input-label'>
         Пароль
       </label>
       <input

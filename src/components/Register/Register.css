@@ -20,6 +20,10 @@
   margin: 0;
 }
 
+.register__input:focus {
+  outline: 1px solid #465dff;
+}
+
 .register__input::placeholder {
   font-style: normal;
   font-weight: 400;

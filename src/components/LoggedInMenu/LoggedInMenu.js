@@ -1,3 +1,4 @@
+import AccountButton from '../AccountButton/AccountButton';
 import './LoggedInMenu.css';
 import { Link, NavLink } from 'react-router-dom';
 
@@ -17,9 +18,7 @@ function LoggedInMenu({ type }) {
         </NavLink>
       </li>
       <li className='logged-in-menu__item'>
-        <Link to='/profile' className='logged-in-menu__link logged-in-menu__link_type_account'>
-          <button className='logged-in-menu__button'>Аккаунт</button>
-        </Link>
+        <AccountButton />
       </li>
     </ul>
   );

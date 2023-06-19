@@ -7,19 +7,20 @@ import BurgerMenuButton from '../BurgerMenuButton/BurgerMenuButton';
 
 function Header({ isLoggedIn, isBurgerMenuOpen, onBurgerMenuOpen, onBurgerMenuClose }) {
   const { pathname } = useLocation();
-  const mainPath = pathname === '/';
+  const paths = ['/', '/movies', '/saved-movies', '/profile'];
+  const pathMain = pathname === '/';
+  const pathMovies = pathname === '/movies';
 
   return (
     <header className='header'>
       <Routes>
-        {['/', '/movies', 'saved-movies', '/profile'].map((path) => (
+        {paths.map((path) => (
           <Route
             path={path}
             element={
               <div
-                className={`header__content ${mainPath && 'header__content_place_main'} ${
-                  pathname === '/movies' && 'header__content_place_movies'
-                }`}
+                className={`header__content ${pathMain && 'header__content_place_main'} 
+                ${pathMovies && 'header__content_place_movies'}`}
               >
                 <Logo />
                 <Navigation isLoggedIn={isLoggedIn} />

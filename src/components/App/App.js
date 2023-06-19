@@ -18,6 +18,7 @@ function App() {
   const [isMovieSaved, setIsMovieSaved] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
+  const [user, setUser] = useState({ name: 'Виталий', email: 'pochta@yandex.ru' });
 
   useEffect(() => {
     moviesApi.getMovies().then((movies) => {
@@ -75,7 +76,9 @@ function App() {
           ></Route>
           <Route
             path='/profile'
-            element={<Profile isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={handleOpenBurgerMenu} />}
+            element={
+              <Profile isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={handleOpenBurgerMenu} user={user} />
+            }
           ></Route>
           <Route path='/signin' element={<Login />}></Route>
           <Route path='/signup' element={<Register />}></Route>

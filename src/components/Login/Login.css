@@ -20,6 +20,10 @@
   margin: 0;
 }
 
+.login__input:focus {
+  outline: 1px solid #465dff;
+}
+
 .login__input::placeholder {
   font-style: normal;
   font-weight: 400;

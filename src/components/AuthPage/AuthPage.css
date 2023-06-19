@@ -14,42 +14,6 @@
   flex-direction: column;
 }
 
-.authpage__title {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 29px;
-  margin: 40px 0;
-  padding: 0;
-}
-
-.authpage__form {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  width: 396px;
-}
-
-.authpage__submit-button {
-  padding: 13px 126px 15px 124px;
-  background-color: #ff6838;
-  border: none;
-  cursor: pointer;
-  border-radius: 3px;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  text-align: center;
-  color: #ffffff;
-  margin: 0 0 16px;
-  transition: opacity 0.5s linear;
-}
-
-.authpage__submit-button:hover {
-  opacity: 0.8;
-}
-
 .authpage__signin {
   display: flex;
   align-items: center;
@@ -98,21 +62,6 @@
   .authpage__container {
     width: 100%;
     align-items: center;
-  }
-
-  .authpage__title {
-    margin: 50px 0 80px;
-  }
-
-  .authpage__form {
-    width: 260px;
-  }
-
-  .authpage__submit-button {
-    padding: 15px 68px 15px 67px;
-    margin-bottom: 14px;
-    font-size: 12px;
-    line-height: 15px;
   }
 
   .authpage__signin-text {

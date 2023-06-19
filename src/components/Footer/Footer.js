@@ -2,10 +2,12 @@ import { Route, Routes } from 'react-router-dom';
 import '../Footer/Footer.css';
 
 function Footer() {
+  const paths = ['/', '/movies', '/saved-movies'];
+
   return (
     <footer className='footer'>
       <Routes>
-        {['/', '/movies'].map((path) => (
+        {paths.map((path) => (
           <Route
             path={path}
             element={

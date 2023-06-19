@@ -1,0 +1,32 @@
+.account-button__link {
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  color: #000000;
+  padding: 0;
+  transition: opacity 0.5s linear;
+}
+
+.account-button__link:hover {
+  opacity: 0.7;
+}
+
+.account-button__button {
+  color: #000000;
+  background: #f9f9f9;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 22px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  cursor: pointer;
+  transition: opacity 0.5s linear;
+}
+
+.account-button__button:hover {
+  opacity: 0.8;
+}

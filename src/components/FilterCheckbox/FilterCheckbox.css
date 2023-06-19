@@ -25,7 +25,7 @@
   width: 36px;
   height: 20px;
   cursor: pointer;
-  transition: opacity 0.5s linear;
+  transition: opacity 1s linear;
 } /* так для чекбокса выглядит первый сосед с классом filter-checkbox__visible-checkbox*/
 
 .filter-checkbox__invisible-checkbox + .filter-checkbox__visible-checkbox:hover {

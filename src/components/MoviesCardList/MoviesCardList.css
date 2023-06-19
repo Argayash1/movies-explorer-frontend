@@ -4,6 +4,10 @@
   flex-direction: column;
 }
 
+.movies-card-list_place_saved-movies {
+  padding-bottom: 166px;
+}
+
 .movies-card-list__cards {
   list-style: none;
   display: grid;
