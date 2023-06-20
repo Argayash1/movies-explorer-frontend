@@ -1,10 +1,7 @@
 .account-button__link {
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
   text-decoration: none;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 18px;
-  color: #000000;
+  margin: 0;
   padding: 0;
   transition: opacity 0.5s linear;
 }
@@ -19,6 +16,7 @@
   border: none;
   border-radius: 20px;
   padding: 8px 22px;
+  margin: 0;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;

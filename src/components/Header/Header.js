@@ -10,6 +10,9 @@ function Header({ isLoggedIn, isBurgerMenuOpen, onBurgerMenuOpen, onBurgerMenuCl
   const paths = ['/', '/movies', '/saved-movies', '/profile'];
   const pathMain = pathname === '/';
   const pathMovies = pathname === '/movies';
+  const headerContentClassName = `header__content ${isLoggedIn && 'header__content_user_logged-in'}    
+  ${pathMain && 'header__content_place_main'} 
+  ${pathMovies && 'header__content_place_movies'}`;
 
   return (
     <header className='header'>
@@ -18,10 +21,7 @@ function Header({ isLoggedIn, isBurgerMenuOpen, onBurgerMenuOpen, onBurgerMenuCl
           <Route
             path={path}
             element={
-              <div
-                className={`header__content ${pathMain && 'header__content_place_main'} 
-                ${pathMovies && 'header__content_place_movies'}`}
-              >
+              <div className={headerContentClassName}>
                 <Logo />
                 <Navigation isLoggedIn={isLoggedIn} />
                 <BurgerMenuButton isLoggedIn={isLoggedIn} onBurgerMenuOpen={onBurgerMenuOpen} />

@@ -1,22 +1,25 @@
 .burger-menu-button {
+  display: none;
   width: 44px;
   height: 44px;
   background-image: url('../../images/navigation-open-burger-button.svg');
   background-color: transparent;
+  background-size: cover;
+  background-position: center;
   border: none;
   cursor: pointer;
 }
 
-.burger-menu-button_place_main {
-  display: none;
-}
-
-.burger-menu-button_place_movies {
+.burger-menu-button_is_hidden {
   display: none;
 }
 
 @media screen and (max-width: 768px) {
-  .burger-menu-button_place_movies {
+  .burger-menu-button {
     display: block;
+  }
+
+  .burger-menu-button_is_hidden {
+    display: none;
   }
 }

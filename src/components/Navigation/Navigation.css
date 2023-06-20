@@ -1,104 +1,29 @@
 .navigation {
   font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-  padding-left: 24px;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 .navigation_place_movies {
   width: 100%;
+  padding-left: 24px;
 }
 
 .navigation__links {
   list-style: none;
   display: flex;
   align-items: center;
-  margin: 3px 0 0;
+  margin: 0;
   padding: 0;
 }
 
 .navigation__links_type_movies {
   width: 1058px;
   justify-content: space-between;
-  margin: 0;
-  padding: 0;
 }
 
 .navigation__links_type_profile {
   width: 1058px;
   justify-content: space-between;
-  margin: 0;
-  padding: 0;
-}
-
-.navigation__links-item {
-  display: flex;
-}
-
-.navigation__link {
-  text-decoration: none;
-  padding: 8px 0;
-  transition: opacity 0.5s linear;
-}
-
-.navigation__link:hover {
-  opacity: 0.7;
-}
-
-.navigation__link_type_movies {
-  font-size: 13px;
-  line-height: 18px;
-  color: #000000;
-  padding: 0;
-}
-
-.navigation__link_type_saved-movies {
-  font-size: 13px;
-  line-height: 18px;
-  color: #000000;
-  padding: 0;
-  margin-left: 16px;
-}
-
-.navigation__link_active {
-  font-weight: 500;
-}
-
-.navigation__button {
-  color: #fff;
-  background: transparent;
-  border: none;
-  padding: 8px 20px;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  cursor: pointer;
-  transition: opacity 0.5s linear;
-}
-
-.navigation__button:hover {
-  opacity: 0.8;
-}
-
-.navigation__button_type_login {
-  color: #000;
-  background: #2be080;
-  border-radius: 3px;
-}
-
-.navigation__button_type_account {
-  font-size: 13px;
-  line-height: 18px;
-  color: #000000;
-  background: #f9f9f9;
-  border-radius: 20px;
-}
-
-@media screen and (max-width: 768px) {
-  .navigation__link_active {
-    font-weight: 400;
-    text-decoration: underline;
-  }
 }

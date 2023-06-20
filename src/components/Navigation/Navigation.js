@@ -12,11 +12,11 @@ function Navigation({ isLoggedIn, isBurgerMenuOpen, onBurgerMenuOpen }) {
     <nav className={`navigation ${otherPaths && 'navigation_place_movies'}`}>
       {mainPath && (
         <ul className='navigation__links'>
-          <li>{isLoggedIn && <LoggedInMenu type='main' />}</li>
+          <li>{isLoggedIn && <LoggedInMenu place='main' />}</li>
           <li>{!isLoggedIn && <MainMenu />}</li>
         </ul>
       )}
-      {otherPaths && <LoggedInMenu type='movies' />}
+      {otherPaths && <LoggedInMenu place='movies' />}
     </nav>
   );
 }

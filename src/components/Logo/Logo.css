@@ -3,6 +3,9 @@
   height: 38px;
   margin: 0;
   padding: 0;
+  object-fit: contain;
+  object-position: center;
+  display: block;
   transition: opacity 0.5s linear;
 }
 
