@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom'; // импортируем Routes
+import { Routes, Route, useNavigate } from 'react-router-dom'; // импортируем Routes
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
@@ -19,6 +19,9 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
   const [user, setUser] = useState({ name: 'Виталий', email: 'pochta@yandex.ru' });
+  const [isProfileEdit, setIsProfileEdit] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     function handleAutoCloseMenu() {
@@ -39,6 +42,11 @@ function App() {
     });
   }, []);
 
+  function handleSignOut() {
+    setIsLoggedIn(false);
+    navigate('/', { replace: true });
+  }
+
   function handleSaveMovie() {
     setIsMovieSaved(!isMovieSaved);
   }
@@ -47,8 +55,16 @@ function App() {
     setIsBurgerMenuOpen(true);
   }
 
-  function handleClosrBurgerMenu() {
+  function handleCloseBurgerMenu() {
     setIsBurgerMenuOpen(false);
+  }
+
+  function handleEditProfile() {
+    setIsProfileEdit(true);
+  }
+
+  function hadleProfileSubmit() {
+    setIsProfileEdit(false);
   }
 
   return (
@@ -58,7 +74,7 @@ function App() {
           isLoggedIn={isLoggedIn}
           isBurgerMenuOpen={isBurgerMenuOpen}
           onBurgerMenuOpen={handleOpenBurgerMenu}
-          onBurgerMenuClose={handleClosrBurgerMenu}
+          onBurgerMenuClose={handleCloseBurgerMenu}
         ></Header>
         <Routes>
           <Route
@@ -90,7 +106,13 @@ function App() {
           <Route
             path='/profile'
             element={
-              <Profile isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={handleOpenBurgerMenu} user={user} />
+              <Profile
+                user={user}
+                isEdit={isProfileEdit}
+                onSubmit={hadleProfileSubmit}
+                onEditProfile={handleEditProfile}
+                onSignOut={handleSignOut}
+              />
             }
           ></Route>
           <Route path='/signin' element={<Login />}></Route>
@@ -104,5 +126,3 @@ function App() {
 }
 
 export default App;
-
-// TODO: Не забыть исправить gap на 24 пикселя в грид-контейнере карточек в разделе "Фильмы"

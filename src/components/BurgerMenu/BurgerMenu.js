@@ -3,15 +3,15 @@ import Popup from '../Popup/Popup';
 import './BurgerMenu.css';
 import { NavLink } from 'react-router-dom';
 
-function BurgerMenu({ isOpen, onBurgerMenuOpen, onBurgerMenuClose }) {
+function BurgerMenu({ isOpen, onClose }) {
   return (
-    <Popup isOpen={isOpen} onClose={onBurgerMenuClose}>
+    <Popup isOpen={isOpen} onClose={onClose}>
       <nav className={`burger-menu ${isOpen && 'burger-menu_open'}`}>
-        <button className='burger-menu__close-button' onClick={onBurgerMenuClose}></button>
-        <ul className='burger-menu__nav'>
-          <li>
-            <ul className='burger-menu__nav-list'>
-              <li className='burger-menu__nav-list-item'>
+        <button className='burger-menu__close-button' onClick={onClose}></button>
+        <ul className='burger-menu_nav-list'>
+          <li className='burger-menu_nav-list-item'>
+            <ul className='burger-menu_nav-links'>
+              <li>
                 <NavLink
                   to='/'
                   className={({ isActive }) => `burger-menu__nav-link ${isActive && 'burger-menu__nav-link_active'}`}
@@ -19,7 +19,7 @@ function BurgerMenu({ isOpen, onBurgerMenuOpen, onBurgerMenuClose }) {
                   Главная
                 </NavLink>
               </li>
-              <li className='burger-menu__nav-list-item'>
+              <li>
                 <NavLink
                   to='/movies'
                   className={({ isActive }) => `burger-menu__nav-link ${isActive && 'burger-menu__nav-link_active'}`}
@@ -27,7 +27,7 @@ function BurgerMenu({ isOpen, onBurgerMenuOpen, onBurgerMenuClose }) {
                   Фильмы
                 </NavLink>
               </li>
-              <li className='burger-menu__nav-list-item'>
+              <li>
                 <NavLink
                   to='/saved-movies'
                   className={({ isActive }) => `burger-menu__nav-link ${isActive && 'burger-menu__nav-link_active'}`}
@@ -37,7 +37,7 @@ function BurgerMenu({ isOpen, onBurgerMenuOpen, onBurgerMenuClose }) {
               </li>
             </ul>
           </li>
-          <li>
+          <li className='burger-menu_nav-list-item'>
             <AccountButton />
           </li>
         </ul>

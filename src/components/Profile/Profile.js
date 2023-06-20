@@ -3,21 +3,16 @@ import './Profile.css';
 import Form from '../Form/Form';
 import AuthTitle from '../AuthTitle/AuthTitle';
 
-function Profile({ isBurgerMenuOpen, onBurgerMenuOpen, user }) {
-  const [isProfileEdit, setIsProfileEdit] = useState(false);
-
-  function handleEditProfile() {
-    setIsProfileEdit(true);
-  }
-
-  function hadleProfileSubmit() {
-    setIsProfileEdit(false);
-  }
+function Profile({ user, isEdit, onSignOut, onSubmit, onEditProfile }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit();
+  };
 
   return (
     <main className='profile'>
       <AuthTitle headerText={`Привет, ${user.name}`} place='profile' />
-      <Form type='profile' buttonText='Сохранить' isProfileEdit={isProfileEdit} onSubmit={hadleProfileSubmit}>
+      <Form type='profile' name='profile' buttonText='Сохранить' isProfileEdit={isEdit} onSubmit={handleSubmit}>
         <label htmlFor='' className='profile__input-label'>
           Имя
           <input
@@ -30,7 +25,7 @@ function Profile({ isBurgerMenuOpen, onBurgerMenuOpen, user }) {
             minLength='2'
             maxLength='30'
             required
-            disabled={!isProfileEdit && true}
+            disabled={!isEdit && true}
           />
           <span className='profile__error'>a</span>
         </label>
@@ -44,17 +39,19 @@ function Profile({ isBurgerMenuOpen, onBurgerMenuOpen, user }) {
             placeholder='E-mail'
             autoComplete='off'
             required
-            disabled={!isProfileEdit && true}
+            disabled={!isEdit && true}
           />
           <span className='profile__error'>a</span>
         </label>
       </Form>
-      {!isProfileEdit && (
+      {!isEdit && (
         <div className='profile__buttons'>
-          <button className='profile__button' onClick={handleEditProfile}>
+          <button className='profile__button' onClick={onEditProfile}>
             Редактировать
           </button>
-          <button className='profile__button profile__button_type_logout'>Выйти</button>
+          <button className='profile__button profile__button_type_logout' onClick={onSignOut}>
+            Выйти
+          </button>
         </div>
       )}
     </main>

@@ -25,11 +25,7 @@ function Header({ isLoggedIn, isBurgerMenuOpen, onBurgerMenuOpen, onBurgerMenuCl
                 <Logo />
                 <Navigation isLoggedIn={isLoggedIn} />
                 <BurgerMenuButton isLoggedIn={isLoggedIn} onBurgerMenuOpen={onBurgerMenuOpen} />
-                <BurgerMenu
-                  isOpen={isBurgerMenuOpen}
-                  onBurgerMenuOpen={onBurgerMenuOpen}
-                  onBurgerMenuClose={onBurgerMenuClose}
-                />
+                <BurgerMenu isOpen={isBurgerMenuOpen} onClose={onBurgerMenuClose} />
               </div>
             }
           />

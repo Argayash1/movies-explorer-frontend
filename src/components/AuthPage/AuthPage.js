@@ -11,7 +11,7 @@ function AuthPage({ headerText, buttonText, paragraphText, url, linkText, childr
         <Logo />
         <AuthTitle headerText={headerText} />
       </div>
-      <Form buttonText={buttonText} type='auth'>
+      <Form buttonText={buttonText} type='auth' name='auth'>
         {children}
       </Form>
       <div className='authpage__signin'>
