@@ -69,9 +69,10 @@
   }
 }
 
-@media screen and (max-width: 728px) {
+@media screen and (max-width: 736px) {
   .search-form__content {
-    max-width: 640px;
+    max-width: 100%;
+    padding: 0 14px;
   }
 
   .search-form__input {
@@ -91,12 +92,5 @@
     width: 80px;
     right: 6px;
     top: 6px;
-  }
-}
-
-@media screen and (max-width: 650px) {
-  .search-form__content {
-    max-width: 100%;
-    padding: 0 10px;
   }
 }

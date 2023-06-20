@@ -20,10 +20,20 @@
   margin: 0 auto;
 }
 
+@media screen and (max-width: 1160px) {
+  .header__content_place_movies {
+    max-width: 708px;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .header__content {
     padding-right: 30px;
     padding-left: 30px;
+  }
+
+  .header__content_place_movies {
+    padding: 18px 0;
   }
 }
 
@@ -31,6 +41,22 @@
   .header__content_user_logged-in {
     padding-top: 15px;
     padding-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .header__content_place_movies {
+    max-width: 100%;
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .header__content_place_movies {
+    max-width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
   }
 }
 

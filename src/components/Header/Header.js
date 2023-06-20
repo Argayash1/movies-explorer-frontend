@@ -9,10 +9,10 @@ function Header({ isLoggedIn, isBurgerMenuOpen, onBurgerMenuOpen, onBurgerMenuCl
   const { pathname } = useLocation();
   const paths = ['/', '/movies', '/saved-movies', '/profile'];
   const pathMain = pathname === '/';
-  const pathMovies = pathname === '/movies';
+  const pathsWithMovies = pathname === '/movies' || pathname === '/saved-movies';
   const headerContentClassName = `header__content ${isLoggedIn && 'header__content_user_logged-in'}    
   ${pathMain && 'header__content_place_main'} 
-  ${pathMovies && 'header__content_place_movies'}`;
+  ${pathsWithMovies && 'header__content_place_movies'}`;
 
   return (
     <header className='header'>

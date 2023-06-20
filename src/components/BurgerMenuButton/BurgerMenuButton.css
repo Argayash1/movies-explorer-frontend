@@ -1,25 +1,43 @@
 .burger-menu-button {
   display: none;
-  width: 44px;
-  height: 44px;
-  background-image: url('../../images/navigation-open-burger-button.svg');
+  padding: 11px 8px 10px;
   background-color: transparent;
-  background-size: cover;
-  background-position: center;
   border: none;
   cursor: pointer;
+  margin: 0;
 }
 
 .burger-menu-button_is_hidden {
   display: none;
 }
 
+.burger-menu-button_line {
+  width: 28px;
+  border-top: 3px solid #000;
+  margin: 0 auto;
+}
+
 @media screen and (max-width: 768px) {
   .burger-menu-button {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    gap: 7px;
   }
 
   .burger-menu-button_is_hidden {
     display: none;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .burger-menu-button {
+    gap: 6px;
+    padding: 12px 9px 10px;
+  }
+
+  .burger-menu-button_line {
+    width: 22px;
   }
 }
