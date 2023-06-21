@@ -5,6 +5,7 @@
 .footer__content {
   background-color: #fafafa;
   padding: 79px 70px 20px;
+  font-size: 0;
 }
 
 .footer__title {

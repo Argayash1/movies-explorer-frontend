@@ -4,7 +4,7 @@ import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import './Main.css';
 
-function Main({ isBurgerMenuOpen, onBurgerMenuOpen }) {
+function Main() {
   return (
     <main className='main'>
       <Promo />

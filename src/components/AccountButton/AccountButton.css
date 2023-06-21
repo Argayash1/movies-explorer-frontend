@@ -1,4 +1,4 @@
-.account-button__link {
+.account-button {
   font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
   text-decoration: none;
   margin: 0;
@@ -6,7 +6,7 @@
   transition: opacity 0.5s linear;
 }
 
-.account-button__link:hover {
+.account-button:hover {
   opacity: 0.7;
 }
 

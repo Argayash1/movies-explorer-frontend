@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom'; // импортируем Routes
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
@@ -18,9 +18,9 @@ function App() {
   const [initialMovies, setInitialMovies] = useState([]);
   const [isMovieSaved, setIsMovieSaved] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading] = useState(false);
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
-  const [user, setUser] = useState({ name: 'Виталий', email: 'pochta@yandex.ru' });
+  const [user] = useState({ name: 'Виталий', email: 'pochta@yandex.ru' });
   const [isProfileEdit, setIsProfileEdit] = useState(false);
 
   const navigate = useNavigate();
@@ -91,10 +91,7 @@ function App() {
             onBurgerMenuClose={handleCloseBurgerMenu}
           ></Header>
           <Routes>
-            <Route
-              path='/'
-              element={<Main isBurgerMenuOpen={isBurgerMenuOpen} onBurgerMenuOpen={handleOpenBurgerMenu} />}
-            ></Route>
+            <Route path='/' element={<Main />}></Route>
             <Route
               path='/movies'
               element={
@@ -102,21 +99,10 @@ function App() {
                   moviesCards={initialMovies.slice(0, 12)}
                   isMovieSaved={isMovieSaved}
                   onSaveMovie={handleSaveMovie}
-                  isBurgerMenuOpen={isBurgerMenuOpen}
-                  onBurgerMenuOpen={handleOpenBurgerMenu}
                 />
               }
             ></Route>
-            <Route
-              path='/saved-movies'
-              element={
-                <SavedMovies
-                  moviesCards={initialMovies.slice(0, 3)}
-                  isBurgerMenuOpen={isBurgerMenuOpen}
-                  onBurgerMenuOpen={handleOpenBurgerMenu}
-                />
-              }
-            ></Route>
+            <Route path='/saved-movies' element={<SavedMovies moviesCards={initialMovies.slice(0, 3)} />}></Route>
             <Route
               path='/profile'
               element={

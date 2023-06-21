@@ -9,6 +9,7 @@ const Register = ({ onSubmit }) => {
       paragraphText='Уже'
       url='/signin'
       linkText='Войти'
+      name='register'
       onSubmit={onSubmit}
     >
       <label htmlFor='name' className='register__input-label'>

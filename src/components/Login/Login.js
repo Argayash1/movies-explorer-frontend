@@ -9,6 +9,7 @@ const Login = ({ onSubmit }) => {
       paragraphText='Ещё не'
       url='/signup'
       linkText='Зарегистрироваться'
+      name='login'
       onSubmit={onSubmit}
     >
       <label htmlFor='email' className='login__input-label'>

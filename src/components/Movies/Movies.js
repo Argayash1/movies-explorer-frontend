@@ -2,7 +2,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import './Movies.css';
 
-function Movies({ moviesCards, onSaveMovie, isMovieSaved, isBurgerMenuOpen, onBurgerMenuOpen }) {
+function Movies({ moviesCards, onSaveMovie, isMovieSaved }) {
   return (
     <main className='movies'>
       <SearchForm />

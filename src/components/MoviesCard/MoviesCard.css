@@ -72,10 +72,10 @@
   object-position: center;
   margin: 0;
   padding: 0;
-  display: inline-block;
+  display: block;
 }
 
-@media screen and (max-width: 1160px) {
+@media screen and (max-width: 920px) {
   .moviescard {
     grid-template-columns: 250px 30px;
     grid-template-rows: 18px 36px;
@@ -89,7 +89,7 @@
   }
 }
 
-@media screen and (max-width: 728px) {
+@media screen and (max-width: 452px) {
   .moviescard {
     grid-template-columns: 210px 30px;
     grid-template-rows: 18px 36px;

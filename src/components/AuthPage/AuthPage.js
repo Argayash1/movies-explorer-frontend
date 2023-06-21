@@ -4,14 +4,14 @@ import Logo from '../Logo/Logo';
 import Form from '../Form/Form';
 import AuthTitle from '../AuthTitle/AuthTitle';
 
-function AuthPage({ headerText, buttonText, paragraphText, url, linkText, onSubmit, children }) {
+function AuthPage({ headerText, buttonText, paragraphText, url, linkText, name, onSubmit, children }) {
   return (
     <main className='authpage'>
       <div className='authpage__container'>
         <Logo />
         <AuthTitle headerText={headerText} />
       </div>
-      <Form buttonText={buttonText} type='auth' name='auth' onSubmit={onSubmit}>
+      <Form buttonText={buttonText} type={name} name={name} onSubmit={onSubmit}>
         {children}
       </Form>
       <div className='authpage__signin'>

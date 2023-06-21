@@ -1,10 +1,16 @@
 .filter-checkbox {
-  display: flex;
-  margin-top: 26px;
   font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
-  padding-bottom: 44px;
+  display: flex;
+  margin: 26px 0 0;
+  padding-bottom: 43px;
   border-bottom: 1px solid rgba(170, 170, 170);
   width: 100%;
+}
+
+.filter-checkbox__input-label {
+  margin: 0;
+  padding: 0;
+  font-size: 0;
 }
 
 .filter-checkbox__invisible-checkbox {
@@ -43,9 +49,10 @@
   line-height: 18px;
   margin: 0;
   padding: 0;
+  display: inline-block;
 }
 
-@media screen and (max-width: 1160px) {
+@media screen and (max-width: 768px) {
   .filter-checkbox {
     padding-bottom: 52px;
   }

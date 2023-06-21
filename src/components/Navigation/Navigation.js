@@ -3,7 +3,7 @@ import MainMenu from '../MainMenu/MainMenu';
 import './Navigation.css';
 import { useLocation } from 'react-router-dom';
 
-function Navigation({ isLoggedIn, isBurgerMenuOpen, onBurgerMenuOpen }) {
+function Navigation({ isLoggedIn }) {
   const { pathname } = useLocation();
   const otherPaths = pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile';
   const mainPath = pathname === '/';

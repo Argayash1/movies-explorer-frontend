@@ -16,7 +16,7 @@ function Footer() {
                 <h4 className='footer__title'>Учебный проект Яндекс.Практикум х&nbsp;BeatFilm.</h4>
                 <div className='footer__container'>
                   <p className='footer__date'>&copy; {new Date().getFullYear()}</p>
-                  <nav className='footer__nav-bar'>
+                  <nav>
                     <ul className='footer__nav-list'>
                       <li>
                         <a
