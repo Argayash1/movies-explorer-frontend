@@ -29,10 +29,13 @@
   padding: 11px 0 9px;
   cursor: pointer;
   width: 320px;
+  opacity: 1;
+  background-color: #f9f9f9;
+  border-radius: 6px;
   transition: opacity 0.5s linear;
 }
 
-.movies-card-list__more-button:hover {
+.movies-card-list__button:hover {
   opacity: 0.8;
 }
 

@@ -1,7 +1,7 @@
 import './Register.css';
 import AuthPage from '../AuthPage/AuthPage';
 
-const Register = () => {
+const Register = ({ onSubmit }) => {
   return (
     <AuthPage
       headerText='Добро пожаловать'
@@ -9,6 +9,7 @@ const Register = () => {
       paragraphText='Уже'
       url='/signin'
       linkText='Войти'
+      onSubmit={onSubmit}
     >
       <label htmlFor='name' className='register__input-label'>
         Имя
@@ -22,6 +23,7 @@ const Register = () => {
         autoComplete='off'
         minLength='2'
         maxLength='30'
+        defaultValue='Виталий'
         required
       />
       <span className='register__error'></span>
@@ -35,6 +37,7 @@ const Register = () => {
         id='email'
         placeholder='E-mail'
         autoComplete='off'
+        defaultValue='pochta@yandex.ru'
         required
       />
       <span className='register__error'></span>
@@ -43,14 +46,15 @@ const Register = () => {
       </label>
       <input
         type='password'
-        className='register__input'
+        className='register__input register__input_is_not-valid'
         name='password'
         id='password'
         placeholder='Пароль'
         autoComplete='off'
+        defaultValue='12345678'
         required
       />
-      <span className='register__error'></span>
+      <span className='register__error'>Что-то пошло не так...</span>
     </AuthPage>
   );
 };

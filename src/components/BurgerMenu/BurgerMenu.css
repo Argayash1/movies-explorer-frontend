@@ -4,7 +4,7 @@
   height: 100%;
   background-color: #fff;
   color: #000;
-  padding: 22px 0 90px;
+  padding: 22px 22px 90px;
   box-sizing: border-box;
   margin: 0 auto;
   display: flex;
@@ -28,7 +28,7 @@
   background-size: contain;
   background-position: center;
   align-self: flex-end;
-  margin: 0 22px 0 0;
+  margin: 0;
   padding: 0;
   border: none;
   cursor: pointer;
@@ -78,11 +78,7 @@
 @media screen and (max-width: 520px) {
   .burger-menu {
     width: 100%;
-    padding: 13px 0 46px;
-  }
-
-  .burger-menu__close-button {
-    margin-right: 13px;
+    padding: 13px 13px 46px;
   }
 
   .burger-menu__nav-list {

@@ -1,18 +1,12 @@
-import { useState } from 'react';
 import './Profile.css';
 import Form from '../Form/Form';
 import AuthTitle from '../AuthTitle/AuthTitle';
 
 function Profile({ user, isEdit, onSignOut, onSubmit, onEditProfile }) {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit();
-  };
-
   return (
     <main className='profile'>
       <AuthTitle headerText={`Привет, ${user.name}`} place='profile' />
-      <Form type='profile' name='profile' buttonText='Сохранить' isProfileEdit={isEdit} onSubmit={handleSubmit}>
+      <Form type='profile' name='profile' buttonText='Сохранить' isProfileEdit={isEdit} onSubmit={onSubmit}>
         <label htmlFor='' className='profile__input-label'>
           Имя
           <input

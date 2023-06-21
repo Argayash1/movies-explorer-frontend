@@ -10,6 +10,7 @@ function Footer() {
         {paths.map((path) => (
           <Route
             path={path}
+            key={Math.random()}
             element={
               <div className='footer__content'>
                 <h4 className='footer__title'>Учебный проект Яндекс.Практикум х&nbsp;BeatFilm.</h4>

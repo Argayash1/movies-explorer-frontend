@@ -20,6 +20,7 @@ function Header({ isLoggedIn, isBurgerMenuOpen, onBurgerMenuOpen, onBurgerMenuCl
         {paths.map((path) => (
           <Route
             path={path}
+            key={Math.random()}
             element={
               <div className={headerContentClassName}>
                 <Logo />

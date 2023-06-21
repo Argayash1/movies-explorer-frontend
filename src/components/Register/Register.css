@@ -32,6 +32,10 @@
   color: #a0a0a0;
 }
 
+.register__input_is_not-valid {
+  color: #ee3465;
+}
+
 .register__error {
   font-style: normal;
   font-weight: 400;
