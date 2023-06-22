@@ -6,11 +6,11 @@ import { NavLink } from 'react-router-dom';
 function BurgerMenu({ isOpen, onClose }) {
   return (
     <Popup isOpen={isOpen} onClose={onClose}>
-      <nav className={`burger-menu ${isOpen && 'burger-menu_open'}`}>
+      <nav className={`burger-menu ${isOpen && 'burger-menu_is_opened'}`}>
         <button className='burger-menu__close-button' onClick={onClose}></button>
-        <ul className='burger-menu_nav-list'>
-          <li className='burger-menu_nav-list-item'>
-            <ul className='burger-menu_nav-links'>
+        <ul className='burger-menu__nav-list'>
+          <li className='burger-menu__nav-list-item'>
+            <ul className='burger-menu__nav-links'>
               <li>
                 <NavLink
                   to='/'
@@ -37,7 +37,7 @@ function BurgerMenu({ isOpen, onClose }) {
               </li>
             </ul>
           </li>
-          <li className='burger-menu_nav-list-item'>
+          <li className='burger-menu__nav-list-item'>
             <AccountButton />
           </li>
         </ul>

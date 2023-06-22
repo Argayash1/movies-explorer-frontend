@@ -26,8 +26,8 @@ function AboutProject() {
             <h4 className='about-project__schedule-title'>1&nbsp;неделя</h4>
             <p className='about-project__schedule-text'>Back-end</p>
           </li>
-          <li className='about-project__schedule-item_type_long'>
-            <h4 className='about-project__schedule-title about-project__schedule-title_type_long'>4&nbsp;недели</h4>
+          <li className='about-project__schedule-item about-project__schedule-item_type_long'>
+            <h4 className='about-project__schedule-title about-project__schedule-title_color_grey'>4&nbsp;недели</h4>
             <p className='about-project__schedule-text'>Front-end</p>
           </li>
         </ul>

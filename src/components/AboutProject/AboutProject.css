@@ -49,11 +49,11 @@
 }
 
 .about-project__schedule-item {
-  width: 25%;
+  width: 20%;
 }
 
 .about-project__schedule-item_type_long {
-  width: 75%;
+  width: 80%;
 }
 
 .about-project__schedule-title {
@@ -62,14 +62,13 @@
   font-size: 14px;
   line-height: 17px;
   text-align: center;
-  padding: 9px 0;
+  padding: 9.5px 0;
   margin: 0;
   background-color: #2be080;
 }
 
-.about-project__schedule-title_type_long {
+.about-project__schedule-title_color_grey {
   background-color: #f2f2f2;
-  padding: 9px 0;
 }
 
 .about-project__schedule-text {

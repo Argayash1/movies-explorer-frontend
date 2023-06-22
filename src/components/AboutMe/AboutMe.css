@@ -10,7 +10,7 @@
 
 .about-me__info {
   display: grid;
-  grid-template-columns: 1fr, 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 76px 46px 187px 17px;
   margin-top: 66px;
   max-width: 100%;

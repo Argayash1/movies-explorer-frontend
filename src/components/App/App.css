@@ -3,18 +3,6 @@
   color: #000;
 }
 
-.page::-webkit-scrollbar {
-  width: 12px; /* ширина scrollbar */
-}
-.page::-webkit-scrollbar-track {
-  background: orange; /* цвет дорожки */
-}
-.page::-webkit-scrollbar-thumb {
-  background-color: blue; /* цвет плашки */
-  border-radius: 20px; /* закругления плашки */
-  border: 3px solid orange; /* padding вокруг плашки */
-}
-
 .page__content {
   min-width: 320px;
   max-width: 1280px;

@@ -14,7 +14,7 @@ function Profile({ user, isEdit, onSignOut, onSubmit, onEditProfile, isFormValid
         onSubmit={onSubmit}
         isFormValid={isFormValid}
       >
-        <label htmlFor='' className='profile__input-label'>
+        <label className='profile__input-label'>
           Имя
           <input
             className='profile__input'
@@ -29,7 +29,7 @@ function Profile({ user, isEdit, onSignOut, onSubmit, onEditProfile, isFormValid
             disabled={!isEdit && true}
           />
         </label>
-        <label htmlFor='' className='profile__input-label'>
+        <label className='profile__input-label'>
           E-mail
           <input
             className='profile__input profile__input_type_e-mail'
