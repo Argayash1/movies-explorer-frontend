@@ -22,7 +22,7 @@ function Popup({ children, isOpen, onClose }) {
   }
 
   return (
-    <section className={`popup ${isOpen && 'popup_is_opened'}`} onMouseDown={closeAllPopupsByClickOnOverlay}>
+    <section className={`popup ${isOpen ? 'popup_is_opened' : ''}`} onMouseDown={closeAllPopupsByClickOnOverlay}>
       {children}
     </section>
   );

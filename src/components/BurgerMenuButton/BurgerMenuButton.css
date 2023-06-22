@@ -7,6 +7,7 @@
   background-image: url(../../images/navigation-open-burger-button.svg);
   background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
   border: none;
   cursor: pointer;
   margin: 0;

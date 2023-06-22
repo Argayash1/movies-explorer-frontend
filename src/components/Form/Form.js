@@ -9,7 +9,7 @@ function Form({ type, name, children, buttonText, onSubmit, isProfileEdit = true
   return (
     <form
       action='#'
-      className={`form ${type === 'profile' && 'form_type_profile'}`}
+      className={`form ${type === 'profile' ? 'form_type_profile' : ''}`}
       name={name}
       onSubmit={handleSubmit}
     >

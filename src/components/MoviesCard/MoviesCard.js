@@ -10,19 +10,17 @@ function MoviesCard({ movieCard, buttonType, isMovieSaved, onSaveMovie }) {
   }
 
   return (
-    <>
-      <div className='moviescard'>
-        <h3 className='moviescard__title'>{movieCard.nameRU}</h3>
-        <p className='moviescard__duration'>{getDurationFromMins(movieCard.duration)}</p>
-        <button
-          className={`moviescard__button moviescard__button_type_${buttonType}  
-          ${isMovieSaved && 'moviescard__button_active'}`}
-          type='button'
-          onClick={onSaveMovie}
-        ></button>
-      </div>
+    <div className='moviescard'>
+      <h3 className='moviescard__title'>{movieCard.nameRU}</h3>
+      <p className='moviescard__duration'>{getDurationFromMins(movieCard.duration)}</p>
+      <button
+        className={`moviescard__button moviescard__button_type_${buttonType}  
+          ${isMovieSaved ? 'moviescard__button_active' : ''}`}
+        type='button'
+        onClick={onSaveMovie}
+      ></button>
       <img className='moviescard__image' src={imageUrl} alt={movieCard.nameRU} />
-    </>
+    </div>
   );
 }
 

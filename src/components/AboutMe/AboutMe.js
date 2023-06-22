@@ -20,7 +20,7 @@ function AboutMe() {
           <a className='about-me__github-link' href='https://github.com/Argayash1' target='_blank' rel='noreferrer'>
             Github
           </a>
-          <img className='about-me__photo' src={photo} alt='Фото автора проекта' />
+          <img className='about-me__photo' src={photo} alt='Фото автора проекта Movies-explorer' />
         </article>
         <Portfolio />
       </div>

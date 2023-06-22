@@ -8,7 +8,7 @@ function LoggedInMenu({ place }) {
   ${isActive ? 'logged-in-menu__link_active' : ''}`;
 
   return (
-    <ul className={`logged-in-menu ${place === 'movies' && 'logged-in-menu_place_movies'}`}>
+    <ul className={`logged-in-menu ${place === 'movies' ? 'logged-in-menu_place_movies' : ''}`}>
       <li className={`logged-in-menu__item ${place === 'movies' && 'logged-in-menu__item_place_movies'}`}>
         <NavLink to='/movies' className={navLinkClassName}>
           Фильмы

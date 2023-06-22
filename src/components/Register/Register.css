@@ -1,3 +1,7 @@
+.register {
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+}
+
 .register__input-label {
   font-style: normal;
   font-weight: 400;

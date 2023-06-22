@@ -1,5 +1,8 @@
 .not-found {
   font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+}
+
+.not-found__content {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,13 +46,13 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .not-found {
+  .not-found__content {
     padding: 408px 0 222px;
   }
 }
 
 @media screen and (max-width: 544px) {
-  .not-found {
+  .not-found__content {
     padding: 329px 0 30px;
   }
 

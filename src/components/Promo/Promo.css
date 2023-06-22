@@ -25,6 +25,7 @@
 .promo__decoration {
   background-image: url('../../images/header_decoration.svg');
   background-size: contain;
+  background-repeat: no-repeat;
   width: 722px;
   height: 244px;
   border: none;

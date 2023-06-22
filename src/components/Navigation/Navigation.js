@@ -9,7 +9,7 @@ function Navigation({ isLoggedIn }) {
   const mainPath = pathname === '/';
 
   return (
-    <nav className={`navigation ${otherPaths && 'navigation_place_movies'}`}>
+    <nav className={`navigation ${otherPaths ? 'navigation_place_movies' : ''}`}>
       {mainPath && (
         <ul className='navigation__links'>
           <li>{isLoggedIn && <LoggedInMenu place='main' />}</li>
