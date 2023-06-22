@@ -22,6 +22,7 @@ function App() {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
   const [user] = useState({ name: 'Виталий', email: 'pochta@yandex.ru' });
   const [isProfileEdit, setIsProfileEdit] = useState(false);
+  const [isFormValid] = useState(true);
 
   const navigate = useNavigate();
 
@@ -112,11 +113,12 @@ function App() {
                   onSubmit={hadleProfileSubmit}
                   onEditProfile={handleEditProfile}
                   onSignOut={handleSignOut}
+                  isFormValid={isFormValid}
                 />
               }
             ></Route>
-            <Route path='/signin' element={<Login onSubmit={handleSignIn} />}></Route>
-            <Route path='/signup' element={<Register onSubmit={handleSignUp} />}></Route>
+            <Route path='/signin' element={<Login onSubmit={handleSignIn} isFormValid={isFormValid} />}></Route>
+            <Route path='/signup' element={<Register onSubmit={handleSignUp} isFormValid={isFormValid} />}></Route>
             <Route path='*' element={<PageNotFound />}></Route>
           </Routes>
           <Footer />

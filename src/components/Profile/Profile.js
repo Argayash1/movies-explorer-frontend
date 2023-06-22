@@ -2,11 +2,18 @@ import './Profile.css';
 import Form from '../Form/Form';
 import AuthTitle from '../AuthTitle/AuthTitle';
 
-function Profile({ user, isEdit, onSignOut, onSubmit, onEditProfile }) {
+function Profile({ user, isEdit, onSignOut, onSubmit, onEditProfile, isFormValid }) {
   return (
     <main className='profile'>
       <AuthTitle headerText={`Привет, ${user.name}`} place='profile' />
-      <Form type='profile' name='profile' buttonText='Сохранить' isProfileEdit={isEdit} onSubmit={onSubmit}>
+      <Form
+        type='profile'
+        name='profile'
+        buttonText='Сохранить'
+        isProfileEdit={isEdit}
+        onSubmit={onSubmit}
+        isFormValid={isFormValid}
+      >
         <label htmlFor='' className='profile__input-label'>
           Имя
           <input
@@ -21,7 +28,6 @@ function Profile({ user, isEdit, onSignOut, onSubmit, onEditProfile }) {
             required
             disabled={!isEdit && true}
           />
-          <span className='profile__error'>a</span>
         </label>
         <label htmlFor='' className='profile__input-label'>
           E-mail
@@ -35,8 +41,8 @@ function Profile({ user, isEdit, onSignOut, onSubmit, onEditProfile }) {
             required
             disabled={!isEdit && true}
           />
-          <span className='profile__error'>a</span>
         </label>
+        {isEdit && !isFormValid && <span className='profile__error'>При обновлении профиля произошла ошибка.</span>}
       </Form>
       {!isEdit && (
         <div className='profile__buttons'>

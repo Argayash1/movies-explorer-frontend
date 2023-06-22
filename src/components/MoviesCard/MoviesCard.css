@@ -46,6 +46,7 @@
   grid-column: 2/3;
   grid-row: 1/3;
   cursor: pointer;
+  border-radius: 36px;
   transition: opacity 0.5s linear;
 }
 

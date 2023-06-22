@@ -1,6 +1,6 @@
 import './Form.css';
 
-function Form({ type, name, children, buttonText, onSubmit, isProfileEdit = true }) {
+function Form({ type, name, children, buttonText, onSubmit, isProfileEdit = true, isFormValid }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit();
@@ -17,7 +17,9 @@ function Form({ type, name, children, buttonText, onSubmit, isProfileEdit = true
       {isProfileEdit && (
         <button
           type='submit'
-          className={`form__submit-button ${type === 'profile' && 'form__submit-button_type_profile'}`}
+          className={`form__submit-button ${!isFormValid && 'form__submit-button_disabled'} 
+          ${type === 'profile' && 'form__submit-button_type_profile'}`}
+          disabled={!isFormValid && true}
         >
           {buttonText}
         </button>

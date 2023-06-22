@@ -31,6 +31,12 @@
   margin: 223px 0 16px;
 }
 
+.form__submit-button_disabled {
+  background-color: #f8f8f8;
+  color: #c2c2c2;
+  margin: 20px 0 0;
+}
+
 .form__submit-button:hover {
   opacity: 0.8;
 }

@@ -21,11 +21,11 @@
 
 .burger-menu__close-button {
   width: 22px;
-  height: 22px;
+  min-height: 22px;
   background-color: #fff;
   background-image: url('../../images/buregr-close-button.svg');
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   align-self: flex-end;
   margin: 0;

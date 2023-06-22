@@ -1,7 +1,12 @@
 .burger-menu-button {
   display: none;
-  padding: 11px 8px 10px;
+  padding: 0;
+  min-width: 44px;
+  height: 44px;
   background-color: transparent;
+  background-image: url(../../images/navigation-open-burger-button.svg);
+  background-size: contain;
+  background-position: center;
   border: none;
   cursor: pointer;
   margin: 0;
@@ -11,19 +16,9 @@
   display: none;
 }
 
-.burger-menu-button_line {
-  width: 28px;
-  border-top: 3px solid #000;
-  margin: 0 auto;
-}
-
 @media screen and (max-width: 768px) {
   .burger-menu-button {
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    justify-content: center;
-    gap: 7px;
+    display: block;
   }
 
   .burger-menu-button_is_hidden {
@@ -33,11 +28,7 @@
 
 @media screen and (max-width: 544px) {
   .burger-menu-button {
-    gap: 6px;
-    padding: 12px 9px 10px;
-  }
-
-  .burger-menu-button_line {
-    width: 22px;
+    min-width: 40px;
+    height: 43px;
   }
 }

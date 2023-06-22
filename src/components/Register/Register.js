@@ -1,7 +1,7 @@
 import './Register.css';
 import AuthPage from '../AuthPage/AuthPage';
 
-const Register = ({ onSubmit }) => {
+const Register = ({ onSubmit, isFormValid }) => {
   return (
     <AuthPage
       headerText='Добро пожаловать'
@@ -11,6 +11,7 @@ const Register = ({ onSubmit }) => {
       linkText='Войти'
       name='register'
       onSubmit={onSubmit}
+      isFormValid={isFormValid}
     >
       <label htmlFor='name' className='register__input-label'>
         Имя

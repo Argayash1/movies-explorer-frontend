@@ -48,19 +48,17 @@
 
 .profile__input:focus {
   outline: none;
-  border-bottom: 1px solid #465dff;
+  border-bottom: 1px solid #a0a0a0;
 }
 
 .profile__error {
   font-style: normal;
   font-weight: 400;
-  font-size: 10px;
-  line-height: 12px;
-  color: #ee3465;
-  height: 12px;
-  position: absolute;
-  top: 14px;
-  left: 0;
+  font-size: 11px;
+  line-height: 13px;
+  color: #ff004c;
+  margin: 189px auto 0;
+  height: 13px;
 }
 
 .profile__input_type_e-mail {
@@ -73,7 +71,7 @@
 
 .profile__input_type_e-mail:focus {
   outline: none;
-  border-bottom: 1px solid #465dff;
+  border-bottom: 1px solid #a0a0a0;
   padding-top: 17px;
   top: -17px;
 }
@@ -83,6 +81,7 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
+  margin-top: 220px;
 }
 
 .profile__button {
@@ -91,11 +90,10 @@
   font-size: 13px;
   line-height: 16px;
   text-align: center;
-  background-color: transparent;
+  background-color: #ffffff;
   border: none;
   cursor: pointer;
   transition: opacity 0.5s linear;
-  margin-top: 220px;
 }
 
 .profile__button:hover {
@@ -107,16 +105,12 @@
   margin: 0;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
   .profile {
     padding: 236px 0 269px;
   }
 
-  .profile__data {
-    margin: 96px auto 210px;
-  }
-
-  .profile__button {
+  .profile__buttons {
     margin-top: 210px;
   }
 
@@ -130,14 +124,11 @@
     padding: 70px 0 40px;
   }
 
-  .profile__data {
-    grid-template-columns: repeat(2, 130px);
-    width: 260px;
-    margin: 80px auto 379px;
+  .profile__buttons {
+    margin-top: 379px;
   }
 
   .profile__button {
-    margin-top: 379px;
     font-size: 12px;
     line-height: 15px;
   }

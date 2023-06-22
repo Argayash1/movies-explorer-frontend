@@ -1,7 +1,7 @@
 import './Login.css';
 import AuthPage from '../AuthPage/AuthPage';
 
-const Login = ({ onSubmit }) => {
+const Login = ({ onSubmit, isFormValid }) => {
   return (
     <AuthPage
       headerText='Рады видеть'
@@ -11,6 +11,7 @@ const Login = ({ onSubmit }) => {
       linkText='Зарегистрироваться'
       name='login'
       onSubmit={onSubmit}
+      isFormValid={isFormValid}
     >
       <label htmlFor='email' className='login__input-label'>
         E-mail
