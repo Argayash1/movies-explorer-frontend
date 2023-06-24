@@ -1,6 +1,6 @@
 .about-me {
   font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
-  padding: 110px 0 125px;
+  padding: 110px 0 115px;
   background: #fff;
 }
 
@@ -70,7 +70,7 @@
 
 @media screen and (max-width: 873px) {
   .about-me {
-    padding: 90px 0;
+    padding: 90px 0 80px;
   }
 
   .about-me__content {

@@ -6,7 +6,7 @@
 }
 
 .movies-card-list_place_saved-movies {
-  padding-bottom: 166px;
+  padding-bottom: 140px;
 }
 
 .movies-card-list__not-found {
@@ -56,13 +56,16 @@
   }
 
   .movies-card-list {
-    padding: 70px 30px 30px;
+    padding-right: 30px;
+    padding-left: 30px;
   }
 }
 
 @media screen and (max-width: 586px) {
   .movies-card-list {
-    padding: 70px 10px 30px;
+    padding-top: 40px;
+    padding-right: 10px;
+    padding-left: 10px;
   }
 }
 
@@ -70,7 +73,6 @@
   .movies-card-list__cards {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 16px;
-    padding-top: 40px;
   }
 
   .movies-card-list__button {
