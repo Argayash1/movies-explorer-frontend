@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 
 function MainMenu() {
   return (
-    <ul className='main-menu'>
+    <ul className='menu'>
       <li>
-        <Link to='/signup' className='main-menu__link'>
-          <button className='main-menu__button'>Регистрация</button>
+        <Link to='/signup' className='menu__link'>
+          Регистрация
         </Link>
       </li>
       <li>
-        <Link to='/signin' className='main-menu__link main-menu__link_type_login'>
-          <button className='main-menu__button main-menu__button_type_login'>Войти</button>
+        <Link to='/signin' className='menu__link menu__link_type_login'>
+          Войти
         </Link>
       </li>
     </ul>

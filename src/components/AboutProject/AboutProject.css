@@ -182,4 +182,8 @@
   .about-project__schedule-item_type_long {
     width: 65%;
   }
+
+  .about-project__schedule-text {
+    margin-top: 10px;
+  }
 }

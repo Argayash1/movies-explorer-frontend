@@ -6,7 +6,7 @@
 }
 
 .form_type_profile {
-  width: 410px;
+  width: 100%;
   margin: 123px auto 0;
 }
 
@@ -40,7 +40,7 @@
 .form__submit-button:hover {
   opacity: 0.8;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 920px) {
   .form_type_profile {
     margin: 96px auto 0;
   }

@@ -6,7 +6,7 @@ function Techs() {
     <section className='techs'>
       <div className='techs__content'>
         <SectionTitle text='Технологии' />
-        <h3 className='techs__title'>7&nbsp;Технологий</h3>
+        <h3 className='techs__title'>7&nbsp;технологий</h3>
         <p className='techs__subtitle'>
           На&nbsp;курсе веб-разработки мы&nbsp;освоили технологии, которые применили в&nbsp;дипломном проекте.
         </p>

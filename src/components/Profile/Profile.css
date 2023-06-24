@@ -1,15 +1,11 @@
 .profile {
   font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
-  padding: 74px 0 70px;
 }
 
-.profile__title {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 29px;
-  text-align: center;
+.profile__content {
+  width: 410px;
   margin: 0 auto;
+  padding: 74px 0 70px;
 }
 
 .profile__input-label {
@@ -29,7 +25,7 @@
 }
 
 .profile__input {
-  padding-bottom: 16px;
+  padding: 0 0 16px;
   font-style: normal;
   font-weight: 500;
   font-size: 11px;
@@ -44,6 +40,7 @@
   border: none;
   background: #fff;
   border-bottom: 1px solid #e8e8e8;
+  display: block;
 }
 
 .profile__input:focus {
@@ -66,7 +63,7 @@
   padding-bottom: 0;
   line-height: 12px;
   padding-top: 15px;
-  top: -15px;
+  top: -14px;
 }
 
 .profile__input_type_e-mail:focus {
@@ -94,6 +91,7 @@
   border: none;
   cursor: pointer;
   transition: opacity 0.5s linear;
+  padding: 0;
 }
 
 .profile__button:hover {
@@ -106,7 +104,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .profile {
+  .profile__content {
     padding: 236px 0 269px;
   }
 
@@ -120,12 +118,17 @@
 }
 
 @media screen and (max-width: 544px) {
-  .profile {
+  .profile__content {
     padding: 70px 0 40px;
+    box-sizing: border-box;
+    width: 260px;
+    height: calc(100vh - 74px); /* чтобы на моб. разр-ии страница умещалась в высоту окна, 74px - высота хэдера */
+    display: flex;
+    flex-direction: column;
   }
 
   .profile__buttons {
-    margin-top: 379px;
+    margin-top: auto; /* чтобы "прибить" блок с кнопками к нижней границе блока с контентом */
   }
 
   .profile__button {

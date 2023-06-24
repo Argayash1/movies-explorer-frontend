@@ -5,11 +5,11 @@ const Login = ({ onSubmit, isFormValid }) => {
   return (
     <main className='login'>
       <AuthPage
-        headerText='Рады видеть'
+        headerText='Рады видеть!'
         buttonText='Войти'
         paragraphText='Ещё не'
         url='/signup'
-        linkText='Зарегистрироваться'
+        linkText='Регистрация'
         name='login'
         onSubmit={onSubmit}
         isFormValid={isFormValid}

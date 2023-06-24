@@ -1,3 +1,7 @@
+.login {
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+}
+
 .login__input-label {
   font-style: normal;
   font-weight: 400;
@@ -9,7 +13,7 @@
 
 .login__input {
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 13px;
   line-height: 16px;
   background: #f9f9f9;

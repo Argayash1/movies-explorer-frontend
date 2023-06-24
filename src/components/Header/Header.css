@@ -15,7 +15,7 @@
 }
 
 .header__content_place_movies {
-  padding: 18px 70px;
+  background-color: #fff;
 }
 
 @media screen and (max-width: 1024px) {
@@ -38,37 +38,29 @@
 }
 
 @media screen and (max-width: 768px) {
-  .header__content {
-    padding-right: 30px;
-    padding-left: 30px;
+  .header__content_user_logged-in {
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 
-  .header__content_user_logged-in {
+  .header__content_place_movies {
     padding-top: 15px;
     padding-bottom: 15px;
   }
 }
 
-@media screen and (max-width: 650px) {
-  .header__content_place_movies {
-    padding-right: 10px;
-    padding-left: 10px;
-  }
-
-  .header__content_place_movies {
-    padding-right: 30px;
-    padding-left: 30px;
-  }
-}
-
 @media screen and (max-width: 586px) {
   .header__content_place_movies {
-    padding-right: 10px;
-    padding-left: 10px;
+    padding-right: 14px;
+    padding-left: 14px;
   }
 }
 
 @media screen and (max-width: 544px) {
+  .header__content_place_movies {
+    padding-bottom: 16px;
+  }
+
   .header__content {
     padding-right: 14px;
     padding-left: 14px;

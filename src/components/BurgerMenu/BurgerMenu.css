@@ -19,21 +19,6 @@
   right: 0;
 }
 
-.burger-menu__close-button {
-  width: 22px;
-  min-height: 22px;
-  background-color: #fff;
-  background-image: url('../../images/buregr-close-button.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  align-self: flex-end;
-  margin: 0;
-  padding: 0;
-  border: none;
-  cursor: pointer;
-}
-
 .burger-menu__nav-list {
   list-style: none;
   width: 100%;
@@ -78,11 +63,11 @@
 @media screen and (max-width: 520px) {
   .burger-menu {
     width: 100%;
-    padding: 13px 13px 46px;
+    padding: 13.44px 13.44px 46px;
   }
 
   .burger-menu__nav-list {
-    margin-top: 99px;
+    margin-top: 99.44px;
   }
 
   .burger-menu__nav-links {

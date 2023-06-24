@@ -6,11 +6,9 @@ import AuthTitle from '../AuthTitle/AuthTitle';
 
 function AuthPage({ headerText, buttonText, paragraphText, url, linkText, name, onSubmit, isFormValid, children }) {
   return (
-    <main className='authpage'>
-      <div className='authpage__content'>
-        <Logo />
-        <AuthTitle headerText={headerText} />
-      </div>
+    <section className='authpage'>
+      <Logo />
+      <AuthTitle headerText={headerText} />
       <Form buttonText={buttonText} type={name} name={name} onSubmit={onSubmit} isFormValid={isFormValid}>
         {children}
       </Form>
@@ -20,7 +18,7 @@ function AuthPage({ headerText, buttonText, paragraphText, url, linkText, name, 
           {linkText}
         </Link>
       </div>
-    </main>
+    </section>
   );
 }
 

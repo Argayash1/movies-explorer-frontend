@@ -17,7 +17,7 @@ import moviesApi from '../../utils/MoviesApi';
 function App() {
   const [initialMovies, setInitialMovies] = useState([]);
   const [isMovieSaved, setIsMovieSaved] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading] = useState(false);
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
   const [user] = useState({ name: 'Виталий', email: 'pochta@yandex.ru' });

@@ -11,6 +11,11 @@
   border: none;
   cursor: pointer;
   margin: 0;
+  transition: opacity 0.5s linear;
+}
+
+.burger-menu-button:hover {
+  opacity: 0.8;
 }
 
 .burger-menu-button_is_hidden {

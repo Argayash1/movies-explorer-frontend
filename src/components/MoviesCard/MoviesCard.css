@@ -86,14 +86,14 @@
 @media screen and (max-width: 920px) {
   .moviescard {
     grid-template-columns: 264px 44px;
-    grid-template-rows: 18px 36px 180px;
+    grid-template-rows: 18px 36px 190px;
     column-gap: 31px;
     margin: 0;
   }
 
   .moviescard__image {
     width: 339px;
-    height: 180px;
+    height: 190px;
   }
 }
 

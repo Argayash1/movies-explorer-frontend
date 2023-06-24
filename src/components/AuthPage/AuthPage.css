@@ -5,13 +5,8 @@
   background-color: #fff;
   display: flex;
   flex-direction: column;
-}
-
-.authpage__content {
   width: 396px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
 }
 
 .authpage__container {
@@ -49,7 +44,7 @@
 
 @media screen and (max-width: 768px) {
   .authpage {
-    padding: 232px 0 232px;
+    padding: 232px 0;
     align-items: center;
   }
 }
@@ -57,9 +52,6 @@
 @media screen and (max-width: 544px) {
   .authpage {
     padding: 56px 0 30px;
-  }
-
-  .authpage__content {
     width: 100%;
     align-items: center;
   }

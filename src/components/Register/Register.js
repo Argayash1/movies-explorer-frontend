@@ -5,7 +5,7 @@ const Register = ({ onSubmit, isFormValid }) => {
   return (
     <main className='register'>
       <AuthPage
-        headerText='Добро пожаловать'
+        headerText='Добро пожаловать!'
         buttonText='Зарегистрироваться'
         paragraphText='Уже'
         url='/signin'
@@ -54,7 +54,7 @@ const Register = ({ onSubmit, isFormValid }) => {
           id='password'
           placeholder='Пароль'
           autoComplete='off'
-          defaultValue='12345678'
+          defaultValue='12345678987654'
           required
         />
         <span className='register__error'>Что-то пошло не так...</span>

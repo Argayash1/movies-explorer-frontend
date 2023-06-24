@@ -13,7 +13,7 @@ function Portfolio() {
             rel='noreferrer'
           >
             Статичный сайт
-            <span className='portfolio__arrow'>&rarr;</span>
+            <span className='portfolio__arrow'>↗</span>
           </a>
         </li>
         <li className='portfolio__work'>
@@ -24,7 +24,7 @@ function Portfolio() {
             rel='noreferrer'
           >
             Адаптивный сайт
-            <span className='portfolio__arrow'>&rarr;</span>
+            <span className='portfolio__arrow'>↗</span>
           </a>
         </li>
         <li className='portfolio__work'>
@@ -35,7 +35,7 @@ function Portfolio() {
             rel='noreferrer'
           >
             Одностраничное приложение
-            <span className='portfolio__arrow'>&rarr;</span>
+            <span className='portfolio__arrow'>↗</span>
           </a>
         </li>
       </ul>
