@@ -1,12 +1,17 @@
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import Preloader from '../Preloader/Preloader';
 import './SavedMovies.css';
 
-function SavedMovies({ moviesCards }) {
+function SavedMovies({ moviesCards, isLoading }) {
   return (
     <main className='saved-movies'>
       <SearchForm />
-      <MoviesCardList moviesCards={moviesCards} buttonType='delete' place='saved-movies' />
+      {isLoading ? (
+        <Preloader />
+      ) : (
+        <MoviesCardList moviesCards={moviesCards} buttonType='delete' place='saved-movies' />
+      )}
     </main>
   );
 }

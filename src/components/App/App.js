@@ -9,7 +9,6 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 import PageNotFound from '../PageNotFound/PageNotFound';
-import Preloader from '../Preloader/Preloader';
 import './App.css';
 
 import moviesApi from '../../utils/MoviesApi';
@@ -81,49 +80,49 @@ function App() {
 
   return (
     <div className='page'>
-      {isLoading ? (
-        <Preloader />
-      ) : (
-        <div className='page__content'>
-          <Header
-            isLoggedIn={isLoggedIn}
-            isBurgerMenuOpen={isBurgerMenuOpen}
-            onBurgerMenuOpen={handleOpenBurgerMenu}
-            onBurgerMenuClose={handleCloseBurgerMenu}
-          ></Header>
-          <Routes>
-            <Route path='/' element={<Main />}></Route>
-            <Route
-              path='/movies'
-              element={
-                <Movies
-                  moviesCards={initialMovies.slice(0, 12)}
-                  isMovieSaved={isMovieSaved}
-                  onSaveMovie={handleSaveMovie}
-                />
-              }
-            ></Route>
-            <Route path='/saved-movies' element={<SavedMovies moviesCards={initialMovies.slice(0, 3)} />}></Route>
-            <Route
-              path='/profile'
-              element={
-                <Profile
-                  user={user}
-                  isEdit={isProfileEdit}
-                  onSubmit={hadleProfileSubmit}
-                  onEditProfile={handleEditProfile}
-                  onSignOut={handleSignOut}
-                  isFormValid={isFormValid}
-                />
-              }
-            ></Route>
-            <Route path='/signin' element={<Login onSubmit={handleSignIn} isFormValid={isFormValid} />}></Route>
-            <Route path='/signup' element={<Register onSubmit={handleSignUp} isFormValid={isFormValid} />}></Route>
-            <Route path='*' element={<PageNotFound />}></Route>
-          </Routes>
-          <Footer />
-        </div>
-      )}
+      <div className='page__content'>
+        <Header
+          isLoggedIn={isLoggedIn}
+          isBurgerMenuOpen={isBurgerMenuOpen}
+          onBurgerMenuOpen={handleOpenBurgerMenu}
+          onBurgerMenuClose={handleCloseBurgerMenu}
+        ></Header>
+        <Routes>
+          <Route path='/' element={<Main />}></Route>
+          <Route
+            path='/movies'
+            element={
+              <Movies
+                moviesCards={initialMovies.slice(0, 12)}
+                isMovieSaved={isMovieSaved}
+                onSaveMovie={handleSaveMovie}
+                isLoading={isLoading}
+              />
+            }
+          ></Route>
+          <Route
+            path='/saved-movies'
+            element={<SavedMovies moviesCards={initialMovies.slice(0, 3)} isLoading={isLoading} />}
+          ></Route>
+          <Route
+            path='/profile'
+            element={
+              <Profile
+                user={user}
+                isEdit={isProfileEdit}
+                onSubmit={hadleProfileSubmit}
+                onEditProfile={handleEditProfile}
+                onSignOut={handleSignOut}
+                isFormValid={isFormValid}
+              />
+            }
+          ></Route>
+          <Route path='/signin' element={<Login onSubmit={handleSignIn} isFormValid={isFormValid} />}></Route>
+          <Route path='/signup' element={<Register onSubmit={handleSignUp} isFormValid={isFormValid} />}></Route>
+          <Route path='*' element={<PageNotFound />}></Route>
+        </Routes>
+        <Footer />
+      </div>
     </div>
   );
 }

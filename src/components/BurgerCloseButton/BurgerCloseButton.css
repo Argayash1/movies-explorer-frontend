@@ -2,7 +2,10 @@
   width: 30px;
   min-height: 30px;
   background-color: #fff;
-  background: url('../../images/burger-close-button.svg') center center/contain no-repeat;
+  background-image: url('../../images/burger-close-button.svg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   align-self: flex-end;
   margin: 0;
   padding: 0;
