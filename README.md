@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Movies-expllorer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Дипломная работа на курсе "Веб-разработчик" в Яндекс.Практикуме
+
+Ссылка на макет проекта: https://disk.yandex.ru/d/fb0uECyV0rkDxw.
 
 ## Available Scripts
 
