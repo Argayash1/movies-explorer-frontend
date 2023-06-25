@@ -3,6 +3,10 @@
   margin: 0;
 }
 
+.header_is_hidden {
+  display: none;
+}
+
 .header__content {
   padding: 18px 70px;
   display: flex;

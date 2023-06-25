@@ -11,27 +11,31 @@
 .about-me__info {
   display: grid;
   grid-template-columns: 1fr 270px;
-  grid-template-rows: 76px 46px 187px 17px;
+  /* grid-template-rows: 76px 46px 187px 17px; */
   column-gap: 49px;
   margin-top: 66px;
   max-width: 100%;
+  border: 1px solid red;
+  font-size: 0;
 }
 
 .about-me__title {
   font-weight: 400;
   font-size: 50px;
-  line-height: 58px;
+  line-height: 50px;
   letter-spacing: -0.04em;
   margin: 0 0 18px;
   padding: 0;
+  display: block;
 }
 
 .about-me__subtitle {
   font-weight: 500;
   font-size: 18px;
-  line-height: 20px;
+  line-height: 18px;
   margin: 0 0 26px;
   padding: 0;
+  display: block;
 }
 
 .about-me__bio {

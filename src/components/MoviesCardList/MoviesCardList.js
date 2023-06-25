@@ -25,7 +25,11 @@ function MoviesCardList({ moviesCards, buttonType, isMovieSaved, onSaveMovie, pl
       ) : (
         <ul className='movies-card-list__cards'>{movieCardElements}</ul>
       )}
-      {pathname === '/movies' && <button className='movies-card-list__button'>Ещё</button>}
+      {pathname === '/movies' && (
+        <button className='movies-card-list__button' type='button'>
+          Ещё
+        </button>
+      )}
     </section>
   );
 }

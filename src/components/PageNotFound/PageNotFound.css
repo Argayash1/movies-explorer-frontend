@@ -36,8 +36,9 @@
   font-size: 14px;
   line-height: 17px;
   text-align: center;
+  background: transparent;
   color: #ff6838;
-  text-decoration: none;
+  border: none;
   transition: opacity 0.5s linear;
 }
 

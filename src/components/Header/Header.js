@@ -5,7 +5,15 @@ import Navigation from '../Navigation/Navigation';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import BurgerMenuButton from '../BurgerMenuButton/BurgerMenuButton';
 
-function Header({ isLoggedIn, isBurgerMenuOpen, onBurgerMenuOpen, onBurgerMenuClose }) {
+function Header({
+  isLoggedIn,
+  isBurgerMenuOpen,
+  onBurgerMenuOpen,
+  onBurgerMenuClose,
+  onNavigateToSignup,
+  onNavigateToSignin,
+  onNavigateToProfile,
+}) {
   const { pathname } = useLocation();
   const paths = ['/', '/movies', '/saved-movies', '/profile'];
   const pathMain = pathname === '/';
@@ -24,9 +32,18 @@ function Header({ isLoggedIn, isBurgerMenuOpen, onBurgerMenuOpen, onBurgerMenuCl
             element={
               <div className={headerContentClassName}>
                 <Logo />
-                <Navigation isLoggedIn={isLoggedIn} />
+                <Navigation
+                  isLoggedIn={isLoggedIn}
+                  onNavigateToSignup={onNavigateToSignup}
+                  onNavigateToSignin={onNavigateToSignin}
+                  onNavigateToProfile={onNavigateToProfile}
+                />
                 <BurgerMenuButton isLoggedIn={isLoggedIn} onBurgerMenuOpen={onBurgerMenuOpen} />
-                <BurgerMenu isOpen={isBurgerMenuOpen} onClose={onBurgerMenuClose} />
+                <BurgerMenu
+                  isOpen={isBurgerMenuOpen}
+                  onClose={onBurgerMenuClose}
+                  onNavigateToProfile={onNavigateToProfile}
+                />
               </div>
             }
           />

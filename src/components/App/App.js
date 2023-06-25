@@ -78,6 +78,22 @@ function App() {
     setIsProfileEdit(false);
   }
 
+  function handleNavigateToSignup() {
+    navigate('/signup');
+  }
+
+  function handleNavigateToSignin() {
+    navigate('/signin');
+  }
+
+  function handleNavigateToProfile() {
+    navigate('/profile');
+  }
+
+  function handleNavigateToMain() {
+    navigate('/');
+  }
+
   return (
     <div className='page'>
       <div className='page__content'>
@@ -86,6 +102,9 @@ function App() {
           isBurgerMenuOpen={isBurgerMenuOpen}
           onBurgerMenuOpen={handleOpenBurgerMenu}
           onBurgerMenuClose={handleCloseBurgerMenu}
+          onNavigateToSignup={handleNavigateToSignup}
+          onNavigateToSignin={handleNavigateToSignin}
+          onNavigateToProfile={handleNavigateToProfile}
         ></Header>
         <Routes>
           <Route path='/' element={<Main />}></Route>
@@ -119,7 +138,7 @@ function App() {
           ></Route>
           <Route path='/signin' element={<Login onSubmit={handleSignIn} isFormValid={isFormValid} />}></Route>
           <Route path='/signup' element={<Register onSubmit={handleSignUp} isFormValid={isFormValid} />}></Route>
-          <Route path='*' element={<PageNotFound />}></Route>
+          <Route path='*' element={<PageNotFound onNavigateToMain={handleNavigateToMain} />}></Route>
         </Routes>
         <Footer />
       </div>

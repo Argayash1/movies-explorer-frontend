@@ -1,6 +1,5 @@
 .logged-in-menu {
   font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
-  list-style: none;
   display: flex;
   align-items: center;
   padding: 0;
@@ -11,6 +10,18 @@
 .logged-in-menu_place_movies {
   width: 100%;
   justify-content: space-between;
+}
+
+.logged-in-menu__list {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.logged-in-menu__list_place_movies {
+  gap: 16px;
 }
 
 .logged-in-menu__link {
@@ -28,17 +39,8 @@
   opacity: 0.7;
 }
 
-.logged-in-menu__item {
-  display: flex;
-  gap: 20px;
-}
-
 .logged-in-menu__link_place_main {
   font-size: 14px;
-}
-
-.logged-in-menu__item_place_movies {
-  gap: 16px;
 }
 
 .logged-in-menu__link_active {

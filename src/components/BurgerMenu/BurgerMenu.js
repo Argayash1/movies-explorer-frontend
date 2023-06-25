@@ -4,7 +4,7 @@ import BurgerCloseButton from '../BurgerCloseButton/BurgerCloseButton';
 import './BurgerMenu.css';
 import { NavLink } from 'react-router-dom';
 
-function BurgerMenu({ isOpen, onClose }) {
+function BurgerMenu({ isOpen, onClose, onNavigateToProfile }) {
   return (
     <Popup isOpen={isOpen} onClose={onClose}>
       <nav className={`burger-menu ${isOpen ? 'burger-menu_is_opened' : ''}`}>
@@ -45,7 +45,7 @@ function BurgerMenu({ isOpen, onClose }) {
             </ul>
           </li>
           <li className='burger-menu__nav-list-item'>
-            <AccountButton />
+            <AccountButton onNavigateToProfile={onNavigateToProfile} />
           </li>
         </ul>
       </nav>

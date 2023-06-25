@@ -1,18 +1,17 @@
 import './MainMenu.css';
-import { Link } from 'react-router-dom';
 
-function MainMenu() {
+function MainMenu({ onNavigateToSignup, onNavigateToSignin }) {
   return (
     <ul className='menu'>
       <li>
-        <Link to='/signup' className='menu__link'>
+        <button className='menu__button' type='button' onClick={onNavigateToSignup}>
           Регистрация
-        </Link>
+        </button>
       </li>
       <li>
-        <Link to='/signin' className='menu__link menu__link_type_login'>
+        <button className='menu__button menu__button_type_login' type='button' onClick={onNavigateToSignin}>
           Войти
-        </Link>
+        </button>
       </li>
     </ul>
   );

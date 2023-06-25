@@ -1,11 +1,11 @@
 import './AccountButton.css';
 import { Link } from 'react-router-dom';
 
-function AccountButton() {
+function AccountButton({ onNavigateToProfile }) {
   return (
-    <Link to='/profile' className='account-button'>
+    <button className='account-button' type='button' onClick={onNavigateToProfile}>
       Аккаунт
-    </Link>
+    </button>
   );
 }
 

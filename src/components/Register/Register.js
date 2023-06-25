@@ -23,9 +23,9 @@ const Register = ({ onSubmit, isFormValid }) => {
           name='name'
           id='name'
           placeholder='Имя'
-          autoComplete='off'
           minLength='2'
           maxLength='30'
+          autoComplete='off'
           defaultValue='Виталий'
           required
         />
@@ -39,6 +39,8 @@ const Register = ({ onSubmit, isFormValid }) => {
           name='email'
           id='email'
           placeholder='E-mail'
+          minLength='6'
+          maxLength='30'
           autoComplete='off'
           defaultValue='pochta@yandex.ru'
           required

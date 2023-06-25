@@ -49,10 +49,10 @@ function Profile({ user, isEdit, onSignOut, onSubmit, onEditProfile, isFormValid
         </Form>
         {!isEdit && (
           <div className='profile__buttons'>
-            <button className='profile__button' onClick={onEditProfile}>
+            <button className='profile__button' type='button' onClick={onEditProfile}>
               Редактировать
             </button>
-            <button className='profile__button profile__button_type_logout' onClick={onSignOut}>
+            <button className='profile__button profile__button_type_logout' type='button' onClick={onSignOut}>
               Выйти из аккаунта
             </button>
           </div>

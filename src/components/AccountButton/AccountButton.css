@@ -4,7 +4,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
-  text-decoration: none;
+  border: none;
   margin: 0;
   padding: 0;
   color: #000000;
@@ -12,6 +12,7 @@
   border-radius: 20px;
   padding: 8px 22px;
   transition: opacity 0.5s linear;
+  cursor: pointer;
 }
 
 .account-button:hover {
