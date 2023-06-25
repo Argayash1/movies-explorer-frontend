@@ -1,5 +1,5 @@
 import Logo from '../Logo/Logo';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import './Header.css';
 import Navigation from '../Navigation/Navigation';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
@@ -15,7 +15,6 @@ function Header({
   onNavigateToProfile,
 }) {
   const { pathname } = useLocation();
-  const paths = ['/', '/movies', '/saved-movies', '/profile'];
   const pathMain = pathname === '/';
   const pathsWithMoviesAndProfile = pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile';
   const headerContentClassName = `header__content ${isLoggedIn ? 'header__content_user_logged-in' : ''}    
@@ -24,31 +23,17 @@ function Header({
 
   return (
     <header className='header'>
-      <Routes>
-        {paths.map((path) => (
-          <Route
-            path={path}
-            key={Math.random()}
-            element={
-              <div className={headerContentClassName}>
-                <Logo />
-                <Navigation
-                  isLoggedIn={isLoggedIn}
-                  onNavigateToSignup={onNavigateToSignup}
-                  onNavigateToSignin={onNavigateToSignin}
-                  onNavigateToProfile={onNavigateToProfile}
-                />
-                <BurgerMenuButton isLoggedIn={isLoggedIn} onBurgerMenuOpen={onBurgerMenuOpen} />
-                <BurgerMenu
-                  isOpen={isBurgerMenuOpen}
-                  onClose={onBurgerMenuClose}
-                  onNavigateToProfile={onNavigateToProfile}
-                />
-              </div>
-            }
-          />
-        ))}
-      </Routes>
+      <div className={headerContentClassName}>
+        <Logo />
+        <Navigation
+          isLoggedIn={isLoggedIn}
+          onNavigateToSignup={onNavigateToSignup}
+          onNavigateToSignin={onNavigateToSignin}
+          onNavigateToProfile={onNavigateToProfile}
+        />
+        <BurgerMenuButton isLoggedIn={isLoggedIn} onBurgerMenuOpen={onBurgerMenuOpen} />
+        <BurgerMenu isOpen={isBurgerMenuOpen} onClose={onBurgerMenuClose} onNavigateToProfile={onNavigateToProfile} />
+      </div>
     </header>
   );
 }

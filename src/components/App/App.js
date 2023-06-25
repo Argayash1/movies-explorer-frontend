@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
@@ -24,6 +24,9 @@ function App() {
   const [isFormValid] = useState(true);
 
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const pathsWithHeader = ['/', '/movies', '/saved-movies', '/profile'].includes(pathname);
+  const pathsWithFooter = ['/', '/movies', '/saved-movies'].includes(pathname);
 
   useEffect(() => {
     function handleAutoCloseMenu() {
@@ -97,15 +100,17 @@ function App() {
   return (
     <div className='page'>
       <div className='page__content'>
-        <Header
-          isLoggedIn={isLoggedIn}
-          isBurgerMenuOpen={isBurgerMenuOpen}
-          onBurgerMenuOpen={handleOpenBurgerMenu}
-          onBurgerMenuClose={handleCloseBurgerMenu}
-          onNavigateToSignup={handleNavigateToSignup}
-          onNavigateToSignin={handleNavigateToSignin}
-          onNavigateToProfile={handleNavigateToProfile}
-        ></Header>
+        {pathsWithHeader && (
+          <Header
+            isLoggedIn={isLoggedIn}
+            isBurgerMenuOpen={isBurgerMenuOpen}
+            onBurgerMenuOpen={handleOpenBurgerMenu}
+            onBurgerMenuClose={handleCloseBurgerMenu}
+            onNavigateToSignup={handleNavigateToSignup}
+            onNavigateToSignin={handleNavigateToSignin}
+            onNavigateToProfile={handleNavigateToProfile}
+          ></Header>
+        )}
         <Routes>
           <Route path='/' element={<Main />}></Route>
           <Route
@@ -140,7 +145,7 @@ function App() {
           <Route path='/signup' element={<Register onSubmit={handleSignUp} isFormValid={isFormValid} />}></Route>
           <Route path='*' element={<PageNotFound onNavigateToMain={handleNavigateToMain} />}></Route>
         </Routes>
-        <Footer />
+        {pathsWithFooter && <Footer />}
       </div>
     </div>
   );

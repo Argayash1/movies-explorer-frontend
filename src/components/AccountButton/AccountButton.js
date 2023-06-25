@@ -1,5 +1,4 @@
 import './AccountButton.css';
-import { Link } from 'react-router-dom';
 
 function AccountButton({ onNavigateToProfile }) {
   return (

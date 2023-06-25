@@ -39,6 +39,7 @@
   background: transparent;
   color: #ff6838;
   border: none;
+  cursor: pointer;
   transition: opacity 0.5s linear;
 }
 
