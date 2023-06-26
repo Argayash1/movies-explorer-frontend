@@ -8,6 +8,8 @@
 .form_type_profile {
   width: 100%;
   margin: 123px auto 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
 }
 
 .form__submit-button {
@@ -28,7 +30,8 @@
 
 .form__submit-button_type_profile {
   background: #3456f3;
-  margin: 223px 0 16px;
+  margin: 222px 0 16px;
+  grid-column: 1/3;
 }
 
 .form__submit-button_disabled {
