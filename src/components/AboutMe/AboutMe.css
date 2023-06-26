@@ -11,18 +11,15 @@
 .about-me__info {
   display: grid;
   grid-template-columns: 1fr 270px;
-  /* grid-template-rows: 76px 46px 187px 17px; */
   column-gap: 49px;
   margin-top: 66px;
   max-width: 100%;
-  border: 1px solid red;
-  font-size: 0;
 }
 
 .about-me__title {
   font-weight: 400;
   font-size: 50px;
-  line-height: 50px;
+  line-height: 58px;
   letter-spacing: -0.04em;
   margin: 0 0 18px;
   padding: 0;
@@ -32,7 +29,7 @@
 .about-me__subtitle {
   font-weight: 500;
   font-size: 18px;
-  line-height: 18px;
+  line-height: 20px;
   margin: 0 0 26px;
   padding: 0;
   display: block;
@@ -67,9 +64,11 @@
   height: 327px;
   border-radius: 10px;
   grid-column: 2/3; /* это сокращённая запись grid-column-start: 2; grid-column-end: 3; */
-  grid-row: 1/4; /* это сокращённая запись grid-row-start: 1; grid-row-end: 4; */
+  grid-row: 1/5; /* это сокращённая запись grid-row-start: 1; grid-row-end: 4; */
   object-fit: cover;
   justify-self: flex-end;
+  display: block;
+  font-size: 0;
 }
 
 @media screen and (max-width: 873px) {
