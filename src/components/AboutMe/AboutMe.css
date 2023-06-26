@@ -63,8 +63,8 @@
   width: 270px;
   height: 327px;
   border-radius: 10px;
-  grid-column: 2/3; /* это сокращённая запись grid-column-start: 2; grid-column-end: 3; */
-  grid-row: 1/5; /* это сокращённая запись grid-row-start: 1; grid-row-end: 4; */
+  grid-column: 2/3; /* это сокращённая запись от grid-column-start: 2; grid-column-end: 3; */
+  grid-row: 1/5; /* это сокращённая запись от grid-row-start: 1; grid-row-end: 4; */
   object-fit: cover;
   justify-self: flex-end;
   display: block;
