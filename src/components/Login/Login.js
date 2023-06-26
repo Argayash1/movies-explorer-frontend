@@ -38,7 +38,7 @@ const Login = ({ onSubmit, isFormValid }) => {
           name='password'
           id='password'
           placeholder='Пароль'
-          minLength='2'
+          minLength='6'
           maxLength='30'
           autoComplete='off'
           required

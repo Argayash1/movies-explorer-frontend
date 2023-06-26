@@ -10,6 +10,7 @@
   margin: 123px auto 0;
   display: grid;
   grid-template-columns: auto 1fr;
+  font-size: 0;
 }
 
 .form__submit-button {

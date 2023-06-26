@@ -3,6 +3,7 @@
   margin-top: 100px;
   padding: 0;
   background: #fff;
+  font-size: 0;
 }
 
 .portfolio__works-title {
@@ -14,6 +15,7 @@
   mix-blend-mode: normal;
   margin: 0 0 50px;
   padding: 0;
+  display: block;
 }
 
 .portfolio__works {

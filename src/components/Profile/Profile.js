@@ -31,7 +31,7 @@ function Profile({ user, isEdit, onSignOut, onSubmit, onEditProfile, isFormValid
             required
             disabled={!isEdit && true}
           />
-          <label htmlFor='' className='profile__input-label profile__label_type_e-mail'>
+          <label htmlFor='email' className='profile__input-label profile__label_type_e-mail'>
             E-mail
           </label>
           <input

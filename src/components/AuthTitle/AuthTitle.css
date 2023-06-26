@@ -6,6 +6,7 @@
   line-height: 29px;
   margin: 40px 0;
   padding: 0;
+  display: block;
 }
 
 .auth-title_place_profile {
