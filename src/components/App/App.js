@@ -9,9 +9,12 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 import PageNotFound from '../PageNotFound/PageNotFound';
+import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
 import './App.css';
 
 import moviesApi from '../../utils/MoviesApi';
+
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function App() {
   const [initialMovies, setInitialMovies] = useState([]);
@@ -19,7 +22,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading] = useState(false);
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
-  const [user] = useState({ name: 'Виталий', email: 'pochta@yandex.ru' });
+  const [currentUser, setCurrentUser] = useState({ name: 'Виталий', email: 'pochta@yandex.ru' });
   const [isProfileEdit, setIsProfileEdit] = useState(false);
   const [isFormValid] = useState(true);
 
@@ -98,56 +101,69 @@ function App() {
   }
 
   return (
-    <div className='page'>
-      <div className='page__content'>
-        {pathsWithHeader && (
-          <Header
-            isLoggedIn={isLoggedIn}
-            isBurgerMenuOpen={isBurgerMenuOpen}
-            onBurgerMenuOpen={handleOpenBurgerMenu}
-            onBurgerMenuClose={handleCloseBurgerMenu}
-            onNavigateToSignup={handleNavigateToSignup}
-            onNavigateToSignin={handleNavigateToSignin}
-            onNavigateToProfile={handleNavigateToProfile}
-          ></Header>
-        )}
-        <Routes>
-          <Route path='/' element={<Main />}></Route>
-          <Route
-            path='/movies'
-            element={
-              <Movies
-                moviesCards={initialMovies.slice(0, 12)}
-                isMovieSaved={isMovieSaved}
-                onSaveMovie={handleSaveMovie}
-                isLoading={isLoading}
-              />
-            }
-          ></Route>
-          <Route
-            path='/saved-movies'
-            element={<SavedMovies moviesCards={initialMovies.slice(0, 3)} isLoading={isLoading} />}
-          ></Route>
-          <Route
-            path='/profile'
-            element={
-              <Profile
-                user={user}
-                isEdit={isProfileEdit}
-                onSubmit={hadleProfileSubmit}
-                onEditProfile={handleEditProfile}
-                onSignOut={handleSignOut}
-                isFormValid={isFormValid}
-              />
-            }
-          ></Route>
-          <Route path='/signin' element={<Login onSubmit={handleSignIn} isFormValid={isFormValid} />}></Route>
-          <Route path='/signup' element={<Register onSubmit={handleSignUp} isFormValid={isFormValid} />}></Route>
-          <Route path='*' element={<PageNotFound onNavigateToMain={handleNavigateToMain} />}></Route>
-        </Routes>
-        {pathsWithFooter && <Footer />}
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className='page'>
+        <div className='page__content'>
+          {pathsWithHeader && (
+            <Header
+              isLoggedIn={isLoggedIn}
+              isBurgerMenuOpen={isBurgerMenuOpen}
+              onBurgerMenuOpen={handleOpenBurgerMenu}
+              onBurgerMenuClose={handleCloseBurgerMenu}
+              onNavigateToSignup={handleNavigateToSignup}
+              onNavigateToSignin={handleNavigateToSignin}
+              onNavigateToProfile={handleNavigateToProfile}
+            ></Header>
+          )}
+          <Routes>
+            <Route path='/' element={<Main />}></Route>
+            <Route
+              path='/movies'
+              element={
+                <ProtectedRouteElement
+                  element={Movies}
+                  loggedIn={isLoggedIn}
+                  moviesCards={initialMovies.slice(0, 12)}
+                  isMovieSaved={isMovieSaved}
+                  onSaveMovie={handleSaveMovie}
+                  isLoading={isLoading}
+                />
+              }
+            ></Route>
+            <Route
+              path='/saved-movies'
+              element={
+                <ProtectedRouteElement
+                  element={SavedMovies}
+                  loggedIn={isLoggedIn}
+                  moviesCards={initialMovies.slice(0, 3)}
+                  isLoading={isLoading}
+                />
+              }
+            ></Route>
+            <Route
+              path='/profile'
+              element={
+                <ProtectedRouteElement
+                  element={Profile}
+                  loggedIn={isLoggedIn}
+                  user={currentUser}
+                  isEdit={isProfileEdit}
+                  onSubmit={hadleProfileSubmit}
+                  onEditProfile={handleEditProfile}
+                  onSignOut={handleSignOut}
+                  isFormValid={isFormValid}
+                />
+              }
+            ></Route>
+            <Route path='/signin' element={<Login onSubmit={handleSignIn} isFormValid={isFormValid} />}></Route>
+            <Route path='/signup' element={<Register onSubmit={handleSignUp} isFormValid={isFormValid} />}></Route>
+            <Route path='*' element={<PageNotFound onNavigateToMain={handleNavigateToMain} />}></Route>
+          </Routes>
+          {pathsWithFooter && <Footer />}
+        </div>
       </div>
-    </div>
+    </CurrentUserContext.Provider>
   );
 }
 

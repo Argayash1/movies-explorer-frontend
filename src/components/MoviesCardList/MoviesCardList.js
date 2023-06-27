@@ -21,7 +21,7 @@ function MoviesCardList({ moviesCards, buttonType, isMovieSaved, onSaveMovie, pl
   return (
     <section className={`movies-card-list ${place === 'saved-movies' ? 'movies-card-list_place_saved-movies' : ''}`}>
       {!moviesCards || moviesCards.length === 0 ? (
-        <p className='movies-card-list__not-found'>Фильмы по запросу не найдены</p>
+        <p className='movies-card-list__not-found'>Ничего не найдено</p>
       ) : (
         <ul className='movies-card-list__cards'>{movieCardElements}</ul>
       )}
