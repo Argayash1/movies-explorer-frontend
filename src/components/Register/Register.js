@@ -55,6 +55,8 @@ const Register = ({ onSubmit, isFormValid }) => {
           name='password'
           id='password'
           placeholder='Пароль'
+          minLength='6'
+          maxLength='30'
           autoComplete='off'
           defaultValue='12345678987654'
           required
