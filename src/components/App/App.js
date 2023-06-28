@@ -19,12 +19,13 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 function App() {
   const [initialMovies, setInitialMovies] = useState([]);
   const [isMovieSaved, setIsMovieSaved] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState({ name: 'Виталий', email: 'pochta@yandex.ru' });
   const [isProfileEdit, setIsProfileEdit] = useState(false);
   const [isFormValid] = useState(true);
+  const [isCheckBoxChecked, setIsCheckBoxChecked] = useState(false);
 
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -44,11 +45,11 @@ function App() {
     }
   }, [isBurgerMenuOpen]);
 
-  useEffect(() => {
-    moviesApi.getMovies().then((movies) => {
-      setInitialMovies(movies);
-    });
-  }, []);
+  // useEffect(() => {
+  //   moviesApi.getMovies().then((movies) => {
+  //     setInitialMovies(movies);
+  //   });
+  // }, []);
 
   function handleSignUp() {
     navigate('/signin', { replace: true });
@@ -100,6 +101,31 @@ function App() {
     navigate('/');
   }
 
+  function handleChekIsCheckboxChecked(checked) {
+    setIsCheckBoxChecked(checked);
+  }
+
+  async function handleFindMovies(value) {
+    try {
+      setIsLoading(true);
+      const movies = await moviesApi.getMovies();
+      localStorage.setItem('movies', JSON.stringify(movies));
+      localStorage.setItem('userRequest', value);
+      localStorage.setItem('IsCheckBoxChecked', isCheckBoxChecked);
+      const userRequest = localStorage.getItem('userRequest');
+      const allMovies = JSON.parse(localStorage.getItem('movies'));
+      const foundMovies = allMovies.filter(
+        (movie) =>
+          movie.nameRU.toLowerCase().includes(userRequest.toLowerCase()) ||
+          movie.nameEN.toLowerCase().includes(userRequest.toLowerCase()),
+      );
+      setInitialMovies(foundMovies.slice(0, 12));
+      setIsLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className='page'>
@@ -123,7 +149,10 @@ function App() {
                 <ProtectedRouteElement
                   element={Movies}
                   loggedIn={isLoggedIn}
-                  moviesCards={initialMovies.slice(0, 12)}
+                  moviesCards={initialMovies}
+                  onFindMovies={handleFindMovies}
+                  onChekIsCheckboxChecked={handleChekIsCheckboxChecked}
+                  checked={localStorage.getItem('IsCheckBoxChecked')}
                   isMovieSaved={isMovieSaved}
                   onSaveMovie={handleSaveMovie}
                   isLoading={isLoading}
@@ -137,6 +166,7 @@ function App() {
                   element={SavedMovies}
                   loggedIn={isLoggedIn}
                   moviesCards={initialMovies.slice(0, 3)}
+                  onChekIsCheckboxChecked={handleChekIsCheckboxChecked}
                   isLoading={isLoading}
                 />
               }
