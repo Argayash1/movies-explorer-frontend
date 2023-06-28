@@ -1,0 +1,20 @@
+.account-button {
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  color: #000000;
+  background: #f9f9f9;
+  border-radius: 20px;
+  padding: 8px 22px;
+  transition: opacity 0.5s linear;
+  cursor: pointer;
+}
+
+.account-button:hover {
+  opacity: 0.7;
+}

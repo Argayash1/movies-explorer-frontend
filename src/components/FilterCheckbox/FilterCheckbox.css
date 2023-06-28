@@ -1,0 +1,74 @@
+.filter-checkbox {
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+  display: flex;
+  margin: 26px 0 0;
+  padding-bottom: 43px;
+  border-bottom: 1px solid rgba(170, 170, 170, 0.2);
+  width: 100%;
+}
+
+.filter-checkbox__input-label {
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+}
+
+.filter-checkbox__invisible-checkbox {
+  position: absolute;
+  width: 1px; /* если у элемента не будет размеров, некоторые браузеры посчитают, что его вообще нет */
+  height: 1px;
+  overflow: hidden; /* без этого свойства тоже сработает, но так наверняка. Мы его ещё изучим, оно скрывает элементы, выходящие за границы родителя */
+  clip-path: inset(0 0 0 0);
+}
+
+.filter-checkbox__invisible-checkbox + .filter-checkbox__visible-checkbox {
+  display: inline-block; /* элемент span теперь сможет принимать определённую ширину и высоту */
+  margin-right: 14px;
+  background-color: transparent;
+  background-image: url('../../images/filter-checkbox_smalltumb.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 36px;
+  height: 20px;
+  cursor: pointer;
+  transition: opacity 0.5s, background-image 0.2s linear;
+} /* так для чекбокса выглядит первый сосед с классом filter-checkbox__visible-checkbox*/
+
+.filter-checkbox__invisible-checkbox + .filter-checkbox__visible-checkbox:hover {
+  opacity: 0.8;
+}
+
+.filter-checkbox__invisible-checkbox:checked + .filter-checkbox__visible-checkbox_type_checked {
+  background-image: url('../../images/filter-checkbox_smalltumb_checked.svg');
+}
+
+.filter-checkbox__text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+@media screen and (max-width: 768px) {
+  .filter-checkbox {
+    padding-bottom: 51px;
+  }
+}
+
+@media screen and (max-width: 586px) {
+  .filter-checkbox {
+    margin: 30px 0 0;
+    padding-bottom: 63px;
+  }
+
+  .filter-checkbox__invisible-checkbox + .filter-checkbox__visible-checkbox {
+    margin-right: 13px;
+  }
+
+  .filter-checkbox__text {
+    font-size: 11px;
+  }
+}

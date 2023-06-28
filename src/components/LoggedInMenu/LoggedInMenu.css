@@ -1,0 +1,72 @@
+.logged-in-menu {
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  gap: 40px;
+}
+
+.logged-in-menu_place_movies {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.logged-in-menu__list {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.logged-in-menu__list_place_movies {
+  gap: 16px;
+}
+
+.logged-in-menu__link {
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  color: #000000;
+  padding: 0;
+  transition: opacity 0.5s linear;
+}
+
+.logged-in-menu__link:hover {
+  opacity: 0.7;
+}
+
+.logged-in-menu__link_place_main {
+  font-size: 14px;
+}
+
+.logged-in-menu__link_active {
+  font-weight: 500;
+}
+
+.logged-in-menu__button {
+  color: #000000;
+  background: #f9f9f9;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 22px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  cursor: pointer;
+  transition: opacity 0.5s linear;
+}
+
+.logged-in-menu__button:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  .logged-in-menu {
+    display: none;
+  }
+}

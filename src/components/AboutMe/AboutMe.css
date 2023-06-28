@@ -1,0 +1,154 @@
+.about-me {
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+  padding: 110px 0 115px;
+  background: #fff;
+}
+
+.about-me__content {
+  padding: 0 70px;
+}
+
+.about-me__info {
+  display: grid;
+  grid-template-columns: 1fr 270px;
+  column-gap: 49px;
+  margin-top: 66px;
+  max-width: 100%;
+}
+
+.about-me__title {
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+  margin: 0 0 18px;
+  padding: 0;
+  display: block;
+}
+
+.about-me__subtitle {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  margin: 0 0 26px;
+  padding: 0;
+  display: block;
+}
+
+.about-me__bio {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  mix-blend-mode: normal;
+  max-width: 600px;
+  margin: 0 0 99px;
+  padding: 0;
+}
+
+.about-me__github-link {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-decoration: none;
+  color: #000;
+  transition: opacity 0.5s linear;
+}
+
+.about-me__github-link:hover {
+  opacity: 0.7;
+}
+
+.about-me__photo {
+  width: 270px;
+  height: 327px;
+  border-radius: 10px;
+  grid-column: 2/3; /* это сокращённая запись от grid-column-start: 2; grid-column-end: 3; */
+  grid-row: 1/5; /* это сокращённая запись от grid-row-start: 1; grid-row-end: 4; */
+  object-fit: cover;
+  justify-self: flex-end;
+  display: block;
+  font-size: 0;
+}
+
+@media screen and (max-width: 873px) {
+  .about-me {
+    padding: 90px 0 80px;
+  }
+
+  .about-me__content {
+    padding: 0 50px;
+  }
+
+  .about-me__info {
+    grid-template-columns: 1fr 255px;
+    column-gap: 49px;
+  }
+
+  .about-me__title {
+    font-size: 40px;
+    line-height: 40px;
+    margin: 0 0 16px;
+    padding: 0;
+  }
+
+  .about-me__subtitle {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 0 0 20px;
+  }
+
+  .about-me__bio {
+    max-width: 469px;
+    font-size: 12px;
+    line-height: 18px;
+    margin: 0 0 87px;
+  }
+
+  .about-me__photo {
+    width: 255px;
+    height: 307px;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .about-me {
+    padding: 70px 0;
+  }
+
+  .about-me__content {
+    padding: 0 14px;
+  }
+
+  .about-me__info {
+    margin-top: 60px;
+    grid-template-columns: 292px;
+    margin: 60px auto 0;
+    max-width: 292px;
+  }
+
+  .about-me__title {
+    font-size: 30px;
+    line-height: 36px;
+    margin: 0 0 20px;
+  }
+
+  .about-me__subtitle {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-me__bio {
+    font-size: 11px;
+    line-height: 16px;
+    margin: 0 0 40px;
+  }
+
+  .about-me__photo {
+    width: 100%;
+    height: 352px;
+    grid-row: 1/2;
+    grid-column: 1/2;
+    margin-bottom: 40px;
+  }
+}

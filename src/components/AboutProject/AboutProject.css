@@ -1,0 +1,189 @@
+.about-project {
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+  padding: 110px 0;
+  background: #fff;
+}
+
+.about-project__content {
+  padding: 0 70px;
+}
+
+.about-project__descriptions {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+  padding: 0;
+  margin: 70px 0 110px;
+}
+
+.about-project__descriptions-item {
+  max-width: 550px;
+  margin: 0;
+  padding: 0;
+}
+
+.about-project__descriptions-title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+  margin: 0 0 26px;
+  padding: 0;
+}
+
+.about-project__descriptions-text {
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.about-project__schedule {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.about-project__schedule-item {
+  width: 20%;
+}
+
+.about-project__schedule-item_type_long {
+  width: 80%;
+}
+
+.about-project__schedule-title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  padding: 9.5px 0;
+  margin: 0;
+  background-color: #2be080;
+}
+
+.about-project__schedule-title_color_grey {
+  background-color: #f2f2f2;
+}
+
+.about-project__schedule-text {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #a0a0a0;
+  margin: 14px 0 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .about-project {
+    padding: 90px 0;
+  }
+
+  .about-project__content {
+    padding: 0 50px;
+  }
+
+  .about-project__descriptions {
+    gap: 30px;
+  }
+
+  .about-project__descriptions-item {
+    max-width: 370px;
+  }
+
+  .about-project__descriptions-title {
+    margin: 0 0 22px;
+  }
+
+  .about-project__descriptions-text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .about-project__descriptions {
+    margin-bottom: 93px;
+  }
+
+  .about-project__descriptions-item {
+    max-width: 319px;
+  }
+
+  .about-project__schedule-text {
+    font-weight: 400;
+  }
+
+  .about-project__schedule-item {
+    width: 21%;
+  }
+
+  .about-project__schedule-item_type_long {
+    width: 79%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .about-project {
+    padding: 70px 0;
+  }
+
+  .about-project__descriptions {
+    margin: 60px 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 56px;
+  }
+
+  .about-project__descriptions-item {
+    max-width: 284px;
+  }
+
+  .about-project__descriptions-title {
+    font-size: 18px;
+    line-height: 22px;
+    margin: 0 0 16px;
+  }
+
+  .about-project__descriptions-text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-project__schedule-title {
+    font-size: 11px;
+    line-height: 13px;
+    padding: 11px 0;
+  }
+
+  .about-project__schedule-text {
+    font-size: 11px;
+    line-height: 13px;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .about-project__content {
+    padding: 0 18px;
+  }
+
+  .about-project__schedule-item {
+    width: 35%;
+  }
+
+  .about-project__schedule-item_type_long {
+    width: 65%;
+  }
+
+  .about-project__schedule-text {
+    margin-top: 10px;
+  }
+}

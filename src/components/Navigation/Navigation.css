@@ -1,0 +1,29 @@
+.navigation {
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navigation_place_movies {
+  width: 100%;
+  padding-left: 44px;
+}
+
+.navigation__links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation__links_type_movies {
+  width: 1058px;
+  justify-content: space-between;
+}
+
+.navigation__links_type_profile {
+  width: 1058px;
+  justify-content: space-between;
+}
