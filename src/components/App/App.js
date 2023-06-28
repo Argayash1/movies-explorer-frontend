@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -12,6 +12,7 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
 import './App.css';
 
+import mainApi from '../../utils/MainApi';
 import moviesApi from '../../utils/MoviesApi';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -19,13 +20,16 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 function App() {
   const [initialMovies, setInitialMovies] = useState([]);
   const [isMovieSaved, setIsMovieSaved] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isProfileLoading, setIsProfileLoading] = useState(false);
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
-  const [currentUser, setCurrentUser] = useState({ name: 'Виталий', email: 'pochta@yandex.ru' });
+  const [currentUser, setCurrentUser] = useState({});
   const [isProfileEdit, setIsProfileEdit] = useState(false);
   const [isFormValid] = useState(true);
   const [isCheckBoxChecked, setIsCheckBoxChecked] = useState(false);
+  const [isRegisterLoading, setIsRegisterLoading] = useState(false);
+  const [isLoginLoading, setIsLoginLoading] = useState(false);
 
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -45,24 +49,99 @@ function App() {
     }
   }, [isBurgerMenuOpen]);
 
-  // useEffect(() => {
-  //   moviesApi.getMovies().then((movies) => {
-  //     setInitialMovies(movies);
-  //   });
-  // }, []);
+  const tokenCheck = useCallback(() => {
+    // если пользователь авторизован,
+    // эта функция проверит, есть ли данные в req.user._id на сервере
+    const authorized = localStorage.getItem('authorized');
+    if (authorized) {
+      // проверим, есть ли данные в req.user._id
+      mainApi
+        .getContent()
+        .then((userData) => {
+          if (userData.email) {
+            // авторизуем пользователя
+            setIsLoggedIn(true);
+            navigate('/', { replace: true });
+          }
+        })
+        .catch((err) => {
+          console.log(err); // выведем ошибку в консоль
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    } else {
+      setIsLoading(false);
+    }
+  }, [navigate]);
 
-  function handleSignUp() {
-    navigate('/signin', { replace: true });
+  useEffect(() => {
+    tokenCheck();
+    isLoggedIn &&
+      Promise.all([mainApi.getUserInfo()])
+        .then(([userData]) => {
+          setCurrentUser(userData);
+        })
+        .catch((err) => {
+          console.log(err); // выведем ошибку в консоль
+        });
+  }, [isLoggedIn, tokenCheck]);
+
+  function handleSignUp(values) {
+    setIsRegisterLoading(true);
+    const { name, email, password } = values;
+    console.log(values);
+    return mainApi
+      .register(name, email, password)
+      .then((res) => {
+        navigate('/signin', { replace: true });
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setIsRegisterLoading(false);
+        }, 1500);
+      });
   }
 
-  function handleSignIn() {
-    setIsLoggedIn(true);
-    navigate('/', { replace: true });
+  function handleSignIn(values) {
+    setIsLoginLoading(true);
+    if (!values.email || !values.password) {
+      return;
+    }
+    mainApi
+      .authorize(values.email, values.password)
+      .then((data) => {
+        if (data.message) {
+          setIsLoggedIn(true);
+          localStorage.setItem('authorized', 'true');
+          navigate('/movies', { replace: true });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setIsLoginLoading(false);
+        }, 1500);
+      });
   }
 
   function handleSignOut() {
-    setIsLoggedIn(false);
-    navigate('/', { replace: true });
+    mainApi
+      .signout()
+      .then(() => {
+        localStorage.removeItem('authorized');
+        setIsLoggedIn(false);
+        navigate('/', { replace: true });
+        setIsBurgerMenuOpen(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function handleSaveMovie() {
@@ -81,8 +160,22 @@ function App() {
     setIsProfileEdit(true);
   }
 
-  function hadleProfileSubmit() {
+  function hadleProfileSubmit(values) {
     setIsProfileEdit(false);
+    setIsProfileLoading(true);
+    mainApi
+      .editProfile(values.name, values.email)
+      .then((userData) => {
+        setCurrentUser(userData);
+      })
+      .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setIsProfileLoading(false);
+        }, 1500);
+      });
   }
 
   function handleNavigateToSignup() {
@@ -142,7 +235,7 @@ function App() {
             ></Header>
           )}
           <Routes>
-            <Route path='/' element={<Main />}></Route>
+            <Route path='/' element={<Main />} />
             <Route
               path='/movies'
               element={
@@ -158,7 +251,7 @@ function App() {
                   isLoading={isLoading}
                 />
               }
-            ></Route>
+            />
             <Route
               path='/saved-movies'
               element={
@@ -170,14 +263,13 @@ function App() {
                   isLoading={isLoading}
                 />
               }
-            ></Route>
+            />
             <Route
               path='/profile'
               element={
                 <ProtectedRouteElement
                   element={Profile}
                   loggedIn={isLoggedIn}
-                  user={currentUser}
                   isEdit={isProfileEdit}
                   onSubmit={hadleProfileSubmit}
                   onEditProfile={handleEditProfile}
@@ -185,10 +277,13 @@ function App() {
                   isFormValid={isFormValid}
                 />
               }
-            ></Route>
-            <Route path='/signin' element={<Login onSubmit={handleSignIn} isFormValid={isFormValid} />}></Route>
-            <Route path='/signup' element={<Register onSubmit={handleSignUp} isFormValid={isFormValid} />}></Route>
-            <Route path='*' element={<PageNotFound onNavigateToMain={handleNavigateToMain} />}></Route>
+            />
+            <Route path='/signin' element={<Login name='login' onSignin={handleSignIn} isLoading={isLoginLoading} />} />
+            <Route
+              path='/signup'
+              element={<Register name='register' onSignup={handleSignUp} isLoading={isRegisterLoading} />}
+            />
+            <Route path='*' element={<PageNotFound onNavigateToMain={handleNavigateToMain} />} />
           </Routes>
           {pathsWithFooter && <Footer />}
         </div>

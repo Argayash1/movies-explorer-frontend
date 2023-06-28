@@ -1,7 +1,9 @@
 import './Login.css';
+import useForm from '../../hooks/useForm';
 import AuthPage from '../AuthPage/AuthPage';
 
-const Login = ({ onSubmit, isFormValid }) => {
+const Login = ({ name, onSignin, isLoading }) => {
+  const { values, errors, formValid, onChange } = useForm();
   return (
     <main className='login'>
       <AuthPage
@@ -10,40 +12,46 @@ const Login = ({ onSubmit, isFormValid }) => {
         paragraphText='Ещё не'
         url='/signup'
         linkText='Регистрация'
-        name='login'
-        onSubmit={onSubmit}
-        isFormValid={isFormValid}
+        name={`${name}`}
+        onSubmit={onSignin}
+        isLoading={isLoading}
+        loadingText='Вход'
+        values={values}
+        formValid={formValid}
       >
         <label htmlFor='email' className='login__input-label'>
           E-mail
         </label>
         <input
           type='email'
-          className='login__input'
+          className={`login__input ${errors.email && 'login__input_type_error'}`}
+          value={values.email || ''}
           name='email'
           id='email'
+          onChange={onChange}
           placeholder='E-mail'
           autoComplete='off'
-          defaultValue='pochta@yandex.ru'
           required
         />
-        <span className='login__error'></span>
+        <span className='login__error'>{errors.email}</span>
 
         <label htmlFor='password' className='login__input-label'>
           Пароль
         </label>
         <input
           type='password'
-          className='login__input'
+          className={`login__input ${errors.password && 'login__input_type_error'}`}
+          value={values.password || ''}
           name='password'
           id='password'
+          onChange={onChange}
           placeholder='Пароль'
-          minLength='6'
+          minLength='8'
           maxLength='30'
           autoComplete='off'
           required
         />
-        <span className='login__error'></span>
+        <span className='login__error'>{errors.password}</span>
       </AuthPage>
     </main>
   );

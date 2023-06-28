@@ -36,6 +36,10 @@
   color: #a0a0a0;
 }
 
+.login__input_type_error {
+  color: #ee3465;
+}
+
 .login__error {
   font-style: normal;
   font-weight: 400;

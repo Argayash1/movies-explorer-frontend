@@ -41,6 +41,10 @@
   display: block;
 }
 
+.profile__input_type_error {
+  color: #ee3465;
+}
+
 .profile__border-between-inputs {
   border-top: 1px solid #e8e8e8;
   grid-column: 1/3;

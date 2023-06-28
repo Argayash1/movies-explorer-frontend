@@ -36,7 +36,7 @@
   color: #a0a0a0;
 }
 
-.register__input_is_not-valid {
+.register__input_type_error {
   color: #ee3465;
 }
 
