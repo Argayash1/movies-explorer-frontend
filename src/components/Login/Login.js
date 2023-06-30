@@ -2,7 +2,7 @@ import './Login.css';
 import useForm from '../../hooks/useForm';
 import AuthPage from '../AuthPage/AuthPage';
 
-const Login = ({ name, onSignin, isLoading }) => {
+const Login = ({ name, onSignin, isRequestSuccessful, errorText, onCleanErrorText, isLoading }) => {
   const { values, errors, formValid, onChange } = useForm();
   return (
     <main className='login'>
@@ -15,9 +15,12 @@ const Login = ({ name, onSignin, isLoading }) => {
         name={`${name}`}
         onSubmit={onSignin}
         isLoading={isLoading}
-        loadingText='Вход'
+        loadingText='Вход...'
         values={values}
         formValid={formValid}
+        isRequestSuccessful={isRequestSuccessful}
+        errorText={errorText}
+        onCleanErrorText={onCleanErrorText}
       >
         <label htmlFor='email' className='login__input-label'>
           E-mail
@@ -51,7 +54,7 @@ const Login = ({ name, onSignin, isLoading }) => {
           autoComplete='off'
           required
         />
-        <span className='login__error'>{errors.password}</span>
+        <span className='login__error login__error_type_lower'>{errors.password}</span>
       </AuthPage>
     </main>
   );

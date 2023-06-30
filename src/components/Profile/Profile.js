@@ -5,7 +5,7 @@ import Form from '../Form/Form';
 import AuthTitle from '../AuthTitle/AuthTitle';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 
-function Profile({ isEdit, onSignOut, onSubmit, onEditProfile, isFormValid }) {
+function Profile({ isEdit, onSignOut, onSubmit, onEditProfile }) {
   const currentUser = useContext(CurrentUserContext);
   const { values, errors, formValid, onChange } = useForm();
 
@@ -17,6 +17,7 @@ function Profile({ isEdit, onSignOut, onSubmit, onEditProfile, isFormValid }) {
           type='profile'
           name='profile'
           buttonText='Сохранить'
+          loadingText='Сохранение...'
           isProfileEdit={isEdit}
           onSubmit={onSubmit}
           values={values}
@@ -37,7 +38,7 @@ function Profile({ isEdit, onSignOut, onSubmit, onEditProfile, isFormValid }) {
             minLength='2'
             maxLength='30'
             required
-            disabled={!isEdit && true}
+            disabled={!isEdit}
           />
           <label htmlFor='email' className='profile__input-label profile__input-label_type_e-mail'>
             E-mail
@@ -52,10 +53,8 @@ function Profile({ isEdit, onSignOut, onSubmit, onEditProfile, isFormValid }) {
             placeholder='E-mail'
             autoComplete='off'
             required
-            disabled={!isEdit && true}
+            disabled={!isEdit}
           />
-
-          {isEdit && !isFormValid && <span className='profile__error'>При обновлении профиля произошла ошибка.</span>}
         </Form>
         {!isEdit && (
           <div className='profile__buttons'>

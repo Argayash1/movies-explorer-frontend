@@ -2,8 +2,10 @@ import './Register.css';
 import useForm from '../../hooks/useForm';
 import AuthPage from '../AuthPage/AuthPage';
 
-const Register = ({ name, onSignup, isLoading }) => {
+const Register = ({ name, onSignup, isLoading, isRequestSuccessful, errorText, onCleanErrorText }) => {
   const { values, errors, formValid, onChange } = useForm();
+  const nameRegex = '[A-Za-zА-Яа-яЁё\\-\\s]{1,30}';
+  const title = 'имя должно держать латиницу, кириллицу, пробел или дефис';
   return (
     <main className='register'>
       <AuthPage
@@ -15,9 +17,12 @@ const Register = ({ name, onSignup, isLoading }) => {
         name={`${name}`}
         onSubmit={onSignup}
         isLoading={isLoading}
-        loadingText='Регистрация'
+        loadingText='Регистрация...'
         values={values}
         formValid={formValid}
+        isRequestSuccessful={isRequestSuccessful}
+        errorText={errorText}
+        onCleanErrorText={onCleanErrorText}
       >
         <label htmlFor='name' className='register__input-label'>
           Имя
@@ -34,6 +39,9 @@ const Register = ({ name, onSignup, isLoading }) => {
           minLength='2'
           maxLength='30'
           autoComplete='off'
+          pattern={nameRegex}
+          title={title}
+          disabled={isLoading}
           required
         />
         <span className='register__error'>{errors.name}</span>
@@ -68,9 +76,10 @@ const Register = ({ name, onSignup, isLoading }) => {
           autoComplete='off'
           minLength='8'
           maxLength='30'
+          disabled={isLoading}
           required
         />
-        <span className='register__error'>{errors.password}</span>
+        <span className='register__error register__error_type-lower'>{errors.password}</span>
       </AuthPage>
     </main>
   );

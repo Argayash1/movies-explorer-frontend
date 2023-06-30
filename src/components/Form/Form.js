@@ -5,12 +5,14 @@ function Form({
   name,
   values,
   formValid,
-  children,
   buttonText,
   onSubmit,
   isProfileEdit = true,
   isLoading,
   loadingText,
+  isRequestSuccessful,
+  errorText,
+  children,
 }) {
   const submitButtonDisable = isLoading || !formValid;
   const submitButtonClassName = `form__submit-button ${!formValid && 'form__submit-button_disabled'} 
@@ -18,7 +20,6 @@ function Form({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(values);
     onSubmit(values);
   };
 
@@ -31,6 +32,7 @@ function Form({
       noValidate
     >
       {children}
+      <span className='form__error'>{errorText}</span>
       {isProfileEdit && (
         <button type='submit' className={submitButtonClassName} disabled={submitButtonDisable}>
           {isLoading ? loadingText : buttonText}

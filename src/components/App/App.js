@@ -16,20 +16,37 @@ import mainApi from '../../utils/MainApi';
 import moviesApi from '../../utils/MoviesApi';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import Preloader from '../Preloader/Preloader';
 
 function App() {
-  const [initialMovies, setInitialMovies] = useState([]);
-  const [isMovieSaved, setIsMovieSaved] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isProfileLoading, setIsProfileLoading] = useState(false);
-  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
+  // Стейт данных пользователя
   const [currentUser, setCurrentUser] = useState({});
-  const [isProfileEdit, setIsProfileEdit] = useState(false);
-  const [isFormValid] = useState(true);
-  const [isCheckBoxChecked, setIsCheckBoxChecked] = useState(false);
+
+  // Стейты фильмов
+  const [initialMovies, setInitialMovies] = useState([]);
+  const [savedMovies, setSavedMovies] = useState([]);
+  const [isMovieSaved, setIsMovieSaved] = useState(false);
+
+  // Стейт авторизации пользователя
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Стейт бургер-меню
+  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
+
+  // Стейты загрузки
+  const [isLoading, setIsLoading] = useState(true);
   const [isRegisterLoading, setIsRegisterLoading] = useState(false);
   const [isLoginLoading, setIsLoginLoading] = useState(false);
+  const [isProfileLoading, setIsProfileLoading] = useState(false);
+  const [isMoviesLoading, setisMoviesLoading] = useState(false);
+
+  // Стейт редактирования профиля
+  const [isProfileEdit, setIsProfileEdit] = useState(false);
+  const [isCheckBoxChecked, setIsCheckBoxChecked] = useState(false);
+
+  // Стейты запросов
+  const [isRequestSuccessful, setIsRequestSuccessful] = useState(true);
+  const [errorText, setErrortext] = useState('');
 
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -59,9 +76,9 @@ function App() {
         .getContent()
         .then((userData) => {
           if (userData.email) {
+            console.log(userData);
             // авторизуем пользователя
             setIsLoggedIn(true);
-            navigate('/', { replace: true });
           }
         })
         .catch((err) => {
@@ -73,14 +90,16 @@ function App() {
     } else {
       setIsLoading(false);
     }
-  }, [navigate]);
+  }, []);
 
   useEffect(() => {
     tokenCheck();
     isLoggedIn &&
-      Promise.all([mainApi.getUserInfo()])
-        .then(([userData]) => {
+      Promise.all([mainApi.getUserInfo(), mainApi.getSavedMovies()])
+        .then(([userData, savedMovies]) => {
+          console.log(userData);
           setCurrentUser(userData);
+          setSavedMovies(savedMovies);
         })
         .catch((err) => {
           console.log(err); // выведем ошибку в консоль
@@ -89,15 +108,19 @@ function App() {
 
   function handleSignUp(values) {
     setIsRegisterLoading(true);
+    setErrortext('');
     const { name, email, password } = values;
-    console.log(values);
     return mainApi
       .register(name, email, password)
-      .then((res) => {
-        navigate('/signin', { replace: true });
+      .then(() => {
+        setIsLoggedIn(true);
+        localStorage.setItem('authorized', 'true');
+        navigate('/movies', { replace: true });
       })
       .catch((err) => {
         console.log(err);
+        setIsRequestSuccessful(false);
+        setErrortext(err);
       })
       .finally(() => {
         setTimeout(() => {
@@ -108,6 +131,7 @@ function App() {
 
   function handleSignIn(values) {
     setIsLoginLoading(true);
+    setErrortext('');
     if (!values.email || !values.password) {
       return;
     }
@@ -122,6 +146,8 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+        setIsRequestSuccessful(false);
+        setErrortext(err);
       })
       .finally(() => {
         setTimeout(() => {
@@ -190,17 +216,21 @@ function App() {
     navigate('/profile');
   }
 
-  function handleNavigateToMain() {
-    navigate('/');
+  function handleNavigateBack() {
+    navigate(-1);
   }
 
   function handleChekIsCheckboxChecked(checked) {
     setIsCheckBoxChecked(checked);
   }
 
+  function handleCleanErrorText() {
+    setErrortext('');
+  }
+
   async function handleFindMovies(value) {
     try {
-      setIsLoading(true);
+      setisMoviesLoading(true);
       const movies = await moviesApi.getMovies();
       localStorage.setItem('movies', JSON.stringify(movies));
       localStorage.setItem('userRequest', value);
@@ -213,7 +243,7 @@ function App() {
           movie.nameEN.toLowerCase().includes(userRequest.toLowerCase()),
       );
       setInitialMovies(foundMovies.slice(0, 12));
-      setIsLoading(false);
+      setisMoviesLoading(false);
     } catch (err) {
       console.log(err);
     }
@@ -221,73 +251,97 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className='page'>
-        <div className='page__content'>
-          {pathsWithHeader && (
-            <Header
-              isLoggedIn={isLoggedIn}
-              isBurgerMenuOpen={isBurgerMenuOpen}
-              onBurgerMenuOpen={handleOpenBurgerMenu}
-              onBurgerMenuClose={handleCloseBurgerMenu}
-              onNavigateToSignup={handleNavigateToSignup}
-              onNavigateToSignin={handleNavigateToSignin}
-              onNavigateToProfile={handleNavigateToProfile}
-            ></Header>
-          )}
-          <Routes>
-            <Route path='/' element={<Main />} />
-            <Route
-              path='/movies'
-              element={
-                <ProtectedRouteElement
-                  element={Movies}
-                  loggedIn={isLoggedIn}
-                  moviesCards={initialMovies}
-                  onFindMovies={handleFindMovies}
-                  onChekIsCheckboxChecked={handleChekIsCheckboxChecked}
-                  checked={localStorage.getItem('IsCheckBoxChecked')}
-                  isMovieSaved={isMovieSaved}
-                  onSaveMovie={handleSaveMovie}
-                  isLoading={isLoading}
-                />
-              }
-            />
-            <Route
-              path='/saved-movies'
-              element={
-                <ProtectedRouteElement
-                  element={SavedMovies}
-                  loggedIn={isLoggedIn}
-                  moviesCards={initialMovies.slice(0, 3)}
-                  onChekIsCheckboxChecked={handleChekIsCheckboxChecked}
-                  isLoading={isLoading}
-                />
-              }
-            />
-            <Route
-              path='/profile'
-              element={
-                <ProtectedRouteElement
-                  element={Profile}
-                  loggedIn={isLoggedIn}
-                  isEdit={isProfileEdit}
-                  onSubmit={hadleProfileSubmit}
-                  onEditProfile={handleEditProfile}
-                  onSignOut={handleSignOut}
-                  isFormValid={isFormValid}
-                />
-              }
-            />
-            <Route path='/signin' element={<Login name='login' onSignin={handleSignIn} isLoading={isLoginLoading} />} />
-            <Route
-              path='/signup'
-              element={<Register name='register' onSignup={handleSignUp} isLoading={isRegisterLoading} />}
-            />
-            <Route path='*' element={<PageNotFound onNavigateToMain={handleNavigateToMain} />} />
-          </Routes>
-          {pathsWithFooter && <Footer />}
+      {isLoading ? (
+        <Preloader />
+      ) : (
+        <div className='page'>
+          <div className='page__content'>
+            {pathsWithHeader && (
+              <Header
+                isLoggedIn={isLoggedIn}
+                isBurgerMenuOpen={isBurgerMenuOpen}
+                onBurgerMenuOpen={handleOpenBurgerMenu}
+                onBurgerMenuClose={handleCloseBurgerMenu}
+                onNavigateToSignup={handleNavigateToSignup}
+                onNavigateToSignin={handleNavigateToSignin}
+                onNavigateToProfile={handleNavigateToProfile}
+              ></Header>
+            )}
+            <Routes>
+              <Route path='/' element={<Main />} />
+              <Route
+                path='/movies'
+                element={
+                  <ProtectedRouteElement
+                    element={Movies}
+                    loggedIn={isLoggedIn}
+                    moviesCards={initialMovies}
+                    onFindMovies={handleFindMovies}
+                    onChekIsCheckboxChecked={handleChekIsCheckboxChecked}
+                    checked={localStorage.getItem('IsCheckBoxChecked')}
+                    isMovieSaved={isMovieSaved}
+                    onSaveMovie={handleSaveMovie}
+                    isLoading={isMoviesLoading}
+                  />
+                }
+              />
+              <Route
+                path='/saved-movies'
+                element={
+                  <ProtectedRouteElement
+                    element={SavedMovies}
+                    loggedIn={isLoggedIn}
+                    moviesCards={initialMovies.slice(0, 3)}
+                    onChekIsCheckboxChecked={handleChekIsCheckboxChecked}
+                    isLoading={isLoading}
+                  />
+                }
+              />
+              <Route
+                path='/profile'
+                element={
+                  <ProtectedRouteElement
+                    element={Profile}
+                    loggedIn={isLoggedIn}
+                    isEdit={isProfileEdit}
+                    onSubmit={hadleProfileSubmit}
+                    onEditProfile={handleEditProfile}
+                    onSignOut={handleSignOut}
+                  />
+                }
+              />
+              <Route
+                path='/signin'
+                element={
+                  <Login
+                    name='login'
+                    onSignin={handleSignIn}
+                    isRequestSuccessful={isRequestSuccessful}
+                    errorText={errorText}
+                    onCleanErrorText={handleCleanErrorText}
+                    isLoading={isLoginLoading}
+                  />
+                }
+              />
+              <Route
+                path='/signup'
+                element={
+                  <Register
+                    name='register'
+                    onSignup={handleSignUp}
+                    isRequestSuccessful={isRequestSuccessful}
+                    errorText={errorText}
+                    onCleanErrorText={handleCleanErrorText}
+                    isLoading={isRegisterLoading}
+                  />
+                }
+              />
+              <Route path='*' element={<PageNotFound onNavigateToMain={handleNavigateBack} />} />
+            </Routes>
+            {pathsWithFooter && <Footer />}
+          </div>
         </div>
-      </div>
+      )}
     </CurrentUserContext.Provider>
   );
 }

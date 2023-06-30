@@ -47,16 +47,16 @@
   line-height: 12px;
   color: #ee3465;
   margin-top: 8px;
-  height: 12px;
+  min-height: 12px;
 }
 
-.register__error:last-of-type {
+.register__error_type-lower {
   margin-top: 10px;
-  margin-bottom: 69px;
+  margin-bottom: 36px;
 }
 
 @media screen and (max-width: 544px) {
-  .register__error:last-of-type {
-    margin-bottom: 157px;
+  .register__error_type-lower {
+    margin-bottom: 124px;
   }
 }
