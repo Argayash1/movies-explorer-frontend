@@ -2,7 +2,7 @@ import useForm from '../../hooks/useForm';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
-function SearchForm({ onFindMovies, onChekIsCheckboxChecked, checked }) {
+function SearchForm({ onFindMovies, onChekIsCheckboxChecked, checked, onFilter }) {
   const { values, errors, formValid, onChange } = useForm();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,7 +30,7 @@ function SearchForm({ onFindMovies, onChekIsCheckboxChecked, checked }) {
             Поиск
           </button>
         </div>
-        <FilterCheckbox onChekIsCheckboxChecked={onChekIsCheckboxChecked} checked={checked} />
+        <FilterCheckbox onChekIsCheckboxChecked={onChekIsCheckboxChecked} checked={checked} onFilter={onFilter} />
       </form>
     </section>
   );

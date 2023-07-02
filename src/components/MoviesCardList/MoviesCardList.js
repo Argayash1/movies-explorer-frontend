@@ -2,17 +2,28 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { useLocation } from 'react-router-dom';
 
-function MoviesCardList({ moviesCards, buttonType, isMovieSaved, onSaveMovie, place }) {
+function MoviesCardList({
+  moviesCards,
+  buttonType,
+  onSaveMovie,
+  onDeleteMovie,
+  place,
+  isMovieSaved,
+  movieIdForDelete,
+}) {
   const { pathname } = useLocation();
 
   const movieCardElements = moviesCards.map((movieCard) => {
     return (
-      <li key={movieCard.id}>
+      <li key={movieCard.id || movieCard.movieId}>
         <MoviesCard
           movieCard={movieCard}
           buttonType={buttonType}
           onSaveMovie={onSaveMovie}
+          onDeleteMovie={onDeleteMovie}
+          place={place}
           isMovieSaved={isMovieSaved}
+          movieIdForDelete={movieIdForDelete}
         />
       </li>
     );
@@ -20,7 +31,7 @@ function MoviesCardList({ moviesCards, buttonType, isMovieSaved, onSaveMovie, pl
 
   return (
     <section className={`movies-card-list ${place === 'saved-movies' ? 'movies-card-list_place_saved-movies' : ''}`}>
-      {!moviesCards || moviesCards.length === 0 ? (
+      {moviesCards.length === 0 ? (
         <p className='movies-card-list__not-found'>Ничего не найдено</p>
       ) : (
         <ul className='movies-card-list__cards'>{movieCardElements}</ul>

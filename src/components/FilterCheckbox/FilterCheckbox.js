@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './FilterCheckbox.css';
 
-function FilterCheckbox({ onChekIsCheckboxChecked, checked = false }) {
+function FilterCheckbox({ onChekIsCheckboxChecked, checked = false, onFilter }) {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleChange = (e) => {
@@ -18,6 +18,7 @@ function FilterCheckbox({ onChekIsCheckboxChecked, checked = false }) {
           className='filter-checkbox__invisible-checkbox'
           onChange={handleChange}
           checked={checked || ''}
+          onClick={onFilter}
         />
         <span className='filter-checkbox__visible-checkbox filter-checkbox__visible-checkbox_type_checked'></span>
       </label>

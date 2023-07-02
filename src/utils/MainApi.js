@@ -47,7 +47,7 @@ class MainApi {
     });
   }
 
-  addNewMovie({
+  saveMovie({
     country,
     director,
     duration,

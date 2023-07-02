@@ -3,18 +3,37 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import './Movies.css';
 
-function Movies({ moviesCards, onFindMovies, onSaveMovie, isMovieSaved, isLoading, onChekIsCheckboxChecked, checked }) {
+function Movies({
+  hasTheUserSearched,
+  moviesCards,
+  onFindMovies,
+  onSaveMovie,
+  onDeleteMovie,
+  onFilter,
+  isLoading,
+  onChekIsCheckboxChecked,
+  checked,
+  isMovieSaved,
+  movieIdForDelete,
+}) {
   return (
     <main className='movies'>
-      <SearchForm onFindMovies={onFindMovies} onChekIsCheckboxChecked={onChekIsCheckboxChecked} checked={checked} />
-      {isLoading ? (
-        <Preloader />
-      ) : (
+      <SearchForm
+        onFindMovies={onFindMovies}
+        onChekIsCheckboxChecked={onChekIsCheckboxChecked}
+        onFilter={onFilter}
+        checked={checked}
+      />
+      {isLoading && <Preloader />}
+      {!isLoading && hasTheUserSearched && (
         <MoviesCardList
           moviesCards={moviesCards}
           buttonType='save'
           onSaveMovie={onSaveMovie}
+          onDeleteMovie={onDeleteMovie}
+          place='movies'
           isMovieSaved={isMovieSaved}
+          movieIdForDelete={movieIdForDelete}
         />
       )}
     </main>
