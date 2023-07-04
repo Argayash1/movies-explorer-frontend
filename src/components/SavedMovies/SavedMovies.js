@@ -3,10 +3,10 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import './SavedMovies.css';
 
-function SavedMovies({ moviesCards, isLoading, onDeleteMovie }) {
+function SavedMovies({ moviesCards, isLoading, onDeleteMovie, onFilter }) {
   return (
     <main className='saved-movies'>
-      <SearchForm />
+      <SearchForm onFilter={onFilter} />
       {isLoading ? (
         <Preloader />
       ) : (

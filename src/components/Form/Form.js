@@ -14,9 +14,9 @@ function Form({
   errorText,
   children,
 }) {
+  const formClassName = `form ${type === 'profile' ? 'form_type_profile' : ''}`;
   const submitButtonDisable = isLoading || !formValid;
-  const submitButtonClassName = `form__submit-button ${!formValid && 'form__submit-button_disabled'} 
-  ${type === 'profile' && 'form__submit-button_type_profile'}`;
+  const submitButtonClassName = `form__submit-button ${type === 'profile' && 'form__submit-button_type_profile'}`;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,13 +24,7 @@ function Form({
   };
 
   return (
-    <form
-      className={`form ${type === 'profile' ? 'form_type_profile' : ''}`}
-      name={`${name}`}
-      id='form'
-      onSubmit={handleSubmit}
-      noValidate
-    >
+    <form className={formClassName} name={`${name}`} id='form' onSubmit={handleSubmit} noValidate>
       {children}
       <span className='form__error'>{errorText}</span>
       {isProfileEdit && (

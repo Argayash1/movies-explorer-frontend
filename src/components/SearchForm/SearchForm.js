@@ -2,8 +2,10 @@ import useForm from '../../hooks/useForm';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
-function SearchForm({ onFindMovies, onChekIsCheckboxChecked, checked, onFilter }) {
+function SearchForm({ onFindMovies, onChekIsCheckboxChecked, checked, onFilter, isLoading, userRequest }) {
   const { values, errors, formValid, onChange } = useForm();
+  const submitButtonDisable = isLoading || !formValid;
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onFindMovies(values.search);
@@ -16,17 +18,18 @@ function SearchForm({ onFindMovies, onChekIsCheckboxChecked, checked, onFilter }
           <label className='search-form__input-label'>
             <input
               className='search-form__input'
-              type='text'
-              value={values.search || ''}
+              type='search'
+              value={values.search || userRequest || ''}
               name='search'
               id='search'
               onChange={onChange}
               placeholder='Фильм'
               autoComplete='off'
+              minLength='1'
               required
             />
           </label>
-          <button className='search-form__submit-button' type='submit'>
+          <button className='search-form__submit-button' type='submit' disabled={submitButtonDisable}>
             Поиск
           </button>
         </div>

@@ -35,6 +35,9 @@ function App() {
   // Стейт поиска пользователя
   const [hasTheUserSearched, setHasTheUserSearched] = useState(false);
 
+  // Стейт состояния чекбокса
+  const [isCheckBoxChecked, setIsCheckBoxChecked] = useState(false);
+
   // Стейт бургер-меню
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 
@@ -47,7 +50,6 @@ function App() {
 
   // Стейт редактирования профиля
   const [isProfileEdit, setIsProfileEdit] = useState(false);
-  const [isCheckBoxChecked, setIsCheckBoxChecked] = useState(false);
 
   // Стейты запросов
   const [isRequestSuccessful, setIsRequestSuccessful] = useState(true);
@@ -172,8 +174,8 @@ function App() {
       .then(() => {
         localStorage.clear();
         setIsLoggedIn(false);
-        navigate('/', { replace: true });
         setIsBurgerMenuOpen(false);
+        navigate('/', { replace: true });
       })
       .catch((err) => {
         console.log(err);
@@ -226,10 +228,6 @@ function App() {
     navigate(-1);
   }
 
-  function handleChekIsCheckboxChecked(checked) {
-    setIsCheckBoxChecked(checked);
-  }
-
   function handleCleanErrorText() {
     setErrortext('');
   }
@@ -241,27 +239,33 @@ function App() {
       const movies = await moviesApi.getMovies();
       localStorage.setItem('movies', JSON.stringify(movies));
       localStorage.setItem('userRequest', value);
-      // localStorage.setItem('IsCheckBoxChecked', isCheckBoxChecked);
+      localStorage.setItem('IsCheckBoxChecked', isCheckBoxChecked);
       const allMovies = JSON.parse(localStorage.getItem('movies'));
       const foundMovies = allMovies.filter(
         (movie) =>
           movie.nameRU.toLowerCase().includes(value.toLowerCase()) ||
           movie.nameEN.toLowerCase().includes(value.toLowerCase()),
       );
+      localStorage.setItem('foundMovies', JSON.stringify(foundMovies));
       setFoundMovies(foundMovies);
-      setInitialMovies(foundMovies.slice(0, 12));
+      setInitialMovies(foundMovies);
     } catch (err) {
       console.log(err);
     }
     setisMoviesLoading(false);
   }
 
-  function handleFilterMovies() {
-    const filteredMovies = foundMovies.filter((movie) => movie.duration <= 40);
-    setInitialMovies(filteredMovies.slice(0, 3));
+  function handleFilterMovies(checked) {
+    setIsCheckBoxChecked(checked);
+    if (!checked) {
+      const filteredMovies = foundMovies.filter((movie) => movie.duration <= 40);
+      setInitialMovies(filteredMovies);
+    } else {
+      setInitialMovies(foundMovies);
+    }
   }
 
-  async function handleSaveMovie(movie) {
+  async function handleSaveMovie(movie, IsSaved) {
     try {
       const isMovieInSaved = savedMovies.some((savedMovie) => savedMovie.movieId === movie.movieId);
       if (!isMovieInSaved) {
@@ -269,6 +273,7 @@ function App() {
         setMovieIdForDelete(savedMovie._id);
         const updatedSavedMovies = [...savedMovies, savedMovie];
         setSavedMovies(updatedSavedMovies);
+        setIsMovieSaved(updatedSavedMovies.some((savedMovie) => savedMovie.movieId === movie.movieId));
       }
     } catch (err) {
       console.log(err);
@@ -314,14 +319,14 @@ function App() {
                     hasTheUserSearched={hasTheUserSearched}
                     moviesCards={initialMovies}
                     onFindMovies={handleFindMovies}
-                    onChekIsCheckboxChecked={handleChekIsCheckboxChecked}
                     checked={localStorage.getItem('IsCheckBoxChecked')}
                     onSaveMovie={handleSaveMovie}
                     onDeleteMovie={handleDeleteMovie}
                     onFilter={handleFilterMovies}
                     isLoading={isMoviesLoading}
-                    isMovieSaved={isMovieSaved}
+                    isMovieInSaved={isMovieSaved}
                     movieIdForDelete={movieIdForDelete}
+                    savedMovies={savedMovies}
                   />
                 }
               />
@@ -333,7 +338,7 @@ function App() {
                     loggedIn={isLoggedIn}
                     moviesCards={savedMovies}
                     onDeleteMovie={handleDeleteMovie}
-                    onChekIsCheckboxChecked={handleChekIsCheckboxChecked}
+                    onFilter={handleFilterMovies}
                     isLoading={isLoading}
                   />
                 }
@@ -352,19 +357,6 @@ function App() {
                 }
               />
               <Route
-                path='/signin'
-                element={
-                  <Login
-                    name='login'
-                    onSignin={handleSignIn}
-                    isRequestSuccessful={isRequestSuccessful}
-                    errorText={errorText}
-                    onCleanErrorText={handleCleanErrorText}
-                    isLoading={isLoginLoading}
-                  />
-                }
-              />
-              <Route
                 path='/signup'
                 element={
                   <Register
@@ -374,6 +366,19 @@ function App() {
                     errorText={errorText}
                     onCleanErrorText={handleCleanErrorText}
                     isLoading={isRegisterLoading}
+                  />
+                }
+              />
+              <Route
+                path='/signin'
+                element={
+                  <Login
+                    name='login'
+                    onSignin={handleSignIn}
+                    isRequestSuccessful={isRequestSuccessful}
+                    errorText={errorText}
+                    onCleanErrorText={handleCleanErrorText}
+                    isLoading={isLoginLoading}
                   />
                 }
               />
