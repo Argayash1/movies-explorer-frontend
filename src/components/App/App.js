@@ -118,6 +118,13 @@ function App() {
         });
   }, [isLoggedIn, tokenCheck]);
 
+  useEffect(() => {
+    hasTheUserSearched &&
+      moviesApi.getMovies().then((movies) => {
+        localStorage.setItem('movies', JSON.stringify(movies));
+      });
+  }, [hasTheUserSearched]);
+
   function handleSignUp(values) {
     setIsRegisterLoading(true);
     setErrortext('');
@@ -236,8 +243,6 @@ function App() {
     setisMoviesLoading(true);
     setHasTheUserSearched(true);
     try {
-      const movies = await moviesApi.getMovies();
-      localStorage.setItem('movies', JSON.stringify(movies));
       localStorage.setItem('userRequest', value);
       localStorage.setItem('IsCheckBoxChecked', isCheckBoxChecked);
       const allMovies = JSON.parse(localStorage.getItem('movies'));

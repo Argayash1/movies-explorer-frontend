@@ -16,46 +16,52 @@ function MoviesCardList({
   const [screenWidth, setScreenWidth] = useState(0);
   const [moviesToShow, setMoviesToShow] = useState([]);
   let [items, setItems] = useState(0);
-  const [showMore, setShowMore] = useState(false);
 
   const { pathname } = useLocation();
 
+  const showMoreButton = pathname === '/movies' && moviesCards.length > 3 && moviesToShow.length !== moviesCards.length;
+
   const handleSetMovieCardsLength = useCallback(() => {
-    if (screenWidth <= 1280 && screenWidth >= 768) {
-      setItems(12);
-      return moviesCards.slice(0, items);
+    const currentItems = items;
+
+    if (screenWidth >= 1280) {
+      return moviesCards.slice(0, currentItems + 12);
     }
 
-    if (screenWidth <= 768 && screenWidth >= 480) {
-      setItems(8);
-      return moviesCards.slice(0, items);
+    if (screenWidth > 480 && screenWidth < 1280) {
+      return moviesCards.slice(0, currentItems + 8);
     }
 
-    if (screenWidth <= 480 || screenWidth >= 320) {
-      setItems(5);
-      return moviesCards.slice(0, items);
+    if (screenWidth >= 320 || screenWidth <= 480) {
+      return moviesCards.slice(0, currentItems + 5);
     }
   }, [moviesCards, screenWidth, items]);
 
   useEffect(() => {
-    const screenWidth = window.screen.width;
+    const screenWidth = window.screen.width; // document.documentElement.clientWidth - внутр.разм.окна без полос прокр-ки
+    console.log(screenWidth);
     setScreenWidth(screenWidth);
     setMoviesToShow(handleSetMovieCardsLength());
-  }, [handleSetMovieCardsLength, items]);
+  }, [handleSetMovieCardsLength]);
 
   const handleShowMoreMovies = useCallback(() => {
-    setShowMore(true);
-    let movieItems = items;
-    movieItems = items += 3;
-    console.log(moviesCards.slice(0, movieItems));
-    return moviesCards.slice(0, movieItems);
-  }, [showMore, items]);
+    if (screenWidth >= 1280) {
+      setItems((prevItems) => prevItems + 3);
+    }
+
+    if (screenWidth >= 320 && screenWidth < 1280) {
+      setItems((prevItems) => prevItems + 2);
+    }
+  }, [screenWidth]);
 
   useEffect(() => {
-    if (showMore) {
-      setMoviesToShow(handleShowMoreMovies());
-    }
-  }, [handleShowMoreMovies, items, showMore]);
+    const visibleMoviesCards = handleSetMovieCardsLength();
+    setMoviesToShow(visibleMoviesCards);
+  }, [handleSetMovieCardsLength]);
+
+  useEffect(() => {
+    setItems(0); // Сбросить значение items при изменении moviesCards
+  }, [moviesCards]);
 
   const movieCardElements = moviesToShow.map((movieCard) => {
     return (
@@ -71,6 +77,7 @@ function MoviesCardList({
           IsSaved={
             pathname === '/movies' ? savedMovies.some((savedMovie) => savedMovie.nameRU === movieCard.nameRU) : false
           }
+          savedMovies={savedMovies}
         />
       </li>
     );
@@ -83,7 +90,7 @@ function MoviesCardList({
       ) : (
         <ul className='movies-card-list__cards'>{movieCardElements}</ul>
       )}
-      {pathname === '/movies' && moviesCards.length > 3 && (
+      {showMoreButton && (
         <button className='movies-card-list__button' type='button' onClick={handleShowMoreMovies}>
           Ещё
         </button>
