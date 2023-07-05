@@ -21,6 +21,18 @@ function MoviesCardList({
 
   const showMoreButton = pathname === '/movies' && moviesCards.length > 3 && moviesToShow.length !== moviesCards.length;
 
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.screen.width);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const handleSetMovieCardsLength = useCallback(() => {
     const currentItems = items;
 
@@ -39,7 +51,6 @@ function MoviesCardList({
 
   useEffect(() => {
     const screenWidth = window.screen.width; // document.documentElement.clientWidth - внутр.разм.окна без полос прокр-ки
-    console.log(screenWidth);
     setScreenWidth(screenWidth);
     setMoviesToShow(handleSetMovieCardsLength());
   }, [handleSetMovieCardsLength]);
@@ -75,7 +86,7 @@ function MoviesCardList({
           isMovieInSaved={isMovieInSaved}
           movieIdForDelete={movieIdForDelete}
           IsSaved={
-            pathname === '/movies' ? savedMovies.some((savedMovie) => savedMovie.nameRU === movieCard.nameRU) : false
+            pathname === '/movies' ? savedMovies.some((savedMovie) => savedMovie.movieId === movieCard.id) : false
           }
           savedMovies={savedMovies}
         />
