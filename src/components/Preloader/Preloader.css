@@ -48,6 +48,10 @@
   padding: 20px 70px;
 }
 
+.preloader_place_main {
+  height: 100vh;
+}
+
 .preloader__container {
   width: 100px;
   height: 100px;
@@ -62,6 +66,10 @@
   left: 0;
   background: #ff6838;
   border-radius: 50px;
+}
+
+.preloader__round_place_main {
+  background: #465dff;
 }
 
 .preloader__round::after,

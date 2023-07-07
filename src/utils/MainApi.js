@@ -99,7 +99,6 @@ class MainApi {
   authorize = (email, password) => {
     return this._request(`/signin`, {
       method: 'POST',
-      credentials: this._credentials,
       headers: this._headers,
       body: JSON.stringify({ email, password }),
     });

@@ -1,14 +1,22 @@
-import useForm from '../../hooks/useForm';
+import { useEffect, useState } from 'react';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
-function SearchForm({ onFindMovies, onChekIsCheckboxChecked, checked, onFilter, isLoading, userRequest }) {
-  const { values, errors, formValid, onChange } = useForm();
-  const submitButtonDisable = isLoading || !formValid;
+function SearchForm({ onSubmit, onChekIsCheckboxChecked, checked, onFilter, isLoading, moviesRequest }) {
+  const [userRequest, setUserRequest] = useState('');
+  const [errorText, setErrorText] = useState('');
+
+  useEffect(() => {
+    moviesRequest && setUserRequest(moviesRequest);
+  }, [moviesRequest]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onFindMovies(values.search);
+    userRequest ? onSubmit(userRequest) : setErrorText('Нужно ввести ключевое слово');
+  };
+
+  const handleChange = (e) => {
+    setUserRequest(e.target.value);
   };
 
   return (
@@ -19,20 +27,21 @@ function SearchForm({ onFindMovies, onChekIsCheckboxChecked, checked, onFilter, 
             <input
               className='search-form__input'
               type='search'
-              value={values.search || userRequest || ''}
+              value={userRequest || ''}
               name='search'
               id='search'
-              onChange={onChange}
+              onChange={handleChange}
               placeholder='Фильм'
               autoComplete='off'
-              minLength='1'
+              disabled={isLoading}
               required
             />
           </label>
-          <button className='search-form__submit-button' type='submit' disabled={submitButtonDisable}>
+          <button className='search-form__submit-button' type='submit' disabled={isLoading}>
             Поиск
           </button>
         </div>
+        <span className='search-form__error'>{errorText}</span>
         <FilterCheckbox onChekIsCheckboxChecked={onChekIsCheckboxChecked} checked={checked} onFilter={onFilter} />
       </form>
     </section>

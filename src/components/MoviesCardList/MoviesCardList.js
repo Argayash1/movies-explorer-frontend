@@ -12,6 +12,7 @@ function MoviesCardList({
   isMovieInSaved,
   movieIdForDelete,
   savedMovies,
+  isRequestSuccessful,
 }) {
   const [screenWidth, setScreenWidth] = useState(0);
   const [moviesToShow, setMoviesToShow] = useState([]);
@@ -26,10 +27,21 @@ function MoviesCardList({
       setScreenWidth(window.screen.width);
     };
 
-    window.addEventListener('resize', handleResize);
+    let timeoutId;
+
+    const delayedHandleResize = () => {
+      clearTimeout(timeoutId);
+
+      timeoutId = setTimeout(() => {
+        handleResize();
+      }, 500);
+    };
+
+    window.addEventListener('resize', delayedHandleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', delayedHandleResize);
+      clearTimeout(timeoutId);
     };
   }, []);
 
@@ -97,7 +109,15 @@ function MoviesCardList({
   return (
     <section className={`movies-card-list ${place === 'saved-movies' ? 'movies-card-list_place_saved-movies' : ''}`}>
       {moviesCards.length === 0 ? (
-        <p className='movies-card-list__not-found'>Ничего не найдено</p>
+        <p
+          className={`movies-card-list__not-found ${
+            !isRequestSuccessful ? 'movies-card-list__not-found_req_unsuccsessful' : ''
+          }`}
+        >
+          {!isRequestSuccessful
+            ? 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз'
+            : 'Ничего не найдено'}
+        </p>
       ) : (
         <ul className='movies-card-list__cards'>{movieCardElements}</ul>
       )}
