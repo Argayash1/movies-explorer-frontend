@@ -260,7 +260,7 @@ function App() {
   }
 
   function handleFilterMovies(checked) {
-    setIsCheckBoxChecked(checked);
+    localStorage.setItem('IsCheckBoxChecked', JSON.stringify(checked));
     if (!checked) {
       const filteredMovies = foundMovies.filter((movie) => movie.duration <= 40);
       setInitialMovies(filteredMovies);

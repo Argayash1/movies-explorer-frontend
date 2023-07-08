@@ -5,6 +5,8 @@ import AuthPage from '../AuthPage/AuthPage';
 const Register = ({ name, onSignup, isLoading, isRequestSuccessful, errorText, onCleanErrorText }) => {
   const { values, errors, formValid, onChange } = useForm();
   const nameRegex = '[A-Za-zА-Яа-яЁё\\-\\s]{1,30}';
+  const emailRegex = '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$';
+
   const title = 'имя должно держать латиницу, кириллицу, пробел или дефис';
   return (
     <main className='register'>
@@ -58,6 +60,8 @@ const Register = ({ name, onSignup, isLoading, isRequestSuccessful, errorText, o
           form='form'
           placeholder='E-mail'
           autoComplete='off'
+          pattern={emailRegex}
+          disabled={isLoading}
           required
         />
         <span className='register__error'>{errors.email}</span>

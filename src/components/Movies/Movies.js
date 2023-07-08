@@ -5,15 +5,12 @@ import './Movies.css';
 import { useEffect, useState } from 'react';
 
 function Movies({
-  hasTheUserSearched,
   moviesCards,
   onSubmit,
   onSaveMovie,
   onDeleteMovie,
   onFilter,
   isLoading,
-  onChekIsCheckboxChecked,
-  checked,
   isMovieInSaved,
   savedMovies,
   didTheUserSearch,
@@ -33,13 +30,7 @@ function Movies({
 
   return (
     <main className='movies'>
-      <SearchForm
-        onSubmit={onSubmit}
-        onChekIsCheckboxChecked={onChekIsCheckboxChecked}
-        onFilter={onFilter}
-        checked={isCheckBoxChecked}
-        moviesRequest={moviesRequest}
-      />
+      <SearchForm onSubmit={onSubmit} onFilter={onFilter} checked={isCheckBoxChecked} moviesRequest={moviesRequest} />
       {isLoading && <Preloader />}
       {!isLoading && didTheUserSearch && (
         <MoviesCardList

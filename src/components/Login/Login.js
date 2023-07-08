@@ -4,6 +4,9 @@ import AuthPage from '../AuthPage/AuthPage';
 
 const Login = ({ name, onSignin, isRequestSuccessful, errorText, onCleanErrorText, isLoading }) => {
   const { values, errors, formValid, onChange } = useForm();
+  const EMAIL_REGEXP =
+    /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+
   return (
     <main className='login'>
       <AuthPage
@@ -26,7 +29,7 @@ const Login = ({ name, onSignin, isRequestSuccessful, errorText, onCleanErrorTex
           E-mail
         </label>
         <input
-          type='email'
+          type='text'
           className={`login__input ${errors.email && 'login__input_type_error'}`}
           value={values.email || ''}
           name='email'
@@ -34,6 +37,8 @@ const Login = ({ name, onSignin, isRequestSuccessful, errorText, onCleanErrorTex
           onChange={onChange}
           placeholder='E-mail'
           autoComplete='off'
+          pattern={EMAIL_REGEXP}
+          disabled={isLoading}
           required
         />
         <span className='login__error'>{errors.email}</span>
