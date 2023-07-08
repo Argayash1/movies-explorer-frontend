@@ -31,9 +31,6 @@ function App() {
   // Стейт авторизации пользователя
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Стейт состояния чекбокса
-  const [isCheckBoxChecked, setIsCheckBoxChecked] = useState(false);
-
   // Стейт бургер-меню
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 
@@ -173,7 +170,6 @@ function App() {
       .signout()
       .then(() => {
         localStorage.clear();
-        console.log(localStorage);
         setIsLoggedIn(false);
         setIsBurgerMenuOpen(false);
         navigate('/', { replace: true });
@@ -242,15 +238,20 @@ function App() {
         localStorage.setItem('movies', JSON.stringify(moviesFromBeatFilm));
       }
       localStorage.setItem('userRequest', value);
-      localStorage.setItem('IsCheckBoxChecked', isCheckBoxChecked);
       const foundMovies = JSON.parse(localStorage.getItem('movies')).filter(
         (movie) =>
           movie.nameRU.toLowerCase().includes(value.toLowerCase()) ||
           movie.nameEN.toLowerCase().includes(value.toLowerCase()),
       );
       localStorage.setItem('foundMovies', JSON.stringify(foundMovies));
-      setFoundMovies(foundMovies);
-      setInitialMovies(foundMovies);
+      setFoundMovies(foundMovies); // этот стейт нужен для того, чтобы фильтровать фильмы в функции фильтрации
+      const checkboxState = localStorage.getItem('checkboxState');
+      if (checkboxState === 'true') {
+        const filteredFoundMovies = foundMovies.filter((movie) => movie.duration <= 40);
+        setInitialMovies(filteredFoundMovies);
+      } else {
+        setInitialMovies(foundMovies);
+      }
       !isUserRequestSuccessful && setIsUserRequestSuccessful(true);
     } catch (err) {
       setIsUserRequestSuccessful(false);
@@ -260,12 +261,14 @@ function App() {
   }
 
   function handleFilterMovies(checked) {
-    localStorage.setItem('IsCheckBoxChecked', JSON.stringify(checked));
+    const storedMovies = JSON.parse(localStorage.getItem('foundMovies'));
+    const filteredFoundMovies = foundMovies.filter((movie) => movie.duration <= 40);
+    const filteredStoredMovies =
+      storedMovies && storedMovies.length > 0 && storedMovies.filter((movie) => movie.duration <= 40);
     if (!checked) {
-      const filteredMovies = foundMovies.filter((movie) => movie.duration <= 40);
-      setInitialMovies(filteredMovies);
+      setInitialMovies(foundMovies.length > 0 ? filteredFoundMovies : filteredStoredMovies);
     } else {
-      setInitialMovies(foundMovies);
+      setInitialMovies(foundMovies.length > 0 ? foundMovies : storedMovies);
     }
   }
 
@@ -342,6 +345,8 @@ function App() {
                     onDeleteMovie={handleDeleteMovie}
                     onFilter={handleFilterMovies}
                     isLoading={isLoading}
+                    didTheUserSearch={didTheUserSearch}
+                    isRequestSuccessful={isUserRequestSuccessful}
                   />
                 }
               />

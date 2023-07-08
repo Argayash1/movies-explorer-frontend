@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { useEffect, useState, useCallback } from 'react';
 
 function MoviesCardList({
-  moviesCards,
+  initialMoviesCards,
   buttonType,
   onSaveMovie,
   onDeleteMovie,
@@ -15,12 +15,42 @@ function MoviesCardList({
   isRequestSuccessful,
 }) {
   const [screenWidth, setScreenWidth] = useState(0);
+  const [moviesCards, setMoviesCards] = useState([]);
   const [moviesToShow, setMoviesToShow] = useState([]);
   let [items, setItems] = useState(0);
 
   const { pathname } = useLocation();
 
-  const showMoreButton = pathname === '/movies' && moviesCards.length > 3 && moviesToShow.length !== moviesCards.length;
+  const showMoreButton =
+    pathname === '/movies' && moviesCards && moviesCards.length > 3 && moviesToShow.length !== moviesCards.length;
+
+  const handleSetMovieCardsLength = useCallback(() => {
+    const currentItems = items;
+
+    if (screenWidth >= 1280) {
+      return moviesCards.slice(0, currentItems + 12);
+    }
+
+    if (screenWidth > 480 && screenWidth < 1280) {
+      return moviesCards.slice(0, currentItems + 8);
+    }
+
+    if (screenWidth >= 320 || screenWidth <= 480) {
+      return moviesCards.slice(0, currentItems + 5);
+    }
+  }, [moviesCards, screenWidth, items]);
+
+  useEffect(() => {
+    const storedMovies = JSON.parse(localStorage.getItem('foundMovies'));
+    if (pathname === '/saved-movies' || (initialMoviesCards && initialMoviesCards.length > 0)) {
+      setMoviesCards(initialMoviesCards);
+    } else {
+      const checkboxState = localStorage.getItem('checkboxState');
+      const filteredStoredMovies =
+        storedMovies && storedMovies.length > 0 && storedMovies.filter((movie) => movie.duration <= 40);
+      setMoviesCards(checkboxState === 'true' ? filteredStoredMovies : storedMovies);
+    }
+  }, [initialMoviesCards, pathname]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -44,22 +74,6 @@ function MoviesCardList({
       clearTimeout(timeoutId);
     };
   }, []);
-
-  const handleSetMovieCardsLength = useCallback(() => {
-    const currentItems = items;
-
-    if (screenWidth >= 1280) {
-      return moviesCards.slice(0, currentItems + 12);
-    }
-
-    if (screenWidth > 480 && screenWidth < 1280) {
-      return moviesCards.slice(0, currentItems + 8);
-    }
-
-    if (screenWidth >= 320 || screenWidth <= 480) {
-      return moviesCards.slice(0, currentItems + 5);
-    }
-  }, [moviesCards, screenWidth, items]);
 
   useEffect(() => {
     const screenWidth = window.screen.width; // document.documentElement.clientWidth - внутр.разм.окна без полос прокр-ки

@@ -3,18 +3,19 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import './SavedMovies.css';
 
-function SavedMovies({ moviesCards, isLoading, onDeleteMovie, onFilter }) {
+function SavedMovies({ moviesCards, isLoading, onDeleteMovie, onFilter, didTheUserSearch, isRequestSuccessful }) {
   return (
     <main className='saved-movies'>
       <SearchForm onFilter={onFilter} />
-      {isLoading ? (
-        <Preloader />
-      ) : (
+      {isLoading && <Preloader />}
+      {!isLoading && didTheUserSearch && (
         <MoviesCardList
-          moviesCards={moviesCards}
+          initialMoviesCards={moviesCards}
           buttonType='delete'
           place='saved-movies'
           onDeleteMovie={onDeleteMovie}
+          didTheUserSearch={didTheUserSearch}
+          isRequestSuccessful={isRequestSuccessful}
         />
       )}
     </main>

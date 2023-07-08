@@ -34,7 +34,7 @@ function MoviesCard({ movieCard, buttonType, onSaveMovie, onDeleteMovie, place, 
   }
 
   useEffect(() => {
-    const savedFilm = savedMovies.find((savedFilm) => savedFilm?.movieId === movieCard.id);
+    const savedFilm = savedMovies && savedMovies.find((savedFilm) => savedFilm?.movieId === movieCard.id);
     setMovieIdForDelete(savedFilm?._id);
   }, [savedMovies, movieCard.id]);
 

@@ -17,24 +17,20 @@ function Movies({
   isRequestSuccessful,
 }) {
   const [moviesRequest, setMoviesRequest] = useState('');
-  const [isCheckBoxChecked, setIsCheckBoxChecked] = useState(false);
   const [foundMovies, setFoundMovies] = useState([]);
-
-  const userRequest = localStorage.getItem('userRequest');
 
   useEffect(() => {
     setMoviesRequest(localStorage.getItem('userRequest'));
-    setIsCheckBoxChecked(localStorage.getItem('IsCheckBoxChecked'));
     setFoundMovies(JSON.parse(localStorage.getItem('foundMovies')));
-  }, []);
+  }, [moviesCards]);
 
   return (
     <main className='movies'>
-      <SearchForm onSubmit={onSubmit} onFilter={onFilter} checked={isCheckBoxChecked} moviesRequest={moviesRequest} />
+      <SearchForm onSubmit={onSubmit} onFilter={onFilter} moviesRequest={moviesRequest} />
       {isLoading && <Preloader />}
       {!isLoading && didTheUserSearch && (
         <MoviesCardList
-          moviesCards={moviesCards}
+          initialMoviesCards={moviesCards}
           buttonType='save'
           onSaveMovie={onSaveMovie}
           onDeleteMovie={onDeleteMovie}
