@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
 import './FilterCheckbox.css';
+import { useLocation } from 'react-router-dom';
 
 function FilterCheckbox({ checked, onFilter }) {
   const [isChecked, setIsChecked] = useState(false);
 
+  const { pathname } = useLocation();
+
   useEffect(() => {
     const storedValue = localStorage.getItem('checkboxState');
-    if (storedValue !== null) {
+    if (pathname === '/movies' && storedValue !== null) {
       setIsChecked(JSON.parse(storedValue));
     }
-  }, []);
+  }, [pathname]);
 
   const handleCheckboxChange = () => {
     const newValue = !isChecked;

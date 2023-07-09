@@ -1,11 +1,18 @@
 import './Login.css';
 import useForm from '../../hooks/useForm';
 import AuthPage from '../AuthPage/AuthPage';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
-const Login = ({ name, onSignin, isRequestSuccessful, errorText, onCleanErrorText, isLoading }) => {
+const Login = ({ name, onSignin, isRequestSuccessful, errorText, onCleanErrorText, isLoading, isLoggedIn }) => {
   const { values, errors, formValid, onChange } = useForm();
   const EMAIL_REGEXP =
     /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    isLoggedIn && navigate('/');
+  });
 
   return (
     <main className='login'>

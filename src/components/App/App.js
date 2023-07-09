@@ -26,7 +26,7 @@ function App() {
   const [foundMovies, setFoundMovies] = useState([]);
   const [initialMovies, setInitialMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
-  const [isMovieSaved, setIsMovieSaved] = useState(false);
+  const [foundSavedMovies, setFoundSavedMovies] = useState([]);
 
   // Стейт авторизации пользователя
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -40,6 +40,7 @@ function App() {
   const [isLoginLoading, setIsLoginLoading] = useState(false);
   const [isProfileLoading, setIsProfileLoading] = useState(false);
   const [isMoviesLoading, setIsMoviesLoading] = useState(false);
+  const [isSavedMoviesLoading, setIsSavedMoviesLoading] = useState(false);
 
   // Стейт поиска пользователя
   const [didTheUserSearch, setDidTheUserSearch] = useState(false);
@@ -114,6 +115,11 @@ function App() {
           console.log(err); // выведем ошибку в консоль
         });
   }, [isLoggedIn, tokenCheck]);
+
+  useEffect(() => {
+    const storedSavedMovies = JSON.parse(localStorage.getItem('saved-movies'));
+    pathname === '/saved-movies' && setSavedMovies(storedSavedMovies);
+  }, [pathname]);
 
   function handleSignUp(values) {
     setIsRegisterLoading(true);
@@ -260,6 +266,27 @@ function App() {
     setIsMoviesLoading(false);
   }
 
+  function handlSavedMoviesSubmit(value) {
+    setIsSavedMoviesLoading(true);
+    const storedSavedMovies = JSON.parse(localStorage.getItem('saved-movies'));
+    if (storedSavedMovies && storedSavedMovies.length > 0) {
+      const foundSavedMovies = JSON.parse(localStorage.getItem('saved-movies')).filter(
+        (savedMovie) =>
+          savedMovie.nameRU.toLowerCase().includes(value.toLowerCase()) ||
+          savedMovie.nameEN.toLowerCase().includes(value.toLowerCase()),
+      );
+      setFoundSavedMovies(foundSavedMovies);
+      const checkboxState = localStorage.getItem('checkboxState');
+      if (checkboxState === 'true') {
+        const filteredFoundSavedMovies = foundSavedMovies.filter((movie) => movie.duration <= 40);
+        setSavedMovies(filteredFoundSavedMovies);
+      } else {
+        setSavedMovies(foundSavedMovies);
+      }
+    }
+    setIsSavedMoviesLoading(false);
+  }
+
   function handleFilterMovies(checked) {
     const storedMovies = JSON.parse(localStorage.getItem('foundMovies'));
     const filteredFoundMovies = foundMovies.filter((movie) => movie.duration <= 40);
@@ -272,6 +299,18 @@ function App() {
     }
   }
 
+  function handleFilterSavedMovies(checked) {
+    console.log(foundSavedMovies);
+    const filteredFoundSavedMovies = foundSavedMovies.filter((movie) => movie.duration <= 40);
+    const storedSavedMovies = JSON.parse(localStorage.getItem('saved-movies'));
+    const filteredSavedMovies = savedMovies.filter((movie) => movie.duration <= 40);
+    if (!checked) {
+      setSavedMovies(foundSavedMovies.length > 0 ? filteredFoundSavedMovies : filteredSavedMovies);
+    } else {
+      setSavedMovies(foundSavedMovies.length > 0 ? foundSavedMovies : storedSavedMovies);
+    }
+  }
+
   async function handleSaveMovie(movie) {
     try {
       const isMovieInSaved = savedMovies.some((savedMovie) => savedMovie.movieId === movie.movieId);
@@ -279,6 +318,7 @@ function App() {
         const savedMovie = await mainApi.saveMovie(movie);
         const updatedSavedMovies = [...savedMovies, savedMovie];
         setSavedMovies(updatedSavedMovies);
+        localStorage.setItem('saved-movies', JSON.stringify(updatedSavedMovies));
       }
     } catch (err) {
       console.log(err);
@@ -290,6 +330,7 @@ function App() {
       await mainApi.deleteMovie(movieId);
       const updatedSavedMovies = savedMovies.filter((movie) => movie._id !== movieId);
       setSavedMovies(updatedSavedMovies);
+      localStorage.setItem('saved-movies', JSON.stringify(updatedSavedMovies));
     } catch (err) {
       console.log(err);
     }
@@ -328,7 +369,6 @@ function App() {
                     onDeleteMovie={handleDeleteMovie}
                     onFilter={handleFilterMovies}
                     isLoading={isMoviesLoading}
-                    isMovieInSaved={isMovieSaved}
                     savedMovies={savedMovies}
                     didTheUserSearch={didTheUserSearch}
                     isRequestSuccessful={isUserRequestSuccessful}
@@ -342,9 +382,10 @@ function App() {
                     element={SavedMovies}
                     loggedIn={isLoggedIn}
                     moviesCards={savedMovies}
+                    onSubmit={handlSavedMoviesSubmit}
                     onDeleteMovie={handleDeleteMovie}
-                    onFilter={handleFilterMovies}
-                    isLoading={isLoading}
+                    onFilter={handleFilterSavedMovies}
+                    isLoading={isSavedMoviesLoading}
                     didTheUserSearch={didTheUserSearch}
                     isRequestSuccessful={isUserRequestSuccessful}
                   />
@@ -373,6 +414,7 @@ function App() {
                     errorText={errorText}
                     onCleanErrorText={handleCleanErrorText}
                     isLoading={isRegisterLoading}
+                    isLoggedIn={isLoggedIn}
                   />
                 }
               />
@@ -386,6 +428,7 @@ function App() {
                     errorText={errorText}
                     onCleanErrorText={handleCleanErrorText}
                     isLoading={isLoginLoading}
+                    isLoggedIn={isLoggedIn}
                   />
                 }
               />

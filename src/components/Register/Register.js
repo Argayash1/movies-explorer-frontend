@@ -1,13 +1,22 @@
 import './Register.css';
 import useForm from '../../hooks/useForm';
 import AuthPage from '../AuthPage/AuthPage';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Register = ({ name, onSignup, isLoading, isRequestSuccessful, errorText, onCleanErrorText }) => {
+const Register = ({ name, onSignup, isRequestSuccessful, errorText, onCleanErrorText, isLoading, isLoggedIn }) => {
   const { values, errors, formValid, onChange } = useForm();
   const nameRegex = '[A-Za-zА-Яа-яЁё\\-\\s]{1,30}';
   const emailRegex = '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$';
 
   const title = 'имя должно держать латиницу, кириллицу, пробел или дефис';
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    isLoggedIn && navigate('/');
+  });
+
   return (
     <main className='register'>
       <AuthPage
