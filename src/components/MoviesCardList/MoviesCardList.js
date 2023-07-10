@@ -25,20 +25,21 @@ function MoviesCardList({
     pathname === '/movies' && moviesCards && moviesCards.length > 3 && moviesToShow.length !== moviesCards.length;
 
   const handleSetMovieCardsLength = useCallback(() => {
-    const currentItems = items;
-
-    if (screenWidth >= 1280) {
-      return moviesCards.slice(0, currentItems + 12);
+    if (pathname !== '/saved-movies') {
+      const currentItems = items;
+      if (screenWidth >= 1280) {
+        return moviesCards.slice(0, currentItems + 12);
+      }
+      if (screenWidth > 480 && screenWidth < 1280) {
+        return moviesCards.slice(0, currentItems + 8);
+      }
+      if (screenWidth >= 320 || screenWidth <= 480) {
+        return moviesCards.slice(0, currentItems + 5);
+      }
+    } else {
+      return moviesCards;
     }
-
-    if (screenWidth > 480 && screenWidth < 1280) {
-      return moviesCards.slice(0, currentItems + 8);
-    }
-
-    if (screenWidth >= 320 || screenWidth <= 480) {
-      return moviesCards.slice(0, currentItems + 5);
-    }
-  }, [moviesCards, screenWidth, items]);
+  }, [moviesCards, screenWidth, items, pathname]);
 
   useEffect(() => {
     const storedMovies = JSON.parse(localStorage.getItem('foundMovies'));
@@ -76,7 +77,7 @@ function MoviesCardList({
   }, []);
 
   useEffect(() => {
-    const screenWidth = window.screen.width; // document.documentElement.clientWidth - внутр.разм.окна без полос прокр-ки
+    const screenWidth = window.screen.width;
     setScreenWidth(screenWidth);
     setMoviesToShow(handleSetMovieCardsLength());
   }, [handleSetMovieCardsLength]);
@@ -97,28 +98,24 @@ function MoviesCardList({
   }, [handleSetMovieCardsLength]);
 
   useEffect(() => {
-    setItems(0); // Сбросить значение items при изменении moviesCards
+    setItems(0);
   }, [moviesCards]);
 
-  const movieCardElements = moviesToShow.map((movieCard) => {
-    return (
-      <li key={movieCard.id || movieCard._id}>
-        <MoviesCard
-          movieCard={movieCard}
-          buttonType={buttonType}
-          onSaveMovie={onSaveMovie}
-          onDeleteMovie={onDeleteMovie}
-          place={place}
-          isMovieInSaved={isMovieInSaved}
-          movieIdForDelete={movieIdForDelete}
-          IsSaved={
-            pathname === '/movies' ? savedMovies.some((savedMovie) => savedMovie.movieId === movieCard.id) : false
-          }
-          savedMovies={savedMovies}
-        />
-      </li>
-    );
-  });
+  const movieCardElements = moviesToShow.map((movieCard) => (
+    <li key={movieCard.id || movieCard._id}>
+      <MoviesCard
+        movieCard={movieCard}
+        buttonType={buttonType}
+        onSaveMovie={onSaveMovie}
+        onDeleteMovie={onDeleteMovie}
+        place={place}
+        isMovieInSaved={isMovieInSaved}
+        movieIdForDelete={movieIdForDelete}
+        IsSaved={pathname === '/movies' ? savedMovies.some((savedMovie) => savedMovie.movieId === movieCard.id) : false}
+        savedMovies={savedMovies}
+      />
+    </li>
+  ));
 
   return (
     <section className={`movies-card-list ${place === 'saved-movies' ? 'movies-card-list_place_saved-movies' : ''}`}>
