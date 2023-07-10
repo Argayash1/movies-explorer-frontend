@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
+import { useLocation } from 'react-router-dom';
 
 function SearchForm({ onSubmit, onChekIsCheckboxChecked, checked, onFilter, isLoading, moviesRequest }) {
   const [userRequest, setUserRequest] = useState('');
   const [errorText, setErrorText] = useState('');
+
+  const { pathname } = useLocation();
 
   useEffect(() => {
     moviesRequest && setUserRequest(moviesRequest);
@@ -12,7 +15,7 @@ function SearchForm({ onSubmit, onChekIsCheckboxChecked, checked, onFilter, isLo
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    userRequest ? onSubmit(userRequest) : setErrorText('Нужно ввести ключевое слово');
+    pathname !== '/movies' || userRequest ? onSubmit(userRequest) : setErrorText('Нужно ввести ключевое слово');
   };
 
   const handleChange = (e) => {

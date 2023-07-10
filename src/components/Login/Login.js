@@ -6,8 +6,6 @@ import { useEffect } from 'react';
 
 const Login = ({ name, onSignin, isRequestSuccessful, errorText, onCleanErrorText, isLoading, isLoggedIn }) => {
   const { values, errors, formValid, onChange } = useForm();
-  const EMAIL_REGEXP =
-    /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,7 +42,6 @@ const Login = ({ name, onSignin, isRequestSuccessful, errorText, onCleanErrorTex
           onChange={onChange}
           placeholder='E-mail'
           autoComplete='off'
-          pattern={EMAIL_REGEXP}
           disabled={isLoading}
           required
         />

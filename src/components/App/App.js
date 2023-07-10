@@ -99,6 +99,8 @@ function App() {
         .then(([userData, savedMovies]) => {
           setCurrentUser(userData);
           setSavedMovies(savedMovies);
+          // console.log(initialMovies);
+          // console.log(foundMovies);
           localStorage.setItem('saved-movies', JSON.stringify(savedMovies));
           const userRequest = localStorage.getItem('userRequest');
           if (userRequest) {
@@ -173,7 +175,11 @@ function App() {
       .then(() => {
         localStorage.clear();
         setIsLoggedIn(false);
+        setCurrentUser({});
+        setSavedMovies([]);
         setIsBurgerMenuOpen(false);
+        // setFoundMovies([]);
+        // setInitialMovies([]);
         navigate('/', { replace: true });
       })
       .catch((err) => {

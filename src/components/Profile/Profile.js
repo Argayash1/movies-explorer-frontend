@@ -8,6 +8,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 function Profile({ isEdit, onSignOut, onSubmit, onEditProfile, isLoading }) {
   const currentUser = useContext(CurrentUserContext);
   const { values, errors, formValid, onChange } = useForm();
+  const nameRegex = '^[a-zA-Zа-яА-ЯёЁ\\s\\-]+$';
 
   return (
     <main className='profile'>
@@ -35,9 +36,10 @@ function Profile({ isEdit, onSignOut, onSubmit, onEditProfile, isLoading }) {
             name='name'
             id='name'
             placeholder='Имя'
-            autoComplete='off'
             minLength='2'
             maxLength='30'
+            autoComplete='off'
+            pattern={nameRegex}
             required
             disabled={!isEdit || isLoading}
           />
