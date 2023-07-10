@@ -5,7 +5,7 @@ import Form from '../Form/Form';
 import AuthTitle from '../AuthTitle/AuthTitle';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 
-function Profile({ isEdit, onSignOut, onSubmit, onEditProfile }) {
+function Profile({ isEdit, onSignOut, onSubmit, onEditProfile, isLoading }) {
   const currentUser = useContext(CurrentUserContext);
   const { values, errors, formValid, onChange } = useForm();
 
@@ -19,6 +19,7 @@ function Profile({ isEdit, onSignOut, onSubmit, onEditProfile }) {
           buttonText='Сохранить'
           loadingText='Сохранение...'
           isProfileEdit={isEdit}
+          isLoading={isLoading}
           onSubmit={onSubmit}
           values={values}
           formValid={formValid}
@@ -38,7 +39,7 @@ function Profile({ isEdit, onSignOut, onSubmit, onEditProfile }) {
             minLength='2'
             maxLength='30'
             required
-            disabled={!isEdit}
+            disabled={!isEdit || isLoading}
           />
           <label htmlFor='email' className='profile__input-label profile__input-label_type_e-mail'>
             E-mail
@@ -53,7 +54,7 @@ function Profile({ isEdit, onSignOut, onSubmit, onEditProfile }) {
             placeholder='E-mail'
             autoComplete='off'
             required
-            disabled={!isEdit}
+            disabled={!isEdit || isLoading}
           />
         </Form>
         {!isEdit && (

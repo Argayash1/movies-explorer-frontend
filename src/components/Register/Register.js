@@ -14,7 +14,7 @@ const Register = ({ name, onSignup, isRequestSuccessful, errorText, onCleanError
   const navigate = useNavigate();
 
   useEffect(() => {
-    isLoggedIn && navigate('/');
+    isLoggedIn && navigate('/movies', { replace: true });
   });
 
   return (

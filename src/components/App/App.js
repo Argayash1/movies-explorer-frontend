@@ -72,21 +72,17 @@ function App() {
   }, [isBurgerMenuOpen]);
 
   const tokenCheck = useCallback(() => {
-    // если пользователь авторизован,
-    // эта функция проверит, есть ли данные в req.user._id на сервере
     const authorized = localStorage.getItem('authorized');
     if (authorized) {
-      // проверим, есть ли данные в req.user._id
       mainApi
         .getContent()
         .then((userData) => {
           if (userData.email) {
-            // авторизуем пользователя
             setIsLoggedIn(true);
           }
         })
         .catch((err) => {
-          console.log(err); // выведем ошибку в консоль
+          console.log(err);
         })
         .finally(() => {
           setIsLoading(false);
@@ -112,7 +108,7 @@ function App() {
           }
         })
         .catch((err) => {
-          console.log(err); // выведем ошибку в консоль
+          console.log(err);
         });
   }, [isLoggedIn, tokenCheck]);
 
@@ -198,7 +194,7 @@ function App() {
   }
 
   function hadleProfileSubmit(values) {
-    setIsProfileEdit(false);
+    setIsProfileEdit(true);
     setIsProfileLoading(true);
     mainApi
       .editProfile(values.name, values.email)
@@ -206,9 +202,10 @@ function App() {
         setCurrentUser(userData);
       })
       .catch((err) => {
-        console.log(err); // выведем ошибку в консоль
+        console.log(err);
       })
       .finally(() => {
+        setIsProfileEdit(false);
         setTimeout(() => {
           setIsProfileLoading(false);
         }, 1500);
@@ -262,8 +259,9 @@ function App() {
     } catch (err) {
       setIsUserRequestSuccessful(false);
       console.log(err);
+    } finally {
+      setIsMoviesLoading(false);
     }
-    setIsMoviesLoading(false);
   }
 
   function handlSavedMoviesSubmit(value) {
@@ -398,6 +396,7 @@ function App() {
                     element={Profile}
                     loggedIn={isLoggedIn}
                     isEdit={isProfileEdit}
+                    isLoading={isProfileLoading}
                     onSubmit={hadleProfileSubmit}
                     onEditProfile={handleEditProfile}
                     onSignOut={handleSignOut}

@@ -11,7 +11,7 @@ const Login = ({ name, onSignin, isRequestSuccessful, errorText, onCleanErrorTex
   const navigate = useNavigate();
 
   useEffect(() => {
-    isLoggedIn && navigate('/');
+    isLoggedIn && navigate('/movies', { replace: true });
   });
 
   return (
@@ -64,6 +64,7 @@ const Login = ({ name, onSignin, isRequestSuccessful, errorText, onCleanErrorTex
           minLength='8'
           maxLength='30'
           autoComplete='off'
+          disabled={isLoading}
           required
         />
         <span className='login__error login__error_type_lower'>{errors.password}</span>
