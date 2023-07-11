@@ -119,72 +119,64 @@ function App() {
     pathname === '/saved-movies' && setSavedMovies(storedSavedMovies);
   }, [pathname]);
 
-  function handleSignUp(values) {
+  async function handleSignUp(values) {
     setIsRegisterLoading(true);
     setErrortext('');
     const { name, email, password } = values;
-    return mainApi
-      .register(name, email, password)
-      .then(() => {
-        setIsLoggedIn(true);
-        localStorage.setItem('authorized', 'true');
-        navigate('/movies', { replace: true });
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsRequestSuccessful(false);
-        setErrortext(err);
-      })
-      .finally(() => {
-        setTimeout(() => {
-          setIsRegisterLoading(false);
-        }, 1500);
-      });
+    try {
+      await mainApi.register(name, email, password);
+      setIsLoggedIn(true);
+      localStorage.setItem('authorized', 'true');
+      navigate('/movies', { replace: true });
+    } catch (err) {
+      console.log(err);
+      setIsRequestSuccessful(false);
+      setErrortext(err);
+    } finally {
+      setTimeout(() => {
+        setIsRegisterLoading(false);
+      }, 1500);
+    }
   }
 
-  function handleSignIn(values) {
+  async function handleSignIn(values) {
     setIsLoginLoading(true);
     setErrortext('');
     if (!values.email || !values.password) {
       return;
     }
-    mainApi
-      .authorize(values.email, values.password)
-      .then((data) => {
-        if (data.message) {
-          setIsLoggedIn(true);
-          localStorage.setItem('authorized', 'true');
-          navigate('/movies', { replace: true });
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsRequestSuccessful(false);
-        setErrortext(err);
-      })
-      .finally(() => {
-        setTimeout(() => {
-          setIsLoginLoading(false);
-        }, 1500);
-      });
+    try {
+      const authData = await mainApi.authorize(values.email, values.password);
+      if (authData.message) {
+        setIsLoggedIn(true);
+        localStorage.setItem('authorized', 'true');
+        navigate('/movies', { replace: true });
+      }
+    } catch (err) {
+      console.log(err);
+      setIsRequestSuccessful(false);
+      setErrortext(err);
+    } finally {
+      setTimeout(() => {
+        setIsLoginLoading(false);
+      }, 1500);
+    }
   }
 
-  function handleSignOut() {
-    mainApi
-      .signout()
-      .then(() => {
-        localStorage.clear();
-        setIsLoggedIn(false);
-        setCurrentUser({});
-        setSavedMovies([]);
-        setIsBurgerMenuOpen(false);
-        // setFoundMovies([]);
-        // setInitialMovies([]);
-        navigate('/', { replace: true });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  async function handleSignOut() {
+    try {
+      await mainApi.signout();
+      localStorage.clear();
+      setIsLoggedIn(false);
+      setCurrentUser({});
+      setSavedMovies([]);
+      setIsBurgerMenuOpen(false);
+      // setFoundMovies([]);
+      // setInitialMovies([]);
+      navigate('/', { replace: true });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   function handleOpenBurgerMenu() {
@@ -199,23 +191,20 @@ function App() {
     setIsProfileEdit(true);
   }
 
-  function hadleProfileSubmit(values) {
+  async function hadleProfileSubmit(values) {
     setIsProfileEdit(true);
     setIsProfileLoading(true);
-    mainApi
-      .editProfile(values.name, values.email)
-      .then((userData) => {
-        setCurrentUser(userData);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        setIsProfileEdit(false);
-        setTimeout(() => {
-          setIsProfileLoading(false);
-        }, 1500);
-      });
+    try {
+      const userData = mainApi.editProfile(values.name, values.email);
+      setCurrentUser(userData);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsProfileEdit(false);
+      setTimeout(() => {
+        setIsProfileLoading(false);
+      }, 1500);
+    }
   }
 
   function handleNavigateToSignup() {
