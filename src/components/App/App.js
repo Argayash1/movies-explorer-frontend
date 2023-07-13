@@ -97,10 +97,10 @@ function App() {
     isLoggedIn &&
       Promise.all([mainApi.getUserInfo(), mainApi.getSavedMovies()])
         .then(([userData, savedMovies]) => {
+          console.log(savedMovies);
+          console.log(userData);
           setCurrentUser(userData);
           setSavedMovies(savedMovies);
-          // console.log(initialMovies);
-          // console.log(foundMovies);
           localStorage.setItem('saved-movies', JSON.stringify(savedMovies));
           const userRequest = localStorage.getItem('userRequest');
           if (userRequest) {
@@ -116,18 +116,29 @@ function App() {
 
   useEffect(() => {
     const storedSavedMovies = JSON.parse(localStorage.getItem('saved-movies'));
-    pathname === '/saved-movies' && setSavedMovies(storedSavedMovies);
+    if (storedSavedMovies && pathname === '/saved-movies') {
+      setSavedMovies(storedSavedMovies);
+    }
   }, [pathname]);
+
+  async function handleLogin(values) {
+    const signInData = await mainApi.authorize(values.email, values.password);
+    if (signInData.message) {
+      setIsLoggedIn(true);
+      localStorage.setItem('authorized', 'true');
+      navigate('/movies', { replace: true });
+    }
+  }
 
   async function handleSignUp(values) {
     setIsRegisterLoading(true);
     setErrortext('');
     const { name, email, password } = values;
     try {
-      await mainApi.register(name, email, password);
-      setIsLoggedIn(true);
-      localStorage.setItem('authorized', 'true');
-      navigate('/movies', { replace: true });
+      const signUpdata = await mainApi.register(name, email, password);
+      if (signUpdata) {
+        handleLogin({ email, password });
+      }
     } catch (err) {
       console.log(err);
       setIsRequestSuccessful(false);
@@ -146,12 +157,7 @@ function App() {
       return;
     }
     try {
-      const authData = await mainApi.authorize(values.email, values.password);
-      if (authData.message) {
-        setIsLoggedIn(true);
-        localStorage.setItem('authorized', 'true');
-        navigate('/movies', { replace: true });
-      }
+      handleLogin(values);
     } catch (err) {
       console.log(err);
       setIsRequestSuccessful(false);
@@ -176,6 +182,15 @@ function App() {
       navigate('/', { replace: true });
     } catch (err) {
       console.log(err);
+    }
+  }
+
+  async function handleAuthorize(values) {
+    const authData = await mainApi.authorize(values.email, values.password);
+    if (authData.message) {
+      setIsLoggedIn(true);
+      localStorage.setItem('authorized', 'true');
+      navigate('/movies', { replace: true });
     }
   }
 
@@ -281,11 +296,12 @@ function App() {
   }
 
   function handleFilterMovies(checked) {
+    localStorage.setItem('checkboxState', checked);
     const storedMovies = JSON.parse(localStorage.getItem('foundMovies'));
     const filteredFoundMovies = foundMovies.filter((movie) => movie.duration <= 40);
     const filteredStoredMovies =
       storedMovies && storedMovies.length > 0 && storedMovies.filter((movie) => movie.duration <= 40);
-    if (!checked) {
+    if (checked) {
       setInitialMovies(foundMovies.length > 0 ? filteredFoundMovies : filteredStoredMovies);
     } else {
       setInitialMovies(foundMovies.length > 0 ? foundMovies : storedMovies);
@@ -293,11 +309,12 @@ function App() {
   }
 
   function handleFilterSavedMovies(checked) {
-    console.log(foundSavedMovies);
     const filteredFoundSavedMovies = foundSavedMovies.filter((movie) => movie.duration <= 40);
-    const storedSavedMovies = JSON.parse(localStorage.getItem('saved-movies'));
+    const storedSavedMovies = JSON.parse(localStorage.getItem('saved-movies'))
+      ? JSON.parse(localStorage.getItem('saved-movies'))
+      : [];
     const filteredSavedMovies = savedMovies.filter((movie) => movie.duration <= 40);
-    if (!checked) {
+    if (checked) {
       setSavedMovies(foundSavedMovies.length > 0 ? filteredFoundSavedMovies : filteredSavedMovies);
     } else {
       setSavedMovies(foundSavedMovies.length > 0 ? foundSavedMovies : storedSavedMovies);
@@ -355,7 +372,7 @@ function App() {
                   <ProtectedRouteElement
                     element={Movies}
                     loggedIn={isLoggedIn}
-                    moviesCards={initialMovies}
+                    initialMoviesCards={initialMovies}
                     onSubmit={handleMoviesSubmit}
                     checked={localStorage.getItem('IsCheckBoxChecked')}
                     onSaveMovie={handleSaveMovie}

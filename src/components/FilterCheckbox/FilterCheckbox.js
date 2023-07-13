@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import './FilterCheckbox.css';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 function FilterCheckbox({ checked, onFilter }) {
@@ -8,17 +8,15 @@ function FilterCheckbox({ checked, onFilter }) {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const storedValue = localStorage.getItem('checkboxState');
-    if (pathname === '/movies' && storedValue !== null) {
-      setIsChecked(JSON.parse(storedValue));
+    if (pathname === '/movies' && checked !== null) {
+      setIsChecked(checked);
     }
-  }, [pathname]);
+  }, [pathname, checked]);
 
   const handleCheckboxChange = () => {
     const newValue = !isChecked;
     setIsChecked(newValue);
-    localStorage.setItem('checkboxState', JSON.stringify(newValue));
-    onFilter(isChecked);
+    onFilter(newValue);
   };
 
   return (
@@ -29,6 +27,8 @@ function FilterCheckbox({ checked, onFilter }) {
           className='filter-checkbox__invisible-checkbox'
           onChange={handleCheckboxChange}
           checked={isChecked}
+          id='checkbox'
+          name='checkbox'
         />
         <span className='filter-checkbox__visible-checkbox filter-checkbox__visible-checkbox_type_checked'></span>
       </label>

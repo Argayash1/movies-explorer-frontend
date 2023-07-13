@@ -18,7 +18,7 @@ function SavedMovies({
       {isLoading && <Preloader />}
       {!isLoading && didTheUserSearch && (
         <MoviesCardList
-          initialMoviesCards={moviesCards}
+          movies={moviesCards}
           buttonType='delete'
           place='saved-movies'
           onDeleteMovie={onDeleteMovie}
