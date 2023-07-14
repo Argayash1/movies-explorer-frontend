@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
 import './MoviesCard.css';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { BEAT_FILM_BASE_URL } from '../../utils/configs/urlConfig';
 
 function MoviesCard({ movieCard, buttonType, onSaveMovie, onDeleteMovie, place, IsSaved, savedMovies }) {
   const [isMovieSaved, setIsMovieSaved] = useState(IsSaved ? true : false);
@@ -13,8 +14,8 @@ function MoviesCard({ movieCard, buttonType, onSaveMovie, onDeleteMovie, place, 
 
   const movie = Object.assign({}, movieCard);
   movie.image = Object.assign({}, movieCard.image);
-  movie.image = place === 'saved-movies' ? movieCard.image : `https://api.nomoreparties.co${movieCard.image.url}`;
-  movie.thumbnail = movieCard.thumbnail || `https://api.nomoreparties.co${movieCard.image.formats.thumbnail.url}`;
+  movie.image = place === 'saved-movies' ? movieCard.image : `${BEAT_FILM_BASE_URL}${movieCard.image.url}`;
+  movie.thumbnail = movieCard.thumbnail || `${BEAT_FILM_BASE_URL}${movieCard.image.formats.thumbnail.url}`;
   movie.movieId = movie.id;
 
   function handleGetDurationFromMins(mins) {

@@ -1,6 +1,8 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { useLocation } from 'react-router-dom';
+import { MOVIES_NOT_FOUND, CONNECTION_OR_SERVER_ERROR } from '../../utils/configs/errorsConfig';
+import { ZERO_CARDS } from '../../utils/configs/cardsConfig';
 
 function MoviesCardList({
   movies,
@@ -35,15 +37,13 @@ function MoviesCardList({
 
   return (
     <section className={`movies-card-list ${place === 'saved-movies' ? 'movies-card-list_place_saved-movies' : ''}`}>
-      {movies.length === 0 ? (
+      {movies.length === ZERO_CARDS ? (
         <p
           className={`movies-card-list__not-found ${
             !isRequestSuccessful ? 'movies-card-list__not-found_req_unsuccsessful' : ''
           }`}
         >
-          {!isRequestSuccessful
-            ? 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз'
-            : 'Ничего не найдено'}
+          {!isRequestSuccessful ? CONNECTION_OR_SERVER_ERROR : MOVIES_NOT_FOUND}
         </p>
       ) : (
         <ul className='movies-card-list__cards'>{movieCardElements}</ul>

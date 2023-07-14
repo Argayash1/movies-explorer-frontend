@@ -1,14 +1,27 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import useForm from '../../hooks/useForm';
 import './Profile.css';
 import Form from '../Form/Form';
 import AuthTitle from '../AuthTitle/AuthTitle';
+import { nameRegex } from '../../utils/configs/regexConfig';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 
 function Profile({ isEdit, onSignOut, onSubmit, onEditProfile, isLoading }) {
   const currentUser = useContext(CurrentUserContext);
-  const { values, errors, formValid, onChange } = useForm();
-  const nameRegex = '^[a-zA-Zа-яА-ЯёЁ\\s\\-]+$';
+  const { values, errors, formValid, onChange, resetValidation } = useForm();
+  const [isOtherUserData, setIsOtherUserData] = useState(false);
+
+  useEffect(() => {
+    resetValidation({ name: currentUser.name, email: currentUser.email }, {}, false);
+  }, [currentUser, resetValidation]);
+
+  useEffect(() => {
+    if (values.name !== currentUser.name && values.email !== currentUser.email) {
+      setIsOtherUserData(true);
+    } else {
+      setIsOtherUserData(false);
+    }
+  }, [values.name, values.email, currentUser.name, currentUser.email]);
 
   return (
     <main className='profile'>
@@ -24,13 +37,14 @@ function Profile({ isEdit, onSignOut, onSubmit, onEditProfile, isLoading }) {
           onSubmit={onSubmit}
           values={values}
           formValid={formValid}
+          isOtherUserData={isOtherUserData}
         >
           <label htmlFor='name' className='profile__input-label'>
             Имя
           </label>
           <input
             className={`profile__input ${errors.name && 'profile__input_type_error'}`}
-            value={values.name || currentUser.name}
+            value={values.name || ''}
             onChange={onChange}
             type='text'
             name='name'
@@ -48,7 +62,7 @@ function Profile({ isEdit, onSignOut, onSubmit, onEditProfile, isLoading }) {
           </label>
           <input
             className={`profile__input profile__input_type_e-mail ${errors.email && 'profile__input_type_error'}`}
-            value={values.email || currentUser.email}
+            value={values.email || ''}
             onChange={onChange}
             type='email'
             name='email'

@@ -3,10 +3,10 @@ import useForm from '../../hooks/useForm';
 import AuthPage from '../AuthPage/AuthPage';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { nameRegex } from '../../utils/configs/regexConfig';
 
 const Register = ({ name, onSignup, isRequestSuccessful, errorText, onCleanErrorText, isLoading, isLoggedIn }) => {
   const { values, errors, formValid, onChange } = useForm();
-  const nameRegex = '^[a-zA-Zа-яА-ЯёЁ\\s\\-]+$';
 
   const navigate = useNavigate();
 

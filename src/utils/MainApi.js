@@ -1,3 +1,5 @@
+import { BASE_URL } from '../utils/configs/urlConfig';
+
 class MainApi {
   constructor(options) {
     this._baseUrl = options.baseUrl;
@@ -124,7 +126,7 @@ class MainApi {
 
 // Создаём экземпляр класса Api
 const mainApi = new MainApi({
-  baseUrl: 'https://api.argayash-movies-explo.nomoredomains.rocks',
+  baseUrl: BASE_URL,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',

@@ -1,9 +1,24 @@
+import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
-import './Movies.css';
 import { useCallback, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import {
+  DESKTOP_SCREEN_RESOLUTION,
+  TABLET_SCREEN_RESOLUTION,
+  MOBILE_PHONE_HIGH_SCREEN_RESOLUTION,
+  MOBILE_PHONE_SCREEN_RESOLUTION,
+  ZERO_CARDS,
+  NUMBER_OF_CARDS_FOR_DESKTOP,
+  NUMBER_OF_CARDS_FOR_TABLET,
+  NUMBER_OF_CARDS_FOR_MOBILE_PHONE,
+  NUMBER_OF_CARDS_TO_SHOW_MORE_BUTTON,
+  MORE_CARDS_FOR_DESKTOP,
+  MORE_OF_CARDS_FOR_TABLET_AND_PHONE,
+  SHORT_MOVIE_DURATION,
+  HANDLERESIZE_TIMEOUT,
+} from '../../utils/configs/cardsConfig';
 
 function Movies({
   initialMoviesCards, // это найденные фильмы, которые передаются из app после каждого поиска
@@ -20,25 +35,28 @@ function Movies({
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [moviesCards, setMoviesCards] = useState([]);
   const [moviesToShow, setMoviesToShow] = useState([]);
-  let [items, setItems] = useState(0);
+  let [items, setItems] = useState(ZERO_CARDS);
   const [moviesRequest, setMoviesRequest] = useState('');
   const [isCheckBoxChecked, setIsCheckBoxChecked] = useState(false);
 
   const { pathname } = useLocation();
 
   const showMoreButton =
-    pathname === '/movies' && moviesCards && moviesCards.length > 3 && moviesToShow.length !== moviesCards.length;
+    pathname === '/movies' &&
+    moviesCards &&
+    moviesCards.length > NUMBER_OF_CARDS_TO_SHOW_MORE_BUTTON &&
+    moviesToShow.length !== moviesCards.length;
 
   const handleSetMovieCardsLength = useCallback(() => {
     const currentItems = items;
-    if (screenWidth >= 1280) {
-      return moviesCards.slice(0, currentItems + 12);
+    if (screenWidth >= DESKTOP_SCREEN_RESOLUTION) {
+      return moviesCards.slice(ZERO_CARDS, currentItems + NUMBER_OF_CARDS_FOR_DESKTOP);
     }
-    if (screenWidth > 480 && screenWidth < 1280) {
-      return moviesCards.slice(0, currentItems + 8);
+    if (screenWidth > MOBILE_PHONE_HIGH_SCREEN_RESOLUTION && screenWidth < DESKTOP_SCREEN_RESOLUTION) {
+      return moviesCards.slice(ZERO_CARDS, currentItems + NUMBER_OF_CARDS_FOR_TABLET);
     }
-    if (screenWidth >= 320 || screenWidth <= 480) {
-      return moviesCards.slice(0, currentItems + 5);
+    if (screenWidth >= MOBILE_PHONE_SCREEN_RESOLUTION || screenWidth <= MOBILE_PHONE_HIGH_SCREEN_RESOLUTION) {
+      return moviesCards.slice(ZERO_CARDS, currentItems + NUMBER_OF_CARDS_FOR_MOBILE_PHONE);
     }
   }, [moviesCards, screenWidth, items]);
 
@@ -49,11 +67,12 @@ function Movies({
 
   useEffect(() => {
     const storedMovies = JSON.parse(localStorage.getItem('foundMovies')) || [];
-    if (initialMoviesCards && initialMoviesCards.length > 0) {
+    if (initialMoviesCards && initialMoviesCards.length > ZERO_CARDS) {
       setMoviesCards(initialMoviesCards);
     } else {
       const checkboxState = localStorage.getItem('checkboxState');
-      const filteredStoredMovies = storedMovies.length > 0 ? storedMovies.filter((movie) => movie.duration <= 40) : [];
+      const filteredStoredMovies =
+        storedMovies.length > ZERO_CARDS ? storedMovies.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION) : [];
       setMoviesCards(checkboxState === 'true' ? filteredStoredMovies : storedMovies);
     }
   }, [initialMoviesCards]);
@@ -70,7 +89,7 @@ function Movies({
 
       timeoutId = setTimeout(() => {
         handleResize();
-      }, 500);
+      }, HANDLERESIZE_TIMEOUT);
     };
 
     window.addEventListener('resize', delayedHandleResize);
@@ -87,12 +106,12 @@ function Movies({
   }, [handleSetMovieCardsLength]);
 
   const handleShowMoreMovies = useCallback(() => {
-    if (screenWidth >= 1280) {
-      setItems((prevItems) => prevItems + 3);
+    if (screenWidth >= DESKTOP_SCREEN_RESOLUTION) {
+      setItems((prevItems) => prevItems + MORE_CARDS_FOR_DESKTOP);
     }
 
-    if (screenWidth >= 320 && screenWidth < 1280) {
-      setItems((prevItems) => prevItems + 2);
+    if (screenWidth >= MOBILE_PHONE_SCREEN_RESOLUTION && screenWidth < DESKTOP_SCREEN_RESOLUTION) {
+      setItems((prevItems) => prevItems + MORE_OF_CARDS_FOR_TABLET_AND_PHONE);
     }
   }, [screenWidth]);
 
@@ -102,7 +121,7 @@ function Movies({
   }, [handleSetMovieCardsLength]);
 
   useEffect(() => {
-    setItems(0);
+    setItems(ZERO_CARDS);
   }, [moviesCards]);
 
   return (

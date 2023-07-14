@@ -13,3 +13,7 @@ export const NUMBER_OF_CARDS_TO_SHOW_MORE_BUTTON = 3;
 
 export const MORE_CARDS_FOR_DESKTOP = 3;
 export const MORE_OF_CARDS_FOR_TABLET_AND_PHONE = 2;
+
+export const SHORT_MOVIE_DURATION = 40;
+
+export const HANDLERESIZE_TIMEOUT = 500;

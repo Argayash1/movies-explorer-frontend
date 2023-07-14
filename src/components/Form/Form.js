@@ -13,9 +13,10 @@ function Form({
   isRequestSuccessful,
   errorText,
   children,
+  isOtherUserData = true,
 }) {
   const formClassName = `form ${type === 'profile' ? 'form_type_profile' : ''}`;
-  const submitButtonDisable = isLoading || !formValid;
+  const submitButtonDisable = isLoading || !formValid || !isOtherUserData;
   const submitButtonClassName = `form__submit-button ${type === 'profile' && 'form__submit-button_type_profile'}`;
 
   const handleSubmit = (e) => {

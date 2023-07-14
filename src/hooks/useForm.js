@@ -1,26 +1,25 @@
-import { useState, useCallback, useContext } from 'react';
-import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
+import { useState, useCallback } from 'react';
 import isEmail from 'validator/es/lib/isEmail';
+import { NAME_ERROR, EMAIL_ERROR } from '../utils/configs/errorsConfig.js';
 
 function useForm() {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [formValid, setFormValid] = useState(false);
-  const currentUser = useContext(CurrentUserContext);
 
   function onChange(e) {
     const { name, value } = e.target;
     if (name === 'name' && e.target.validity.patternMismatch) {
-      e.target.setCustomValidity('Имя должно содержать только кириллицу, латиницу, пробел или дефис.');
+      e.target.setCustomValidity(NAME_ERROR);
     } else if (name === 'email' && !isEmail(value)) {
-      e.target.setCustomValidity('Неверный формат адреса электронной почты');
+      e.target.setCustomValidity(EMAIL_ERROR);
     } else {
       e.target.setCustomValidity('');
     }
     setValues((values) => ({ ...values, [name]: value }));
     setErrors((errors) => ({ ...errors, [name]: e.target.validationMessage }));
     const formValid = e.target.closest('form').checkValidity();
-    value === currentUser.name || value === currentUser.email ? setFormValid(false) : setFormValid(formValid);
+    setFormValid(formValid);
   }
 
   const resetValidation = useCallback(function reset(values = {}, errors = {}, formValid = false) {

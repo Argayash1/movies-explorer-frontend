@@ -10,13 +10,16 @@ import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
+import Preloader from '../Preloader/Preloader';
+
 import './App.css';
 
 import mainApi from '../../utils/MainApi';
 import moviesApi from '../../utils/MoviesApi';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import Preloader from '../Preloader/Preloader';
+
+import { SHORT_MOVIE_DURATION } from '../../utils/configs/cardsConfig';
 
 function App() {
   // Стейт данных пользователя
@@ -185,15 +188,6 @@ function App() {
     }
   }
 
-  async function handleAuthorize(values) {
-    const authData = await mainApi.authorize(values.email, values.password);
-    if (authData.message) {
-      setIsLoggedIn(true);
-      localStorage.setItem('authorized', 'true');
-      navigate('/movies', { replace: true });
-    }
-  }
-
   function handleOpenBurgerMenu() {
     setIsBurgerMenuOpen(true);
   }
@@ -210,7 +204,7 @@ function App() {
     setIsProfileEdit(true);
     setIsProfileLoading(true);
     try {
-      const userData = mainApi.editProfile(values.name, values.email);
+      const userData = await mainApi.editProfile(values.name, values.email);
       setCurrentUser(userData);
     } catch (err) {
       console.log(err);
@@ -260,7 +254,7 @@ function App() {
       setFoundMovies(foundMovies); // этот стейт нужен для того, чтобы фильтровать фильмы в функции фильтрации
       const checkboxState = localStorage.getItem('checkboxState');
       if (checkboxState === 'true') {
-        const filteredFoundMovies = foundMovies.filter((movie) => movie.duration <= 40);
+        const filteredFoundMovies = foundMovies.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION);
         setInitialMovies(filteredFoundMovies);
       } else {
         setInitialMovies(foundMovies);
@@ -286,7 +280,7 @@ function App() {
       setFoundSavedMovies(foundSavedMovies);
       const checkboxState = localStorage.getItem('checkboxState');
       if (checkboxState === 'true') {
-        const filteredFoundSavedMovies = foundSavedMovies.filter((movie) => movie.duration <= 40);
+        const filteredFoundSavedMovies = foundSavedMovies.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION);
         setSavedMovies(filteredFoundSavedMovies);
       } else {
         setSavedMovies(foundSavedMovies);
@@ -298,9 +292,9 @@ function App() {
   function handleFilterMovies(checked) {
     localStorage.setItem('checkboxState', checked);
     const storedMovies = JSON.parse(localStorage.getItem('foundMovies'));
-    const filteredFoundMovies = foundMovies.filter((movie) => movie.duration <= 40);
+    const filteredFoundMovies = foundMovies.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION);
     const filteredStoredMovies =
-      storedMovies && storedMovies.length > 0 && storedMovies.filter((movie) => movie.duration <= 40);
+      storedMovies && storedMovies.length > 0 && storedMovies.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION);
     if (checked) {
       setInitialMovies(foundMovies.length > 0 ? filteredFoundMovies : filteredStoredMovies);
     } else {
@@ -309,11 +303,11 @@ function App() {
   }
 
   function handleFilterSavedMovies(checked) {
-    const filteredFoundSavedMovies = foundSavedMovies.filter((movie) => movie.duration <= 40);
+    const filteredFoundSavedMovies = foundSavedMovies.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION);
     const storedSavedMovies = JSON.parse(localStorage.getItem('saved-movies'))
       ? JSON.parse(localStorage.getItem('saved-movies'))
       : [];
-    const filteredSavedMovies = savedMovies.filter((movie) => movie.duration <= 40);
+    const filteredSavedMovies = savedMovies.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION);
     if (checked) {
       setSavedMovies(foundSavedMovies.length > 0 ? filteredFoundSavedMovies : filteredSavedMovies);
     } else {
