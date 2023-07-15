@@ -8,6 +8,7 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
 import Preloader from '../Preloader/Preloader';
@@ -19,7 +20,7 @@ import moviesApi from '../../utils/MoviesApi';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-import { SHORT_MOVIE_DURATION } from '../../utils/configs/cardsConfig';
+import { ZERO_CARDS, SHORT_MOVIE_DURATION } from '../../utils/configs/cardsConfig';
 
 function App() {
   // Стейт данных пользователя
@@ -54,7 +55,11 @@ function App() {
   // Стейты запросов
   const [isRequestSuccessful, setIsRequestSuccessful] = useState(true);
   const [isUserRequestSuccessful, setIsUserRequestSuccessful] = useState(true);
+  const [isEditProfileSuccessful, setIsEditProfileSuccessful] = useState(true);
   const [errorText, setErrortext] = useState('');
+
+  // Стейт попапа уведомления
+  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
 
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -196,6 +201,14 @@ function App() {
     setIsBurgerMenuOpen(false);
   }
 
+  function handleOpenInfoTooltip() {
+    setIsInfoTooltipOpen(true);
+  }
+
+  function handleCloseInfoTooltip() {
+    setIsInfoTooltipOpen(false);
+  }
+
   function handleEditProfile() {
     setIsProfileEdit(true);
   }
@@ -206,8 +219,12 @@ function App() {
     try {
       const userData = await mainApi.editProfile(values.name, values.email);
       setCurrentUser(userData);
+      handleOpenInfoTooltip();
     } catch (err) {
       console.log(err);
+      setIsEditProfileSuccessful(false);
+      setErrortext(err);
+      handleOpenInfoTooltip();
     } finally {
       setIsProfileEdit(false);
       setTimeout(() => {
@@ -271,7 +288,7 @@ function App() {
   function handlSavedMoviesSubmit(value) {
     setIsSavedMoviesLoading(true);
     const storedSavedMovies = JSON.parse(localStorage.getItem('saved-movies'));
-    if (storedSavedMovies && storedSavedMovies.length > 0) {
+    if (storedSavedMovies && storedSavedMovies.length > ZERO_CARDS) {
       const foundSavedMovies = JSON.parse(localStorage.getItem('saved-movies')).filter(
         (savedMovie) =>
           savedMovie.nameRU.toLowerCase().includes(value.toLowerCase()) ||
@@ -294,11 +311,13 @@ function App() {
     const storedMovies = JSON.parse(localStorage.getItem('foundMovies'));
     const filteredFoundMovies = foundMovies.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION);
     const filteredStoredMovies =
-      storedMovies && storedMovies.length > 0 && storedMovies.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION);
+      storedMovies &&
+      storedMovies.length > ZERO_CARDS &&
+      storedMovies.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION);
     if (checked) {
-      setInitialMovies(foundMovies.length > 0 ? filteredFoundMovies : filteredStoredMovies);
+      setInitialMovies(foundMovies.length > ZERO_CARDS ? filteredFoundMovies : filteredStoredMovies);
     } else {
-      setInitialMovies(foundMovies.length > 0 ? foundMovies : storedMovies);
+      setInitialMovies(foundMovies.length > ZERO_CARDS ? foundMovies : storedMovies);
     }
   }
 
@@ -309,9 +328,9 @@ function App() {
       : [];
     const filteredSavedMovies = savedMovies.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION);
     if (checked) {
-      setSavedMovies(foundSavedMovies.length > 0 ? filteredFoundSavedMovies : filteredSavedMovies);
+      setSavedMovies(foundSavedMovies.length > ZERO_CARDS ? filteredFoundSavedMovies : filteredSavedMovies);
     } else {
-      setSavedMovies(foundSavedMovies.length > 0 ? foundSavedMovies : storedSavedMovies);
+      setSavedMovies(foundSavedMovies.length > ZERO_CARDS ? foundSavedMovies : storedSavedMovies);
     }
   }
 
@@ -440,6 +459,13 @@ function App() {
               <Route path='*' element={<PageNotFound onNavigateToMain={handleNavigateBack} />} />
             </Routes>
             {pathsWithFooter && <Footer />}
+            <InfoTooltip
+              isOpen={isInfoTooltipOpen}
+              onClose={handleCloseInfoTooltip}
+              name='register'
+              isSuccess={isEditProfileSuccessful}
+              errorText={errorText}
+            />
           </div>
         </div>
       )}

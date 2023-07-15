@@ -81,6 +81,7 @@
   color: #ee3465;
   margin-top: 8px;
   min-height: 12px;
+  display: block;
 }
 
 @media screen and (max-width: 920px) {

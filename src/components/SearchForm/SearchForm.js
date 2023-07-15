@@ -15,7 +15,12 @@ function SearchForm({ onSubmit, onChekIsCheckboxChecked, onFilter, isLoading, mo
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    pathname !== '/movies' || userRequest ? onSubmit(userRequest) : setErrorText('Нужно ввести ключевое слово');
+    if (pathname !== '/movies' || userRequest) {
+      onSubmit(userRequest);
+      setErrorText('');
+    } else {
+      setErrorText('Нужно ввести ключевое слово');
+    }
   };
 
   const handleChange = (e) => {
