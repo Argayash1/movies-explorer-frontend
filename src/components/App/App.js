@@ -105,17 +105,11 @@ function App() {
     isLoggedIn &&
       Promise.all([mainApi.getUserInfo(), mainApi.getSavedMovies()])
         .then(([userData, savedMovies]) => {
-          console.log(savedMovies);
-          console.log(userData);
           setCurrentUser(userData);
           setSavedMovies(savedMovies);
           localStorage.setItem('saved-movies', JSON.stringify(savedMovies));
           const userRequest = localStorage.getItem('userRequest');
-          if (userRequest) {
-            setDidTheUserSearch(true);
-          } else {
-            setDidTheUserSearch(false);
-          }
+          userRequest ? setDidTheUserSearch(true) : setDidTheUserSearch(false);
         })
         .catch((err) => {
           console.log(err);
@@ -185,8 +179,9 @@ function App() {
       setCurrentUser({});
       setSavedMovies([]);
       setIsBurgerMenuOpen(false);
-      // setFoundMovies([]);
-      // setInitialMovies([]);
+      setFoundMovies([]);
+      setInitialMovies([]);
+      setDidTheUserSearch(false);
       navigate('/', { replace: true });
     } catch (err) {
       console.log(err);
