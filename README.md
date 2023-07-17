@@ -6,6 +6,10 @@
 
 Ссылка на пулл реквест: https://github.com/Argayash1/movies-explorer-frontend/pull/2
 
+Ссылка на фронтенд-часть приложения: https://argayash-movies-explorer.nomoredomains.rocks
+
+Ссылка на бэкенд-часть приложения: https://apii.mesto2023.students.nomoredomains.monster
+
 ## Available Scripts
 
 In the project directory, you can run:
