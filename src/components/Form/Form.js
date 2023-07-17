@@ -10,7 +10,6 @@ function Form({
   isProfileEdit = true,
   isLoading,
   loadingText,
-  isRequestSuccessful,
   errorText,
   children,
   isOtherUserData = true,

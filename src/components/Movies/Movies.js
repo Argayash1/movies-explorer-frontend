@@ -6,7 +6,6 @@ import { useCallback, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
   DESKTOP_SCREEN_RESOLUTION,
-  TABLET_SCREEN_RESOLUTION,
   MOBILE_PHONE_HIGH_SCREEN_RESOLUTION,
   MOBILE_PHONE_SCREEN_RESOLUTION,
   ZERO_CARDS,
@@ -131,6 +130,7 @@ function Movies({
         onFilter={onFilter}
         moviesRequest={moviesRequest}
         isCheckBoxChecked={isCheckBoxChecked}
+        isLoading={isLoading}
       />
       {isLoading && <Preloader />}
       {!isLoading && didTheUserSearch && (

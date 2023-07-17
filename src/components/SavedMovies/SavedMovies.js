@@ -14,7 +14,7 @@ function SavedMovies({
 }) {
   return (
     <main className='saved-movies'>
-      <SearchForm onFilter={onFilter} onSubmit={onSubmit} />
+      <SearchForm onFilter={onFilter} onSubmit={onSubmit} isLoading={isLoading}/>
       {isLoading && <Preloader />}
       {!isLoading && didTheUserSearch && (
         <MoviesCardList

@@ -2,7 +2,7 @@ import './FilterCheckbox.css';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-function FilterCheckbox({ checked, onFilter }) {
+function FilterCheckbox({ checked, onFilter, isLoading }) {
   const [isChecked, setIsChecked] = useState(false);
 
   const { pathname } = useLocation();
@@ -27,6 +27,7 @@ function FilterCheckbox({ checked, onFilter }) {
           className='filter-checkbox__invisible-checkbox'
           onChange={handleCheckboxChange}
           checked={isChecked}
+          disabled={isLoading}
           id='checkbox'
           name='checkbox'
         />

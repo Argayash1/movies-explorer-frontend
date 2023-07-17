@@ -3,7 +3,7 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 import { useLocation } from 'react-router-dom';
 
-function SearchForm({ onSubmit, onChekIsCheckboxChecked, onFilter, isLoading, moviesRequest, isCheckBoxChecked }) {
+function SearchForm({ onSubmit, onFilter, isLoading, moviesRequest, isCheckBoxChecked }) {
   const [userRequest, setUserRequest] = useState('');
   const [errorText, setErrorText] = useState('');
 
@@ -50,7 +50,7 @@ function SearchForm({ onSubmit, onChekIsCheckboxChecked, onFilter, isLoading, mo
           </button>
         </div>
         <span className='search-form__error'>{errorText}</span>
-        <FilterCheckbox checked={isCheckBoxChecked} onFilter={onFilter} />
+        <FilterCheckbox checked={isCheckBoxChecked} onFilter={onFilter} isLoading={isLoading}/>
       </form>
     </section>
   );
