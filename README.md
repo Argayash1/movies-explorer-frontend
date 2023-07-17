@@ -4,6 +4,8 @@
 
 Ссылка на макет проекта: https://disk.yandex.ru/d/fb0uECyV0rkDxw.
 
+Ссылка на пулл реквест: https://github.com/Argayash1/movies-explorer-frontend/pull/2
+
 ## Available Scripts
 
 In the project directory, you can run:
