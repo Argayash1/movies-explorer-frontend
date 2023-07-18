@@ -8,8 +8,6 @@
 .form_type_profile {
   width: 100%;
   margin: 123px auto 0;
-  display: grid;
-  grid-template-columns: auto 1fr;
   font-size: 0;
 }
 
@@ -42,7 +40,7 @@
 
 .form__submit-button_type_profile {
   background: #3456f3;
-  margin: 222px 0 16px;
+  margin: 223px 0 16px;
   grid-column: 1/3;
 }
 
@@ -61,6 +59,12 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .form__submit-button_type_profile {
+    margin: 213px 0 16px;
+  }
+}
+
 @media screen and (max-width: 544px) {
   .form {
     width: 260px;
@@ -68,6 +72,8 @@
 
   .form_type_profile {
     margin: 80px auto 0;
+    justify-content: space-between;
+    height: 100%;
   }
 
   .form__submit-button {
@@ -75,5 +81,9 @@
     margin-bottom: 14px;
     font-size: 12px;
     line-height: 15px;
+  }
+
+  .form__submit-button_type_profile {
+    margin-top: auto;
   }
 }

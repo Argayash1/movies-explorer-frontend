@@ -8,6 +8,13 @@
   padding: 74px 0 70px;
 }
 
+.profile__inputs-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  font-size: 0;
+  border: none;
+}
+
 .profile__input-label {
   font-style: normal;
   font-weight: 500;
@@ -66,7 +73,7 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  margin-top: 219px;
+  margin-top: 220px;
 }
 
 .profile__button {

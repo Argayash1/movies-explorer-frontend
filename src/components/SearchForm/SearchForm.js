@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 import { useLocation } from 'react-router-dom';
+import {NO_KEY_WORD_ERROR} from '../../utils/configs/errorsConfig'
 
 function SearchForm({ onSubmit, onFilter, isLoading, moviesRequest, isCheckBoxChecked }) {
   const [userRequest, setUserRequest] = useState('');
@@ -19,7 +20,7 @@ function SearchForm({ onSubmit, onFilter, isLoading, moviesRequest, isCheckBoxCh
       onSubmit(userRequest);
       setErrorText('');
     } else {
-      setErrorText('Нужно ввести ключевое слово');
+      setErrorText(NO_KEY_WORD_ERROR);
     }
   };
 

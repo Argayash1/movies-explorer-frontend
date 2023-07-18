@@ -12,11 +12,13 @@ function SavedMovies({
   isRequestSuccessful,
   onSubmit,
 }) {
+  const storedSavedMovies = JSON.parse(localStorage.getItem('saved-movies'));
+
   return (
     <main className='saved-movies'>
       <SearchForm onFilter={onFilter} onSubmit={onSubmit} isLoading={isLoading}/>
       {isLoading && <Preloader />}
-      {!isLoading && didTheUserSearch && (
+      {!isLoading && storedSavedMovies.length > 0 && (
         <MoviesCardList
           movies={moviesCards}
           buttonType='delete'

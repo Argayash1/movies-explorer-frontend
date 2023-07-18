@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import './Form.css';
 
 function Form({
@@ -14,6 +15,8 @@ function Form({
   children,
   isOtherUserData = true,
 }) {
+  const { pathname } = useLocation();
+
   const formClassName = `form ${type === 'profile' ? 'form_type_profile' : ''}`;
   const submitButtonDisable = isLoading || !formValid || !isOtherUserData;
   const submitButtonClassName = `form__submit-button ${type === 'profile' && 'form__submit-button_type_profile'}`;
@@ -26,7 +29,7 @@ function Form({
   return (
     <form className={formClassName} name={`${name}`} id='form' onSubmit={handleSubmit} noValidate>
       {children}
-      <span className='form__error'>{errorText}</span>
+      {pathname !== '/profile' && <span className='form__error'>{errorText}</span>}
       {isProfileEdit && (
         <button type='submit' className={submitButtonClassName} disabled={submitButtonDisable}>
           {isLoading ? loadingText : buttonText}

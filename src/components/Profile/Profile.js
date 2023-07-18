@@ -39,39 +39,41 @@ function Profile({ isEdit, onSignOut, onSubmit, onEditProfile, isLoading }) {
           formValid={formValid}
           isOtherUserData={isOtherUserData}
         >
-          <label htmlFor='name' className='profile__input-label'>
-            Имя
-          </label>
-          <input
-            className={`profile__input ${errors.name && 'profile__input_type_error'}`}
-            value={values.name || ''}
-            onChange={onChange}
-            type='text'
-            name='name'
-            id='name'
-            placeholder='Имя'
-            minLength='2'
-            maxLength='30'
-            autoComplete='off'
-            pattern={nameRegex}
-            required
-            disabled={!isEdit || isLoading}
-          />
-          <label htmlFor='email' className='profile__input-label profile__input-label_type_e-mail'>
-            E-mail
-          </label>
-          <input
-            className={`profile__input profile__input_type_e-mail ${errors.email && 'profile__input_type_error'}`}
-            value={values.email || ''}
-            onChange={onChange}
-            type='email'
-            name='email'
-            id='email'
-            placeholder='E-mail'
-            autoComplete='off'
-            required
-            disabled={!isEdit || isLoading}
-          />
+          <fieldset className='profile__inputs-container'>
+            <label htmlFor='name' className='profile__input-label'>
+              Имя
+            </label>
+            <input
+              className={`profile__input ${errors.name && 'profile__input_type_error'}`}
+              value={values.name || ''}
+              onChange={onChange}
+              type='text'
+              name='name'
+              id='name'
+              placeholder='Имя'
+              minLength='2'
+              maxLength='30'
+              autoComplete='off'
+              pattern={nameRegex}
+              required
+              disabled={!isEdit || isLoading}
+            />
+            <label htmlFor='email' className='profile__input-label profile__input-label_type_e-mail'>
+              E-mail
+            </label>
+            <input
+              className={`profile__input profile__input_type_e-mail ${errors.email && 'profile__input_type_error'}`}
+              value={values.email || ''}
+              onChange={onChange}
+              type='email'
+              name='email'
+              id='email'
+              placeholder='E-mail'
+              autoComplete='off'
+              required
+              disabled={!isEdit || isLoading}
+            />
+          </fieldset>
         </Form>
         {!isEdit && (
           <div className='profile__buttons'>
