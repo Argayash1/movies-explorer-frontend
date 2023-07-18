@@ -159,7 +159,12 @@ function App() {
       return;
     }
     try {
-      handleLogin(values);
+      const signInData = await mainApi.authorize(values.email, values.password);
+      if (signInData.message) {
+        setIsLoggedIn(true);
+        localStorage.setItem('authorized', 'true');
+        navigate('/movies', { replace: true });
+      }
     } catch (err) {
       console.log(err);
       setIsRequestSuccessful(false);
