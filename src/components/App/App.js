@@ -123,15 +123,6 @@ function App() {
     }
   }, [pathname]);
 
-  async function handleLogin(values) {
-    const signInData = await mainApi.authorize(values.email, values.password);
-    if (signInData.message) {
-      setIsLoggedIn(true);
-      localStorage.setItem('authorized', 'true');
-      navigate('/movies', { replace: true });
-    }
-  }
-
   async function handleSignUp(values) {
     setIsRegisterLoading(true);
     setErrortext('');
@@ -139,7 +130,7 @@ function App() {
     try {
       const signUpdata = await mainApi.register(name, email, password);
       if (signUpdata) {
-        handleLogin({ email, password });
+        handleSignIn(values);
       }
     } catch (err) {
       console.log(err);
