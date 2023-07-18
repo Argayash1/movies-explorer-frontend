@@ -84,6 +84,6 @@
   }
 
   .form__submit-button_type_profile {
-    margin-top: auto;
+    margin: auto 0 0;
   }
 }

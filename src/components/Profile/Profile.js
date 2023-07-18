@@ -16,7 +16,7 @@ function Profile({ isEdit, onSignOut, onSubmit, onEditProfile, isLoading }) {
   }, [currentUser, resetValidation]);
 
   useEffect(() => {
-    if (values.name !== currentUser.name && values.email !== currentUser.email) {
+    if (values.name !== currentUser.name || values.email !== currentUser.email) {
       setIsOtherUserData(true);
     } else {
       setIsOtherUserData(false);
