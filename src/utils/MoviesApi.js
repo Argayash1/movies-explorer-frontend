@@ -1,3 +1,5 @@
+import { BEAT_FILM_MOVIES_URL } from './configs/urlConfig';
+
 class MoviesApi {
   constructor(options) {
     this._baseUrl = options.baseUrl;
@@ -26,7 +28,7 @@ class MoviesApi {
 
 // Создаём экземпляр класса Api
 const moviesApi = new MoviesApi({
-  baseUrl: 'https://api.nomoreparties.co/beatfilm-movies',
+  baseUrl: BEAT_FILM_MOVIES_URL,
   headers: {
     'Content-Type': 'application/json',
   },

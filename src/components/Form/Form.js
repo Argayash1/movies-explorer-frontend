@@ -1,27 +1,38 @@
+import { useLocation } from 'react-router-dom';
 import './Form.css';
 
-function Form({ type, name, children, buttonText, onSubmit, isProfileEdit = true, isFormValid }) {
+function Form({
+  type,
+  name,
+  values,
+  formValid,
+  buttonText,
+  onSubmit,
+  isProfileEdit = true,
+  isLoading,
+  loadingText,
+  errorText,
+  children,
+  isOtherUserData = true,
+}) {
+  const { pathname } = useLocation();
+
+  const formClassName = `form ${type === 'profile' ? 'form_type_profile' : ''}`;
+  const submitButtonDisable = isLoading || !formValid || !isOtherUserData;
+  const submitButtonClassName = `form__submit-button ${type === 'profile' && 'form__submit-button_type_profile'}`;
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit();
+    onSubmit(values);
   };
 
   return (
-    <form
-      action='#'
-      className={`form ${type === 'profile' ? 'form_type_profile' : ''}`}
-      name={name}
-      onSubmit={handleSubmit}
-    >
+    <form className={formClassName} name={`${name}`} id='form' onSubmit={handleSubmit} noValidate>
       {children}
+      {pathname !== '/profile' && <span className='form__error'>{errorText}</span>}
       {isProfileEdit && (
-        <button
-          type='submit'
-          className={`form__submit-button ${!isFormValid && 'form__submit-button_disabled'} 
-          ${type === 'profile' && 'form__submit-button_type_profile'}`}
-          disabled={!isFormValid && true}
-        >
-          {buttonText}
+        <button type='submit' className={submitButtonClassName} disabled={submitButtonDisable}>
+          {isLoading ? loadingText : buttonText}
         </button>
       )}
     </form>

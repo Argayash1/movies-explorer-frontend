@@ -1,7 +1,7 @@
 .filter-checkbox {
   font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
   display: flex;
-  margin: 26px 0 0;
+  margin: 6px 0 0;
   padding-bottom: 43px;
   border-bottom: 1px solid rgba(170, 170, 170, 0.2);
   width: 100%;
@@ -15,8 +15,8 @@
 
 .filter-checkbox__invisible-checkbox {
   position: absolute;
-  width: 1px; /* если у элемента не будет размеров, некоторые браузеры посчитают, что его вообще нет */
-  height: 1px;
+  width: 0px; /* если у элемента не будет размеров, некоторые браузеры посчитают, что его вообще нет */
+  height: 0px;
   overflow: hidden; /* без этого свойства тоже сработает, но так наверняка. Мы его ещё изучим, оно скрывает элементы, выходящие за границы родителя */
   clip-path: inset(0 0 0 0);
 }
@@ -60,7 +60,7 @@
 
 @media screen and (max-width: 586px) {
   .filter-checkbox {
-    margin: 30px 0 0;
+    margin: 10px 0 0;
     padding-bottom: 63px;
   }
 

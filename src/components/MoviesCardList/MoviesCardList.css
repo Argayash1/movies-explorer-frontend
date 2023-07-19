@@ -19,6 +19,10 @@
   color: #000;
 }
 
+.movies-card-list__not-found_req_unsuccsessful {
+  max-width: 450px;
+}
+
 .movies-card-list__cards {
   list-style: none;
   margin: 0;
@@ -66,6 +70,12 @@
     padding-top: 40px;
     padding-right: 10px;
     padding-left: 10px;
+  }
+
+  .movies-card-list__not-found_req_unsuccsessful {
+    max-width: 300px;
+    font-size: 14px;
+    line-height: 18px;
   }
 }
 

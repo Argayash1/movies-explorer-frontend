@@ -8,6 +8,13 @@
   padding: 74px 0 70px;
 }
 
+.profile__inputs-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  font-size: 0;
+  border: none;
+}
+
 .profile__input-label {
   font-style: normal;
   font-weight: 500;
@@ -41,19 +48,13 @@
   display: block;
 }
 
+.profile__input_type_error {
+  color: #ee3465;
+}
+
 .profile__border-between-inputs {
   border-top: 1px solid #e8e8e8;
   grid-column: 1/3;
-}
-
-.profile__error {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 11px;
-  line-height: 13px;
-  color: #ff004c;
-  margin: 189px auto 0;
-  height: 13px;
 }
 
 .profile__input_type_e-mail {
@@ -72,7 +73,7 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  margin-top: 219px;
+  margin-top: 220px;
 }
 
 .profile__button {
