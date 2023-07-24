@@ -1,6 +1,11 @@
+import { useEffect } from 'react';
 import './PageNotFound.css';
 
 function PagNotFound({ onNavigateToMain }) {
+  useEffect(() => {
+    document.title = 'Страница не найдена';
+  });
+
   return (
     <main className='not-found'>
       <section className='not-found__content'>

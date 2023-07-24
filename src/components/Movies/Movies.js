@@ -60,6 +60,10 @@ function Movies({
   }, [moviesCards, screenWidth, items]);
 
   useEffect(() => {
+    document.title = 'Фильмы';
+  });
+
+  useEffect(() => {
     setMoviesRequest(localStorage.getItem('userRequest'));
     setIsCheckBoxChecked(JSON.parse(localStorage.getItem('checkboxState')));
   }, []);

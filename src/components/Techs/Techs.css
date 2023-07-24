@@ -40,16 +40,22 @@
 }
 
 .techs__list-item {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-  letter-spacing: -0.04em;
   padding: 21px 0 22px;
   background: #e8e8e8;
   border-radius: 10px;
   width: 90px;
   text-align: center;
+}
+
+.techs__list-link {
+  text-decoration: none;
+  color: #000;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: -0.04em;
+  display: block;
 }
 
 @media screen and (max-width: 1024px) {
