@@ -224,18 +224,6 @@ function App() {
     }
   }
 
-  function handleNavigateToSignup() {
-    navigate('/signup');
-  }
-
-  function handleNavigateToSignin() {
-    navigate('/signin');
-  }
-
-  function handleNavigateToProfile() {
-    navigate('/profile');
-  }
-
   function handleCleanErrorText() {
     setErrortext('');
   }
@@ -359,9 +347,6 @@ function App() {
                 isBurgerMenuOpen={isBurgerMenuOpen}
                 onBurgerMenuOpen={handleOpenBurgerMenu}
                 onBurgerMenuClose={handleCloseBurgerMenu}
-                onNavigateToSignup={handleNavigateToSignup}
-                onNavigateToSignin={handleNavigateToSignin}
-                onNavigateToProfile={handleNavigateToProfile}
               ></Header>
             )}
             <Routes>

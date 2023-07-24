@@ -3,7 +3,7 @@ import MainMenu from '../MainMenu/MainMenu';
 import './Navigation.css';
 import { useLocation } from 'react-router-dom';
 
-function Navigation({ isLoggedIn, onNavigateToSignup, onNavigateToSignin, onNavigateToProfile }) {
+function Navigation({ isLoggedIn, onNavigateToProfile }) {
   const { pathname } = useLocation();
   const otherPaths = pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile';
   const mainPath = pathname === '/';
@@ -13,11 +13,7 @@ function Navigation({ isLoggedIn, onNavigateToSignup, onNavigateToSignin, onNavi
       {mainPath && (
         <ul className='navigation__links'>
           <li>{isLoggedIn && <LoggedInMenu place='main' onNavigateToProfile={onNavigateToProfile} />}</li>
-          <li>
-            {!isLoggedIn && (
-              <MainMenu onNavigateToSignup={onNavigateToSignup} onNavigateToSignin={onNavigateToSignin} />
-            )}
-          </li>
+          <li>{!isLoggedIn && <MainMenu />}</li>
         </ul>
       )}
       {otherPaths && <LoggedInMenu place='movies' onNavigateToProfile={onNavigateToProfile} />}
