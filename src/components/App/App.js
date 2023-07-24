@@ -236,10 +236,6 @@ function App() {
     navigate('/profile');
   }
 
-  function handleNavigateBack() {
-    navigate(-1);
-  }
-
   function handleCleanErrorText() {
     setErrortext('');
   }
@@ -447,7 +443,7 @@ function App() {
                   />
                 }
               />
-              <Route path='*' element={<PageNotFound onNavigateToMain={handleNavigateBack} />} />
+              <Route path='*' element={<PageNotFound />} />
             </Routes>
             {pathsWithFooter && <Footer />}
             <InfoTooltip
