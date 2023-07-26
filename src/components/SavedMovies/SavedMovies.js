@@ -17,7 +17,7 @@ function SavedMovies({
 
   useEffect(() => {
     document.title = 'Сохранённые фильмы';
-  });
+  }, []);
 
   return (
     <main className='saved-movies'>

@@ -7,7 +7,7 @@ function PagNotFound() {
 
   useEffect(() => {
     document.title = 'Страница не найдена';
-  });
+  }, []);
 
   function handleNavigateBack() {
     navigate(-1);

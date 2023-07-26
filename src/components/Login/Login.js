@@ -12,6 +12,10 @@ const Login = ({ name, onSignin, isRequestSuccessful, errorText, onCleanErrorTex
     isLoggedIn && navigate('/movies', { replace: true });
   });
 
+  useEffect(() => {
+    document.title = 'Авторизация';
+  }, []);
+
   return (
     <main className='login'>
       <AuthPage

@@ -13,7 +13,7 @@ function Profile({ isEdit, onSignOut, onSubmit, onEditProfile, isLoading }) {
 
   useEffect(() => {
     document.title = 'Аккаунт';
-  });
+  }, []);
 
   useEffect(() => {
     resetValidation({ name: currentUser.name, email: currentUser.email }, {}, false);

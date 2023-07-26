@@ -61,7 +61,7 @@ function Movies({
 
   useEffect(() => {
     document.title = 'Фильмы';
-  });
+  }, []);
 
   useEffect(() => {
     setMoviesRequest(localStorage.getItem('userRequest'));

@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 function Main() {
   useEffect(() => {
     document.title = 'Movies explorer';
-  });
+  }, []);
 
   return (
     <main className='main'>

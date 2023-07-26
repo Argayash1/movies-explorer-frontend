@@ -14,6 +14,10 @@ const Register = ({ name, onSignup, isRequestSuccessful, errorText, onCleanError
     isLoggedIn && navigate('/movies', { replace: true });
   });
 
+  useEffect(() => {
+    document.title = 'Регистрация';
+  }, []);
+
   return (
     <main className='register'>
       <AuthPage
