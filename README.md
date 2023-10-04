@@ -2,13 +2,17 @@
 
 ## Дипломная работа на курсе "Веб-разработчик" в Яндекс.Практикуме
 
+![movies-explorer](https://github.com/Argayash1/movies-explorer-frontend/assets/113699485/8c5c48dd-87a4-4686-abd2-6179cb14fef4)
+
 Ссылка на макет проекта: https://disk.yandex.ru/d/fb0uECyV0rkDxw.
 
 Ссылка на пулл реквест: https://github.com/Argayash1/movies-explorer-frontend/pull/2
 
 Ссылка на фронтенд-часть приложения: https://argayash-movies-explorer.nomoredomains.rocks
 
-Ссылка на бэкенд-часть приложения: https://apii.mesto2023.students.nomoredomains.monster
+Ссылка на бэкенд-часть приложения: https://api.argayash-movies-explo.nomoredomains.rocks
+
+
 
 ## Available Scripts
 
