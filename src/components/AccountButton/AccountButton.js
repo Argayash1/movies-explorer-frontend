@@ -1,8 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import './AccountButton.css';
 
-function AccountButton({ onNavigateToProfile, onCloseBurgerMenu }) {
+function AccountButton({ onCloseBurgerMenu }) {
+  const navigate = useNavigate();
+
   function handleNavigeteToProfile() {
-    onNavigateToProfile();
+    navigate('/profile');
     onCloseBurgerMenu && onCloseBurgerMenu();
   }
 

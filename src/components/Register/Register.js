@@ -12,7 +12,11 @@ const Register = ({ name, onSignup, isRequestSuccessful, errorText, onCleanError
 
   useEffect(() => {
     isLoggedIn && navigate('/movies', { replace: true });
-  });
+  }, [isLoggedIn, navigate]);
+
+  useEffect(() => {
+    document.title = 'Регистрация';
+  }, []);
 
   return (
     <main className='register'>

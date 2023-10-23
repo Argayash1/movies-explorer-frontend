@@ -10,7 +10,11 @@ const Login = ({ name, onSignin, isRequestSuccessful, errorText, onCleanErrorTex
 
   useEffect(() => {
     isLoggedIn && navigate('/movies', { replace: true });
-  });
+  }, [isLoggedIn, navigate]);
+
+  useEffect(() => {
+    document.title = 'Авторизация';
+  }, []);
 
   return (
     <main className='login'>

@@ -40,6 +40,10 @@
   color: #ee3465;
 }
 
+.login__input_type_error:focus {
+  outline: 1px solid #ee3465;
+}
+
 .login__error {
   font-style: normal;
   font-weight: 400;

@@ -1,15 +1,26 @@
+import { useNavigate } from 'react-router-dom';
 import './MainMenu.css';
 
-function MainMenu({ onNavigateToSignup, onNavigateToSignin }) {
+function MainMenu() {
+  const navigate = useNavigate();
+
+  function handleNavigateToSignup() {
+    navigate('/signup');
+  }
+
+  function handleNavigateToSignin() {
+    navigate('/signin');
+  }
+
   return (
     <ul className='menu'>
       <li>
-        <button className='menu__button' type='button' onClick={onNavigateToSignup}>
+        <button className='menu__button' type='button' onClick={handleNavigateToSignup}>
           Регистрация
         </button>
       </li>
       <li>
-        <button className='menu__button menu__button_type_login' type='button' onClick={onNavigateToSignin}>
+        <button className='menu__button menu__button_type_login' type='button' onClick={handleNavigateToSignin}>
           Войти
         </button>
       </li>

@@ -12,6 +12,10 @@ function Profile({ isEdit, onSignOut, onSubmit, onEditProfile, isLoading }) {
   const [isOtherUserData, setIsOtherUserData] = useState(false);
 
   useEffect(() => {
+    document.title = 'Аккаунт';
+  }, []);
+
+  useEffect(() => {
     resetValidation({ name: currentUser.name, email: currentUser.email }, {}, false);
   }, [currentUser, resetValidation]);
 

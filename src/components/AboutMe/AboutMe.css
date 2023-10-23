@@ -41,7 +41,7 @@
   line-height: 22px;
   mix-blend-mode: normal;
   max-width: 600px;
-  margin: 0 0 99px;
+  margin: 0 0 77px;
   padding: 0;
 }
 
@@ -64,11 +64,23 @@
   height: 327px;
   border-radius: 10px;
   grid-column: 2/3; /* это сокращённая запись от grid-column-start: 2; grid-column-end: 3; */
-  grid-row: 1/5; /* это сокращённая запись от grid-row-start: 1; grid-row-end: 4; */
+  grid-row: 1/5; /* это сокращённая запись от grid-row-start: 1; grid-row-end: 5; */
   object-fit: cover;
   justify-self: flex-end;
   display: block;
   font-size: 0;
+}
+
+@media screen and (max-width: 1013px) {
+  .about-me__bio {
+    margin-bottom: 55px;
+  }
+}
+
+@media screen and (max-width: 912px) {
+  .about-me__bio {
+    margin-bottom: 33px;
+  }
 }
 
 @media screen and (max-width: 873px) {
@@ -108,6 +120,30 @@
   .about-me__photo {
     width: 255px;
     height: 307px;
+  }
+}
+
+@media screen and (max-width: 793px) {
+  .about-me__bio {
+    margin-bottom: 69px;
+  }
+}
+
+@media screen and (max-width: 732px) {
+  .about-me__bio {
+    margin-bottom: 51px;
+  }
+}
+
+@media screen and (max-width: 711px) {
+  .about-me__bio {
+    margin-bottom: 33px;
+  }
+}
+
+@media screen and (max-width: 676px) {
+  .about-me__bio {
+    margin-bottom: 15px;
   }
 }
 

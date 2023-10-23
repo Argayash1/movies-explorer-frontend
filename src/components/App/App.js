@@ -224,22 +224,6 @@ function App() {
     }
   }
 
-  function handleNavigateToSignup() {
-    navigate('/signup');
-  }
-
-  function handleNavigateToSignin() {
-    navigate('/signin');
-  }
-
-  function handleNavigateToProfile() {
-    navigate('/profile');
-  }
-
-  function handleNavigateBack() {
-    navigate(-1);
-  }
-
   function handleCleanErrorText() {
     setErrortext('');
   }
@@ -363,9 +347,6 @@ function App() {
                 isBurgerMenuOpen={isBurgerMenuOpen}
                 onBurgerMenuOpen={handleOpenBurgerMenu}
                 onBurgerMenuClose={handleCloseBurgerMenu}
-                onNavigateToSignup={handleNavigateToSignup}
-                onNavigateToSignin={handleNavigateToSignin}
-                onNavigateToProfile={handleNavigateToProfile}
               ></Header>
             )}
             <Routes>
@@ -447,7 +428,7 @@ function App() {
                   />
                 }
               />
-              <Route path='*' element={<PageNotFound onNavigateToMain={handleNavigateBack} />} />
+              <Route path='*' element={<PageNotFound />} />
             </Routes>
             {pathsWithFooter && <Footer />}
             <InfoTooltip
