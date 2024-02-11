@@ -1,48 +1,30 @@
-# Movies-explorer
+# Movies-explorer-frontend
 
-## Дипломная работа на курсе "Веб-разработчик" в Яндекс.Практикуме
+![Скриншот главной страницы](https://github.com/Argayash1/Argayash1/assets/113699485/44763d23-c976-460d-b817-ca04eae9389f)
 
-Ссылка на макет проекта: https://disk.yandex.ru/d/fb0uECyV0rkDxw.
+## Фронтенд-часть дипломной работы на курсе "Веб-разработчик" в Яндекс.Практикуме
 
-Ссылка на пулл реквест: https://github.com/Argayash1/movies-explorer-frontend/pull/2
+## Стек технологий
 
-Ссылка на фронтенд-часть приложения: https://argayash-movies-explorer.nomoredomains.rocks
+<div>
+  <img src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original.svg" title="html5" alt="html5" width="40" height="40"/>&nbsp
+  <img src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-original.svg" title="css" alt="css" width="40" height="40"/>&nbsp
+  <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="javascript" alt="javascript" width="40" height="40"/>&nbsp
+  <img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg" title="reactjs" alt="reactjs" width="40" height="40"/>&nbsp
+</div>
 
-Ссылка на бэкенд-часть приложения: https://apii.mesto2023.students.nomoredomains.monster
+## Инструкция по использованию проекта
 
-## Available Scripts
+- `git clone https://github.com/Argayash1/composers-irk-frontend.git` - клонирование репозитория с кодом проекта
+- `cd composers-irk-frontend` - перейти в папку с проектом
+- `npm install` - установка зависимостей проекта
+- `npm start` - сборка проекта в режиме разработки
+- `npm run build` - сборка проекта в продакшн-режиме
+- `npm run test` - сборка проекта в режиме тестирования
+- `npm run eject` - "извлечение" скрытой конфигурации сборки приложения
 
-In the project directory, you can run:
+## Ссылки
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- [Макет в Figma](https://disk.yandex.ru/d/fb0uECyV0rkDxw)
+- [Деплой фронтенд-части приложения](https://argayash-movies-explorer.nomoredomains.rocks)
+- [Деплой бэкенд-части приложения](https://apii.mesto2023.students.nomoredomains.monster)
