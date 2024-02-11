@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 import { useLocation } from 'react-router-dom';
-import {NO_KEY_WORD_ERROR} from '../../utils/configs/errorsConfig'
+import { NO_KEY_WORD_ERROR } from '../../utils/configs/errorsConfig'
 
 function SearchForm({ onSubmit, onFilter, isLoading, moviesRequest, isCheckBoxChecked }) {
   const [userRequest, setUserRequest] = useState('');
@@ -51,7 +51,7 @@ function SearchForm({ onSubmit, onFilter, isLoading, moviesRequest, isCheckBoxCh
           </button>
         </div>
         <span className='search-form__error'>{errorText}</span>
-        <FilterCheckbox checked={isCheckBoxChecked} onFilter={onFilter} isLoading={isLoading}/>
+        <FilterCheckbox checked={isCheckBoxChecked} onFilter={onFilter} isLoading={isLoading} />
       </form>
     </section>
   );

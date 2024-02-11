@@ -39,9 +39,8 @@ function MoviesCardList({
     <section className={`movies-card-list ${place === 'saved-movies' ? 'movies-card-list_place_saved-movies' : ''}`}>
       {movies.length === ZERO_CARDS ? (
         <p
-          className={`movies-card-list__not-found ${
-            !isRequestSuccessful ? 'movies-card-list__not-found_req_unsuccsessful' : ''
-          }`}
+          className={`movies-card-list__not-found ${!isRequestSuccessful ? 'movies-card-list__not-found_req_unsuccsessful' : ''
+            }`}
         >
           {!isRequestSuccessful ? CONNECTION_OR_SERVER_ERROR : MOVIES_NOT_FOUND}
         </p>

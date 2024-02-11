@@ -18,9 +18,11 @@ import './App.css';
 import mainApi from '../../utils/MainApi';
 import moviesApi from '../../utils/MoviesApi';
 
+import { handleFilterShortMovies } from '../../utils/utils';
+
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-import { ZERO_CARDS, SHORT_MOVIE_DURATION } from '../../utils/configs/cardsConfig';
+import { ZERO_CARDS } from '../../utils/configs/cardsConfig';
 
 function App() {
   // Стейт данных пользователя
@@ -47,7 +49,7 @@ function App() {
   const [isSavedMoviesLoading, setIsSavedMoviesLoading] = useState(false);
 
   // Стейт поиска пользователя
-  const [didTheUserSearch, setDidTheUserSearch] = useState(false);
+  const [isSearch, setisSearch] = useState(false);
 
   // Стейт редактирования профиля
   const [isProfileEdit, setIsProfileEdit] = useState(false);
@@ -109,7 +111,7 @@ function App() {
           setSavedMovies(savedMovies);
           localStorage.setItem('saved-movies', JSON.stringify(savedMovies));
           const userRequest = localStorage.getItem('userRequest');
-          userRequest ? setDidTheUserSearch(true) : setDidTheUserSearch(false);
+          userRequest ? setisSearch(true) : setisSearch(false);
         })
         .catch((err) => {
           console.log(err);
@@ -177,7 +179,7 @@ function App() {
       setIsBurgerMenuOpen(false);
       setFoundMovies([]);
       setInitialMovies([]);
-      setDidTheUserSearch(false);
+      setisSearch(false);
       navigate('/', { replace: true });
     } catch (err) {
       console.log(err);
@@ -228,9 +230,11 @@ function App() {
     setErrortext('');
   }
 
+
+
   async function handleMoviesSubmit(value) {
     setIsMoviesLoading(true);
-    !didTheUserSearch && setDidTheUserSearch(true);
+    !isSearch && setisSearch(true);
     try {
       if (!JSON.parse(localStorage.getItem('movies'))) {
         const moviesFromBeatFilm = await moviesApi.getMovies();
@@ -246,7 +250,7 @@ function App() {
       setFoundMovies(foundMovies); // этот стейт нужен для того, чтобы фильтровать фильмы в функции фильтрации
       const checkboxState = localStorage.getItem('checkboxState');
       if (checkboxState === 'true') {
-        const filteredFoundMovies = foundMovies.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION);
+        const filteredFoundMovies = handleFilterShortMovies(foundMovies)
         setInitialMovies(filteredFoundMovies);
       } else {
         setInitialMovies(foundMovies);
@@ -272,7 +276,7 @@ function App() {
       setFoundSavedMovies(foundSavedMovies);
       const checkboxState = localStorage.getItem('checkboxState');
       if (checkboxState === 'true') {
-        const filteredFoundSavedMovies = foundSavedMovies.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION);
+        const filteredFoundSavedMovies = handleFilterShortMovies(foundSavedMovies)
         setSavedMovies(filteredFoundSavedMovies);
       } else {
         setSavedMovies(foundSavedMovies);
@@ -284,11 +288,11 @@ function App() {
   function handleFilterMovies(checked) {
     localStorage.setItem('checkboxState', checked);
     const storedMovies = JSON.parse(localStorage.getItem('foundMovies'));
-    const filteredFoundMovies = foundMovies.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION);
+    const filteredFoundMovies = handleFilterShortMovies(foundSavedMovies)
     const filteredStoredMovies =
       storedMovies &&
       storedMovies.length > ZERO_CARDS &&
-      storedMovies.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION);
+      handleFilterShortMovies(storedMovies)
     if (checked) {
       setInitialMovies(foundMovies.length > ZERO_CARDS ? filteredFoundMovies : filteredStoredMovies);
     } else {
@@ -297,11 +301,11 @@ function App() {
   }
 
   function handleFilterSavedMovies(checked) {
-    const filteredFoundSavedMovies = foundSavedMovies.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION);
+    const filteredFoundSavedMovies = handleFilterShortMovies(foundSavedMovies);
     const storedSavedMovies = JSON.parse(localStorage.getItem('saved-movies'))
       ? JSON.parse(localStorage.getItem('saved-movies'))
       : [];
-    const filteredSavedMovies = savedMovies.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION);
+    const filteredSavedMovies = handleFilterShortMovies(savedMovies);
     if (checked) {
       setSavedMovies(foundSavedMovies.length > ZERO_CARDS ? filteredFoundSavedMovies : filteredSavedMovies);
     } else {
@@ -365,7 +369,7 @@ function App() {
                     onFilter={handleFilterMovies}
                     isLoading={isMoviesLoading}
                     savedMovies={savedMovies}
-                    didTheUserSearch={didTheUserSearch}
+                    didTheUserSearch={isSearch}
                     isRequestSuccessful={isUserRequestSuccessful}
                   />
                 }
@@ -381,7 +385,7 @@ function App() {
                     onDeleteMovie={handleDeleteMovie}
                     onFilter={handleFilterSavedMovies}
                     isLoading={isSavedMoviesLoading}
-                    didTheUserSearch={didTheUserSearch}
+                    didTheUserSearch={isSearch}
                     isRequestSuccessful={isUserRequestSuccessful}
                   />
                 }

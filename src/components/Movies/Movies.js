@@ -15,9 +15,9 @@ import {
   NUMBER_OF_CARDS_TO_SHOW_MORE_BUTTON,
   MORE_CARDS_FOR_DESKTOP,
   MORE_OF_CARDS_FOR_TABLET_AND_PHONE,
-  SHORT_MOVIE_DURATION,
   HANDLERESIZE_TIMEOUT,
 } from '../../utils/configs/cardsConfig';
+import { handleFilterShortMovies } from '../../utils/utils';
 
 function Movies({
   initialMoviesCards, // это найденные фильмы, которые передаются из app после каждого поиска
@@ -75,7 +75,7 @@ function Movies({
     } else {
       const checkboxState = localStorage.getItem('checkboxState');
       const filteredStoredMovies =
-        storedMovies.length > ZERO_CARDS ? storedMovies.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION) : [];
+        storedMovies.length > ZERO_CARDS ? handleFilterShortMovies(storedMovies) : [];
       setMoviesCards(checkboxState === 'true' ? filteredStoredMovies : storedMovies);
     }
   }, [initialMoviesCards]);
