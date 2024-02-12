@@ -4,6 +4,10 @@
 
 ## Фронтенд дипломной работы на курсе "Веб-разработчик" в [Яндекс Практикум](https://practicum.yandex.ru/)
 
+## Описание проекта
+
+Фронтенд-часть проекта **Movies-explorer**, который представляет собой лендинг, содержащий портфолио разработчика, страницу поиска фильмов, страницу сохранённых фильмов, а также страницы регистрации, авторизации и профиля пользователя.
+
 ## Функционал
 
 1. **Пользователи**
@@ -32,6 +36,10 @@
   <img src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-original.svg" title="css" alt="css" width="40" height="40"/>&nbsp
   <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="javascript" alt="javascript" width="40" height="40"/>&nbsp
   <img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg" title="reactjs" alt="reactjs" width="40" height="40"/>&nbsp
+  <img src="https://github.com/devicons/devicon/blob/master/icons/figma/figma-original.svg" title="figma" alt="figma" width="40" height="40"/>&nbsp
+  <img src="https://github.com/devicons/devicon/blob/master/icons/vscode/vscode-original.svg" title="vs-code" alt="vs-code" width="40" height="40"/>&nbsp
+  <img src="https://github.com/devicons/devicon/blob/master/icons/git/git-original.svg" title="git" alt="git" width="40" height="40"/>&nbsp
+
 </div>
 
 ## Инструкция по использованию проекта
